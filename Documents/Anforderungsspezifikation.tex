@@ -1,0 +1,120 @@
+
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+% \usepackage[T1]{fontenc}
+% \usepackage[sc]{mathpazo}
+\usepackage[ngerman,american]{babel}
+\usepackage[autostyle]{csquotes}
+% \usepackage{graphicx}
+% \usepackage{scrhack} % necessary for listings package
+% \usepackage{listings}
+% \usepackage{lstautogobble}
+% \usepackage{tikz}
+% \usepackage{booktabs}
+% \usepackage[final]{microtype}
+% \usepackage{caption}
+\usepackage{hyperref} % hidelinks removes colored boxes around references and links
+% \usepackage{comment}
+
+\newdateformat{daymydate}{%
+  \monthname[\THEDAY.\THEMONTH]. \THEYEAR}
+
+\newcommand\titleofdoc{StayHealthy} % Put your document title in this argument
+\newcommand\GroupName{Team 6} % Put your group name here. If you are the only member of the group, just put your name
+
+\begin{document}
+\begin{titlepage}
+   \begin{center}
+        \vspace*{4cm} % Adjust spacings to ensure the title page is generally filled with text
+
+        \Huge{\titleofdoc} 
+
+        \vspace{0.5cm}
+        \LARGE{Anforderungsspezifikation}
+            
+        \vspace{3 cm}
+        \Large{\GroupName}
+       
+        \vspace{0.25cm}
+        \large{Andreas Wirth, Marco Klein, Khader AlHamed, Denis Manherz}
+       
+        \vspace{3 cm}
+        \Large{\today}% change date format to dd.mm.yyyy
+        
+        \vspace{0.25 cm}
+        \Large{Software Praktikum}
+       
+
+       \vfill
+    \end{center}
+\end{titlepage}
+\setcounter{page}{2}
+\tableofcontents
+\newpage
+
+\section{Dokumentinformationen} 
+\subsection{Änderungsgeschichte}
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+ Datum & Version & Änderung & Autor\\ 
+ \today & 0.0 & Dokument erstellt & DM \\ 
+ cell7 & cell8 & cell9 \\ 
+ \hline
+\end{tabular}
+\end{center}
+
+\section{Einführung}
+\subsection{Definitionen und Abkürzungen}
+Gesundheitsverhaltn, Ernährungsverhalten, Kalorie, Kalorienaufnahme
+bzw. z.B. 
+\subsection{Referenzen}
+\subsection{Übersicht}
+Dieses Dokument bietet eine allgemeine Beschreibung der Software StayHealthy. Darüber hinaus werden nicht funktionale sowie funktionale Anforderungen erläutert. Zum Schluss werden die Use Cases des Produkts im Fully Dressed Format dargestellt.
+
+\section{Allgemeine Beschreibung}
+\subsection{Produktperspektive}
+Ein Lebensstil der sich positiv auf die allgemeine Gesundheit auswirkt und diese erhält wird Menschen immer wichtiger. Die Software StayHealthy soll dem Endnutzer dabei helfen ihr Ernährungsverhalten zu dokumentieren und ihm eine Übersicht darüber geben wie viel Sport er macht bzw. wieviele Kalorien er zu sich nimmt und verbraucht. Mit den zugrundeliegenden Ernährungsdaten werden dem Nutzer mögliche sportliche Aktivitäten vorgeschlagen die ihm dabei helfen sollen einen gesunden Lebensstil zu pflegen. Natürlich kann der Nutzer auch selbstständig sportliche Aktivitäten dokumentieren. (--egal ob das ziel abnehmen oder Gewicht halten oder Fitness verbessern oder Muskeln aufbauen ist.)
+\subsection{Produktfunktion}
+Die wesentliche Funktion von StayHealthy ist das dokumentieren von Kalorienaufnahme (Ernährungstagebuch mäßig?) und anhand dieser körperliche Aktivitäten vorzuschlagen die ---diese verbrauchen??---.
+\\Der Nutzer gibt im System ein welche Mahlzeiten er zu sich genommen hat und wie viele Kalorien diese enthalten haben (oder wir bieten Berechnung von Kalorien an brauchen dann externe Daten). Außerdem gibt der Nutzer an, an welchen Tagen und welchen Tageszeiten er gerne trainieren möchte. 
+\\Das System erstellt aus einer Auswahl (vom Benutzer ausgewählt) von Standardübungen eine Trainingeinheit für den jeweiligen Termin, hierbei werden natürlich auch die individuellen Benutzerdaten d.h. Alter, Gewicht, Größe (--noch was hier--) berücksichtigt. Das System erinnert den Benutzer an bevorstehende Trainingseinheiten Der Benutzer kann diese Trainingseinheit im Terminkalender der Software akzeptieren und das Training starten bzw. beenden. \\Um den Nutzer zu ermöglichen auch außerhalb seiner gewünschten Zeitslots zu trainieren, kann er einzelne Übungen auswählen und die Zeit stoppen bzw. die Wiederholungen angeben. \\Für einen Überblick wird dem Benutzer eine Zusammenfassung (--wöchentlich--monatlich-- slider) über sein Ernährungs- und Sportverhalten? angeboten.
+\subsection{Benutzer Charakteristik}
+Zielgruppe der StayHealthy Software sind Menschen die ihr Gesundheitsverhalten verbessern wollen aber noch nicht viel Erfahrung mit dem erstellen von Trainingseinheiten haben bzw. noch nicht gezielt Sport(Fitness) gemacht haben.
+\subsection{Einschränkungen}
+Die Software ist nur im Rahmen des Software Praktikums verwendbar.
+Die Zusammenstellung der Trainingseinheiten geschieht nur anhand des Kalorienverbrauchs andere Faktoren werden nicht berücksichtigt.
+(--falls wir selber Kalorien berechnen mit Daten dann hier das wir vielleicht nicht genug daten vorhanden sind..)
+--Zielplattform einschränkungen
+\subsection{Annahmen}
+Die Angegebenen Daten vom Nutzer sind richtig.
+\subsection{Abhängigkeiten}
+\subsection{Use Case Überblick}
+
+\section{Spezifische Anforderungen}
+\subsection{Funktionale Anforderungen}
+\subsubsection{Funktionale Anforderung 1...}
+\subsection{Bedienbarkeit}
+\subsubsection{Bedienbarkeitsanforderung 1...}
+\subsection{Zuverlässigkeit}
+\subsubsection{Zuverlässigkeitsanforderung 1...}
+\subsection{Leistung}blalabalala
+\subsubsection{Leistungsanforderung 1...}
+\subsection{Wartbarkeit}
+\subsubsection{Wartbarkeitsanforderung 1...}
+\subsection{Installation}
+\subsubsection{Installationsanforderung 1...}
+\subsection{Lokalisierung}
+\subsubsection{Lokalisierungsanforderung 1...}
+\subsection{Schnittstellen}
+\subsubsection{Benutzerschnittstellen...}
+\subsection{Lizenzanforderungen}
+\subsection{Verwendete Standards}
+
+\section{Use Cases}
+\subsection{Use Case Diagram}
+\subsection{Aktoren und Stakeholder}
+\subsection{Use Case 1...}
+
+\end{document}

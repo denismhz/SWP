@@ -1,0 +1,96 @@
+
+\documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{datetime}
+% \usepackage[T1]{fontenc}
+% \usepackage[sc]{mathpazo}
+\usepackage[ngerman,american]{babel}
+\usepackage[autostyle]{csquotes}
+% \usepackage{graphicx}
+% \usepackage{scrhack} % necessary for listings package
+% \usepackage{listings}
+% \usepackage{lstautogobble}
+% \usepackage{tikz}
+% \usepackage{booktabs}
+% \usepackage[final]{microtype}
+\usepackage{caption}
+\usepackage{hyperref} % hidelinks removes colored boxes around references and links
+% \usepackage{comment}
+
+\newdateformat{daymydate}{%
+  \monthname[\THEDAY.\THEMONTH]. \THEYEAR}
+
+\newcommand\titleofdoc{StayHealthy} % Put your document title in this argument
+\newcommand\GroupName{Team 6} % Put your group name here. If you are the only member of the group, just put your name
+
+\begin{document}
+\begin{titlepage}
+   \begin{center}
+        \vspace*{4cm} % Adjust spacings to ensure the title page is generally filled with text
+
+        \Huge{\titleofdoc} 
+
+        \vspace{0.5cm}
+        \LARGE{Projektplan}
+            
+        \vspace{3 cm}
+        \Large{\GroupName}
+       
+        \vspace{0.25cm}
+        \large{Andreas Wirth, Marco Klein, Khader AlHamed, Denis Manherz}
+       
+        \vspace{3 cm}
+        \Large{\today}% change date format to dd.mm.yyyy
+        
+        \vspace{0.25 cm}
+        \Large{Software Praktikum}
+       
+
+       \vfill
+    \end{center}
+\end{titlepage}
+\setcounter{page}{2}
+\tableofcontents
+\newpage
+
+\section{Dokumentinformationen} 
+\subsection{Änderungsgeschichte}
+\begin{center}
+\begin{tabular}{ |c|c|c|c| } 
+ \hline
+ Datum & Version & Änderung & Autor\\ 
+ \today & 0.0 & Dokument erstellt & DM \\ 
+ cell7 & cell8 & cell9 \\ 
+ \hline
+\end{tabular}
+\end{center}
+\subsection{Inhalt}
+
+\section{Einführung}
+\subsection{Definitionen und Abkürzungen}
+\subsection{Referenzen}
+\href{https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/mgmnt/rup_sdpln_sp.htm}{Software Development Plan}
+\subsection{Übersicht}
+\section{Projektübersicht}
+\subsection{Zweck und Ziel}
+\subsection{Annahmen und Einschränkungen}
+\subsection{Arbeitsergebnisse}
+
+\section{Projektorganisation}
+\subsection{Organisationsstruktur}
+\subsection{Externe Schnittstellen}
+
+\section{Management Abläufe}
+\subsection{Projekt Kostenvoranschlag}
+\subsection{Projektplan}
+\subsubsection{Zeitplan}
+\subsubsection{Iterationsplanung/Meilensteine}
+\subsubsection{Besprechungen}
+\subsubsection{Abgabe}
+
+\section{Risiko Management}
+\section{Arbeitspakete}
+\section{Infrastruktur}
+\section{Unterstützende Prozesse}
+
+\end{document}
