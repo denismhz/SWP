@@ -1,10 +1,10 @@
 
 \documentclass[12pt,a4paper,onecolumn]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
 \usepackage{datetime}
 % \usepackage[T1]{fontenc}
 % \usepackage[sc]{mathpazo}
-\usepackage[ngerman,american]{babel}
 \usepackage[autostyle]{csquotes}
 % \usepackage{graphicx}
 % \usepackage{scrhack} % necessary for listings package
@@ -16,9 +16,8 @@
 % \usepackage{caption}
 \usepackage{hyperref} % hidelinks removes colored boxes around references and links
 % \usepackage{comment}
+\usepackage{graphicx}
 
-\newdateformat{daymydate}{%
-  \monthname[\THEDAY.\THEMONTH]. \THEYEAR}
 
 \newcommand\titleofdoc{StayHealthy} % Put your document title in this argument
 \newcommand\GroupName{Team 6} % Put your group name here. If you are the only member of the group, just put your name
@@ -59,62 +58,496 @@
 \begin{tabular}{ |c|c|c|c| } 
  \hline
  Datum & Version & Änderung & Autor\\ 
- \today & 0.0 & Dokument erstellt & DM \\ 
- cell7 & cell8 & cell9 \\ 
+ \hline
+ 25.03.2022 & 0.0 & Inhaltsverzeichnis & Denis Manherz \\ 
+ \hline
+ 31.03.2022 & 1.0 & bis Abschnitt 5 & Denis Manherz \\ 
+ \hline
+ 01.04.2022 & 1.1 & Use Cases Fully Dressed & Marco Klein \\ 
+ \hline
+ 01.04.2022 & 1.2 & Use Cases Fully Dressed & Khader Alhamed \\ 
  \hline
 \end{tabular}
 \end{center}
 
 \section{Einführung}
 \subsection{Definitionen und Abkürzungen}
-Gesundheitsverhaltn, Ernährungsverhalten, Kalorie, Kalorienaufnahme
-bzw. z.B. 
+\textbf{Ernährungsverhalten} - Ernährungsbezogene Handlungen die Menschen im Alltag vollziehen\\
+\textbf{Gesundheitsverhalten} - Handlungen von gesunden Menschen die das Risiko von Erkrankungen nachweislich senken oder welche die Gesundheit positiv beeinflussen.\\
+\textbf{Kalorie} - 1 kcal\\
+\textbf{Grundumsatz} - Anzahl der Kalorien die zur Aufrechterhaltung der Lebensfunktionen benötigt wird\\
+\textbf{Trainingsart} - Ausdauer- oder Krafttraining
 \subsection{Referenzen}
+\href{https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/req/rup_srs.htm}{sceweb.uhcl.edu - Software Reqirements Specification}
 \subsection{Übersicht}
-Dieses Dokument bietet eine allgemeine Beschreibung der Software StayHealthy. Darüber hinaus werden nicht funktionale sowie funktionale Anforderungen erläutert. Zum Schluss werden die Use Cases des Produkts im Fully Dressed Format dargestellt.
+Dieses Dokument bietet eine allgemeine Beschreibung der Software StayHealthy. Darüber hinaus werden nichtfunktionale sowie funktionale Anforderungen erläutert. Zum Schluss werden die Use Cases des Produkts im Fully Dressed Format dargestellt.
 
 \section{Allgemeine Beschreibung}
 \subsection{Produktperspektive}
-Ein Lebensstil der sich positiv auf die allgemeine Gesundheit auswirkt und diese erhält wird Menschen immer wichtiger. Die Software StayHealthy soll dem Endnutzer dabei helfen ihr Ernährungsverhalten zu dokumentieren und ihm eine Übersicht darüber geben wie viel Sport er macht bzw. wieviele Kalorien er zu sich nimmt und verbraucht. Mit den zugrundeliegenden Ernährungsdaten werden dem Nutzer mögliche sportliche Aktivitäten vorgeschlagen die ihm dabei helfen sollen einen gesunden Lebensstil zu pflegen. Natürlich kann der Nutzer auch selbstständig sportliche Aktivitäten dokumentieren. (--egal ob das ziel abnehmen oder Gewicht halten oder Fitness verbessern oder Muskeln aufbauen ist.)
+Ein Lebensstil der sich positiv auf die allgemeine Gesundheit auswirkt und diese erhält wird für Menschen immer wichtiger. Die Software StayHealthy soll dem Endnutzer dabei helfen sein Ernährungsverhalten zu dokumentieren und ihm eine Übersicht darüber geben wie viel Sport er macht bzw. wieviele Kalorien er zu sich nimmt und verbraucht.\\ Mit den zugrundeliegenden Ernährungsdaten werden dem Nutzer mögliche sportliche Aktivitäten vorgeschlagen die ihm dabei helfen sollen einen gesunden Lebensstil zu pflegen. Natürlich kann der Benutzer auch selbstständig sportliche Aktivitäten dokumentieren. Darüber hinaus besteht die Möglichkeit sich von einem Personal Trainer Trainings- und Ernährungspläne erstellen zu lassen.
 \subsection{Produktfunktion}
-Die wesentliche Funktion von StayHealthy ist das dokumentieren von Kalorienaufnahme (Ernährungstagebuch mäßig?) und anhand dieser körperliche Aktivitäten vorzuschlagen die ---diese verbrauchen??---.
-\\Der Nutzer gibt im System ein welche Mahlzeiten er zu sich genommen hat und wie viele Kalorien diese enthalten haben (oder wir bieten Berechnung von Kalorien an brauchen dann externe Daten). Außerdem gibt der Nutzer an, an welchen Tagen und welchen Tageszeiten er gerne trainieren möchte. 
-\\Das System erstellt aus einer Auswahl (vom Benutzer ausgewählt) von Standardübungen eine Trainingeinheit für den jeweiligen Termin, hierbei werden natürlich auch die individuellen Benutzerdaten d.h. Alter, Gewicht, Größe (--noch was hier--) berücksichtigt. Das System erinnert den Benutzer an bevorstehende Trainingseinheiten Der Benutzer kann diese Trainingseinheit im Terminkalender der Software akzeptieren und das Training starten bzw. beenden. \\Um den Nutzer zu ermöglichen auch außerhalb seiner gewünschten Zeitslots zu trainieren, kann er einzelne Übungen auswählen und die Zeit stoppen bzw. die Wiederholungen angeben. \\Für einen Überblick wird dem Benutzer eine Zusammenfassung (--wöchentlich--monatlich-- slider) über sein Ernährungs- und Sportverhalten? angeboten.
+Die wesentliche Funktion von StayHealthy ist das dokumentieren von Kalorienaufnahme um anhand dieser körperliche Aktivitäten vorzuschlagen die den Kalorienhaushalt im Gleichgewicht halten.
+Darüber hinaus werden dem Benutzer anhand von seinen angegebenen Präferenzen passende Mahlzeiten vorgeschlagen.
+\\Der Benutzer kann in der Anwendung Mahlzeiten auswählen und angeben wie viel er von diesen zu sich genommen hat. Die Anwendung berechnet dann den Kaloriengehalt der angegebenen Mahlzeiten. Außerdem gibt der Benutzer an, an welchen Tagen und zu welchen Tageszeiten er gerne trainieren möchte. 
+\\Das System erstellt aus einer Auswahl von Standardübungen einen Trainingplan für den jeweiligen Termin, hierbei werden natürlich auch die individuellen Benutzerdaten d.h. Kalorienaufnahme, Alter, Gewicht, Größe, Grundumsatz und Trainingsart berücksichtigt. Das System erinnert den Benutzer an bevorstehende Trainingseinheiten. Der Benutzer kann diesen Trainingsplan in seinem Zeitplan bearbeiten, akzeptieren, ablehnen oder verschieben. \\Um dem Benutzer zu ermöglichen auch außerhalb seiner gewünschten Zeitslots zu trainieren, kann er einzelne Übungen auswählen und die Zeit bzw. die Wiederholungen angeben. \\
+Möchte der Benutzer gezielter trainieren kann er sein Profil upgraden. Dieses Upgrade ermöglicht es einem Personal Trainer Zugriff auf die Benutzerdaten zu bekommen und mit diesen je nach den Wünschen des Benutzers für diesen zugeschnittene Trainings- und Ernährungspläne zu erstellen.\\
+Für einen Überblick wird dem Benutzer eine Statistik über sein Ernährungs- und Sportverhalten angeboten.\\
+\newpage
 \subsection{Benutzer Charakteristik}
-Zielgruppe der StayHealthy Software sind Menschen die ihr Gesundheitsverhalten verbessern wollen aber noch nicht viel Erfahrung mit dem erstellen von Trainingseinheiten haben bzw. noch nicht gezielt Sport(Fitness) gemacht haben.
+Zielgruppe der StayHealthy Software sind Menschen die ihr Gesundheitsverhalten verbessern wollen aber noch nicht viel Erfahrung mit dem erstellen von Trainingseinheiten haben bzw. noch nicht gezielt Sport gemacht haben.
 \subsection{Einschränkungen}
-Die Software ist nur im Rahmen des Software Praktikums verwendbar.
-Die Zusammenstellung der Trainingseinheiten geschieht nur anhand des Kalorienverbrauchs andere Faktoren werden nicht berücksichtigt.
-(--falls wir selber Kalorien berechnen mit Daten dann hier das wir vielleicht nicht genug daten vorhanden sind..)
---Zielplattform einschränkungen
+Die Zusammenstellung der Trainingspläne geschieht nur anhand des Kalorienverbrauchs, der Trainingsart und den Präferenzen des Benutzers, andere Faktoren werden nicht berücksichtigt.
+\\Es werden nur Übungen angeboten die dem Prinzip des Bodyweight Trainings entsprechen, also dem Training mit dem eigenen Körpergewicht. Außerdem soll bei den Übungen keine ausführliche Erklärung notwendig sein.\\
+Der Benutzer kann nur Mahlzeiten eingeben und Übungen ausführen die in unserer Datenbank vorhanden sind.
 \subsection{Annahmen}
-Die Angegebenen Daten vom Nutzer sind richtig.
-\subsection{Abhängigkeiten}
-\subsection{Use Case Überblick}
+Die angegebenen Daten vom Nutzer sind richtig.
 
 \section{Spezifische Anforderungen}
 \subsection{Funktionale Anforderungen}
-\subsubsection{Funktionale Anforderung 1...}
+\subsubsection{Funktionale Anforderung - Benutzeraufwertung}
+Das System markiert einen Benutzer als aufgewertet und ordnet diesen Benutzer einem Personal Trainer zu, der dann Zugriff auf die Benutzerdaten erhält.
+\subsubsection{Funktionale Anforderung - Terminverwaltung}
+Das System trägt Trainingspläne in den Kalender eines Benutzers ein, dabei berücksichtigt es die vom Benutzer präferierten Zeitslots.
+\subsubsection{Funktionale Anforderung - Kalorienberechnung}
+Das System berechnet den Kaloriengehalt der Mahlzeiten und Ernährungspläne die der Benutzer erstellt hat.
+\subsubsection{Funktionale Anforderung - Grundumsatzberechnung}
+Aus den Benutzerdaten berechnet das System den Grundumsatz des jeweiligen Benutzers.
+\subsubsection{Funktionale Anforderung - Statistikerstellung}
+Aus den gewonnenen Benutzerdaten erstellt das System eine Statistik über den Kalorienverbrauch und die sportliche Aktivität eines Benutzers über einen vom Benutzer gewählten Zeitraum in Tagen. Das heißt der Kalorienverbrauch wird mit der Kalorienaufnahme verglichen. Aufwärts- oder Abwertstrends für den Benutzer hervorgehoben.
+\subsubsection{Funktionale Anforderung - Trainingsplanerstellung}
+Je nach Kalorienaufnahme eines Benutzers erstellt das System einen Trainingsplan aus verschiedenen Standardübungen, sodass Kalorienaufnahme, und Kalorienverbrauch im Gleichgewicht sind.
+\subsubsection{Funktionale Anforderung - Erinnerung}
+Das System erinnert den Benutzer einen Tag und nochmal eine Stunde vor Anfang einer Trainingseinheit.
+
 \subsection{Bedienbarkeit}
-\subsubsection{Bedienbarkeitsanforderung 1...}
+\subsubsection{Bedienbarkeitsanforderung - Benutzereingabe}
+Die Bedienung der Software soll mit Maus und Tastatur erfolgen.
+\subsubsection{Bedienbarkeitsanforderung - Übersichtlichkeit}
+Über ein Menü wird es dem Benutzer ermöglicht alle Ansichten zu erreichen.
+\subsubsection{Bedienbarkeitsanforderung - Benutzerfreundlichkeit}
+Jede Ansicht soll dem Benutzer Funktionalitäten aus maximal einer Funktionalitätsgruppe zur Verfügung stellen, sowie sich auf einen Use Case beziehen.
+\subsubsection{Bedienbarkeitsanforderung - Verständlichkeit}
+Die Funktionen und Buttons sollen selbsterklärend sein, falls nötig wird eine Beschriftung hinzugefügt.
+
 \subsection{Zuverlässigkeit}
-\subsubsection{Zuverlässigkeitsanforderung 1...}
-\subsection{Leistung}blalabalala
-\subsubsection{Leistungsanforderung 1...}
+\subsubsection{Zuverlässigkeitsanforderung - Verfügbarkeit}
+Es soll sichergestellt werden das die StayHealthy Software dauerhaft verfügbar ist.
+\subsubsection{Zuverlässigkeitsanforderung - Reperaturzeit}
+Die mittlere Zeit zur Behebung von Ausfällen soll maximal 24 Stunden betragen.
+\subsubsection{Zuverlässigkeitsanforderung - Ausfallabstand}
+Der zeitliche Abstand zwischen Ausfällen ist vorallem abhängig von der Netzwerkverfügbarkeit. Dieser soll mindestens 1 Woche betragen.
+\subsection{Leistung}
+\subsubsection{Leistungsanforderung - Antwortzeit}
+Die Antwortzeit der Anwendung ist abhängig von der Datenbankzugriffszeit und der Zeit für Funktionalitätsberechnungen.
+Die Berechnung von Funktionen soll maximal 20ms betragen.
+\subsubsection{Leistungsanforderung - Kapazität}
+Die StayHealthy Software soll von maximal 100 Benutzern gleichzeitig verwendet werden können.
 \subsection{Wartbarkeit}
-\subsubsection{Wartbarkeitsanforderung 1...}
+\subsubsection{Wartbarkeitsanforderung -Erweiterbarkeit}
+Es soll sichergestellt werden, dass die Software jederzeit erweitert werden kann.
 \subsection{Installation}
-\subsubsection{Installationsanforderung 1...}
+\subsubsection{Installationsanforderung - Browser}
+Die Software ist mit Windows kompatibel und kann vorerst nur lokal auf dem System installiert und benutzt werden.
 \subsection{Lokalisierung}
-\subsubsection{Lokalisierungsanforderung 1...}
+\subsubsection{Lokalisierungsanforderung}
+Die StayHealthy Software soll zunächst auf dem nationalen Markt auf deutsch verfügbar sein.
 \subsection{Schnittstellen}
-\subsubsection{Benutzerschnittstellen...}
+\subsubsection{Benutzerschnittstellen}
+Die Schnittstelle zum Benutzer erfolgt durch ein GUI.
+\subsubsection{Softwareschnittstellen}
+Die StayHealthy Software benötigt eine Schnittstelle zu einer Datenbank.
+\subsubsection{Datenbankschnittstelle}
+Die StayHealthy Software benötigt zur Speicherung seiner Daten eine Datenbank.
 \subsection{Lizenzanforderungen}
-\subsection{Verwendete Standards}
+Es werden keine Lizenzen benötigt die verwendete Datenbank ist eine kostenlose Version von SQLite.
 
 \section{Use Cases}
 \subsection{Use Case Diagram}
-\subsection{Aktoren und Stakeholder}
-\subsection{Use Case 1...}
+\includegraphics[scale=0.8]{Anwendungsfalldiagramm.png}
 
+\subsection{Aktoren und Stakeholder}
+Benutzer, Personal Trainer
+\subsection{Use Case Benutzer registrieren}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\Benutzer will sich in der Anwendung registrieren.\\
+\textbf{Preconditions:} \\Datenbank und Anwendung ist gestartet, der Benutzer befindet sich auf der Registrierungs Seite.\\
+\textbf{Postconditions:}\\ Der Benutzer und seine Daten wurden erfolgreich in der Datenbank hinterlegt.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item System zeigt zwei Wähle „anmelden und regestieren“
+    \item Der Nutzer wählt Registrieren
+    \item System fordert eine E-Mail Adresse
+    \item Der Nuter gibt einen E-Mail ein und bestätigt
+    \item System fordert ein Passwort und Passwort wiederholen an
+    \item Der Nutzer gibt einen Passwort und wiederholt und bestätigt es
+    \item System gibt Hinweis „erfolgreiche Regestrierung“
+    \item System zeigt wieder die zwei wähle „anmelden“,“regestrieren“
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [4a.]  Email ist schon in System vorhanden
+    \begin{enumerate}
+        \item[1.]System gibt Hinweis ' E-Mail bereits vorhanden ' und fordert erneut eine E-Mail Eingabe
+        \item[2.]Benutzer macht weiter im MSS Schritt 4.
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:} \\Jeder Anwender kann sich mit einer E-Mail genau einmal registrieren\\
+
+\subsection{Use Case Benutzer anmelden}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Benutzer will sich in der Anwendung anmelden.\\
+\textbf{Preconditions:} \\ Der Benutzer hat sich registriert.\\
+\textbf{Postconditions:}\\ Der Benutzer ist erfolgreich in der Anwendung angemeldet.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Nutzer klickt den Button „Anmelden“
+    \item System fordert Email und Passwort an
+    \item Nutzer gibt seine Email und Passwort und bestätigt 
+    \item System gibt Hinweis „erfolgreiche Anmeldung“ 
+    \item System Zeigt die Hauptmenü.
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [3a.]  Der Benutzer macht eine ungültige Eingabe
+    \begin{enumerate}
+        \item[1.]System zeigt Hinweis “falsche Benutzerdaten “ und fordert erneute Eingabe
+        \item[2.]Benutzer macht im MSS Schritt 2. weiter
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\ Benutzer kann sich beliebig oft versuchen anzumelden.\\
+
+\subsection{Use Case Profil Bearbeiten}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Benutzer seine Benutzerdaten ändern\\
+\textbf{Preconditions:} \\ Datenbankserver ist gestartet. Der Benutzer befindet sich auf seiner Profilseite.\\
+\textbf{Postconditions:}\\ Die aktualisierten Profildaten wurden in der Datenbank hinterlegt.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Nutzer klickt den Button „Profil bearbeiten“
+    \item System fordert Name, Nachname, Alter, Geschlecht , Größe, Übungspräferenz und Kalorien Aufnahme pro Woche an
+    \item Nutzer gibt alle Daten ein und bestätigt
+    \item System gibt ein Hinweis für die erfolgreiche Bearbeitung des Profils aus.
+\end{enumerate}
+\textbf{Extensions:}\\
+\begin{enumerate}
+    \item [3a.]Benutzer bestätigt die Eingabe nicht.
+    \begin{enumerate}
+        \item [1.]System zeigt Auswahl "weiter bearbeiten"\\
+        \item [2.]Benutzer wählt Auswahl und macht im MSS Schritt 3. weiter.\\
+    \end{enumerate}
+\end{enumerate} 
+\textbf{Frequency of Occurence:}\\ beliebig oft pro Benutzer\\
+
+\subsection{Use Case Profil löschen}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Nutzer will sein Profil löschen.\\
+\textbf{Preconditions:} \\ Der Benutzer hat ein Profil erstellt und ist eingeloggt.\\
+\textbf{Postconditions:}\\Der Nutzer hat sein Profil gelöscht.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Nutzer klickt den Button „Profil löschen“
+    \item System fordert Benutzer auf sein Passwort einzugeben
+    \item Nutzer gibt sein Passwort an
+    \item System gibt Auswahl "Profil löschen" und "abbrechen"
+    \item Nutzer bestätigt.
+    \item System bestätigt das Löschen
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [3a.]  Nutzer gibt falsches Passwort.
+    \begin{enumerate}
+        \item[1.]Weiter mit Schritt 2 des Mss.
+    \end{enumerate}
+    \item [3b.]  Nutzer wählt 'abbrechen' aus.
+    \begin{enumerate}
+        \item[1.]System zeigt die Hauptmenü.
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\ \\
+Jedes Profil kann genau einmal gelöscht werden. 
+\subsection{Use Case Mahlzeit eingeben}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Benutzer.\\
+\textbf{Preconditions:} \\ Der Nutzer hat sich angemeldet.\\
+\textbf{Postconditions:}\\Der Nutzer hat seine Mahlzeit in System eingegeben.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Nutzer klickt den Button „Mahlzeit eingeben“
+    \item System fordert Eingabe zu Beschreibung und Kalorien für die Mahlzeit an
+    \item Benutzer gibt die Daten ein
+    \item System fordert Benutzer auf die Eingabe zu bestätigen
+    \item Benutzer bestätigt.
+    \item System speichert die eingegebene Mahlzeit in der Datenbank
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [3a.]  Der Nutzer gibt nicht alle Daten ein.
+    \begin{enumerate}
+        \item[1.]Weiter mit Schritt 2 des Mss.
+    \end{enumerate}
+    \item [5a.]  Benutzer bestätigt die Eingabe nicht\\
+    \begin{enumerate}
+        \item[1.]Weiter mit Schritt 2 des Mss.
+        \item[2.]Benutzer wählt Auswahl und macht im Schritt 3. im MSS weiter.
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\ \\
+Beliebig oft pro Benutzer. 
+
+\subsection{Use Case Statistik anzeigen}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Nutzer will sich die Statistik von gesammelten Daten anzeigen lassen. \\
+\textbf{Preconditions:} \\ Der Benutzer ist angemeldet und hat ein Profil erstellt. Benutzer hat mindestens eine Trainingseinheit oder eine Mahlzeit zu sich genommen. \\
+\textbf{Postconditions:}\\Der Nutzer hat sich eine Statistik anzeigen lassen.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Nutzer klickt den Button „Statistik anzeigen“
+    \item System gibt Auswahl für einen Zeitraum zum Anzeigen der Statistik
+    \item Nutzer gibt eine Auswahl an und bestätigt
+    \item System gibt eine Ansicht mit der Statistik aus
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [3a.]  Benutzer bestätigt Eingabe nicht
+    \begin{enumerate}
+        \item[1.]System zeigt Auswahl 'Zeitraum wählen'
+        \item[2.]Benutzer wählt Auswahl und macht im MSS Schritt 3. weiter
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\ \\
+beliebig oft pro Benutzer.
+\subsection{Use Case Training durchführen}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Nutzer möchte die Durchführung einer Trainingseinheit bestätigen.\\
+\textbf{Preconditions:} \\  Der Benutzer hat sich angemeldet und ein Profil erstellt. Der Benutzer hat mindestens eine Trainingseinheit im Trainingsplan geplant. \\
+\textbf{Postconditions:}\\Der Benutzer hat die Durchführung einer Trainingseinheit bestätigt.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Nutzer klickt den Button „Training durchführen“
+    \item System fordert eine Bestätigung ,dass der Nutzer jetzt mit seinem Training anfängt
+    \item Nutzer bestätigt
+    \item System zeigt den Trainingsplan und zeigt eine Auswahl mit den Trainingseinheiten, welche durchzuführen sind
+    \item Nutzer erledigt Auswahl durch ankreuzen
+    \item System fordert auf Eingabe zu bestätigen
+    \item Nutzer bestätigt Eingabe
+    \item System übernimmt die Daten der Trainingseinheit in die Statistik
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [6a.]  Nutzer bestätigt Eingabe nicht
+    \begin{enumerate}
+        \item[1.]System zeigt Auswahl 'Eingabe bearbeiten'
+        \item[2.]Nutzer bestätigt Auswahl und macht im MSS Schritt 5. weiter
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\ \\
+Maximal so oft wie Trainingseinheiten geplant wurden. 
+
+\subsection{Use Case Training vorschlagen}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Nutzer will einen individuellen Trainingsplan bekommen. Personaltrainer erstellt einen individuellen Trainingsplan für Nutzer.\\
+\textbf{Preconditions:} \\ Der Nutzer hat sich angemeldet und ein Profil erstellt. Datenbankserver ist gestartet. Benutzer hat sein Profil geupgradet.\\
+\textbf{Postconditions:}\\Der Nutzer hat einen individuellen Trainingsplan bekommen.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Nutzer klickt den Button „Personaltrainer“
+    \item System zeigt Auswahl "Trainingsplan individuell erstellen"
+    \item Nutzer bestätigt Auswahl
+    \item System fordert für den Zeitraum von einer Woche für jeden Tag ein Datum und eine Uhrzeit an der trianiert werden will und ob trianiert werden will
+    \item Benutzer macht die Eingabe der Daten
+    \item System schlägt für jeden der Termine eine Traniningseinheit vor und fordert pro Vorschlag die Annahme des Vorschlages
+    \item Benutzer bestätigt Vorschlag
+    \item System übernimmt Vorschlag in den Trainingsplan des Personaltraineres
+    \item System fordert bei vollendeter Durchführung auf die Planung zu beenden mit 'beenden'
+    \item Benutzer bestätigt mit 'beenden'
+    \item System speichert Trainingsplan und fügt diesen dem Zeitplan hinzu
+\end{enumerate} 
+\textbf{Extensions:}\\
+\begin{enumerate}
+    \item [7a.]  Benutzer nimmt Vorschlag nicht an.
+    \begin{enumerate}
+        \item[1.]System fordert Benutzer auf selbst eine Trainingseinheit zu wählen und zeigt Auswahl von der in Datenbank gespeicherteten Trainingseinheiten.
+        \item[2.]Benutzer wählt aus und bestätigt die Eingabe.
+    \end{enumerate}
+    \item [10a.] Benutzer bestätigt Eingabe nicht
+     \begin{enumerate}
+        \item[1.]System zeigt Auswahl 'Vorschläge überarbeiten'
+        \item[2.]Benutzer wählt entsprechende Termine aus lehnt diese ab
+        \item[3.]System fordert Benutzer auf selbst eine Trainingseinheit zu wählen und zeigt Auswahl von der in Datenbank gespeicherten Trainingseinheiten
+        \item[4.]Benutzer wählt aus und bestätigt die Eingabe
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\ \\
+beliebig oft pro Benutzer
+
+\subsection{Use Case Profil upgraden}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Benutzer möchte sein Profil upgraden um die Funktion des Personaltraineres zu nutzen.\\
+\textbf{Preconditions:} \\ Benutzer hat ein Profil erstellt. 
+Benutzer ist eingelogt. Datenbankserver ist gestartet.\\
+\textbf{Postconditions:}\\Benutzer hat ein Profil erfolgreich upgegradet.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item System zeigt Auswahl „Profil upgraden“.
+    \item Benutzer wählt Auswahl „Profil upgraden“.
+    \item System weist Benutzer einem Personaltrainer zu.
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\ \\
+Einmal pro Benutzer.
+
+\subsection{Use Case Zeitplan bearbeiten}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Benutzer möchte seinen Zeitplan bearbeiten.\\
+\textbf{Preconditions:} \\ Benutzer hat ein Profil erstellt. Benutzer ist eingeloggt. Datenbankserver ist gestartet.\\
+\textbf{Postconditions:}\\Benutzer hat seinen Zeitplan bearbeitet.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Benutzer wählt die Option „Zeitplan bearbeiten“.
+    \item System gibt die Auswahl „bestehenden Termin ändern“.
+    \item Benutzer gibt neue Trainingszeit ein.
+    \item System fordert auf Eingabe zu bestätigen mit "bestätigen"
+    \item Benutzer bestätigt
+    \item System zeigt bearbeiteten Zeitplan an
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [1a.]  Benutzer wählt Auswahl „Plan löschen“
+    \begin{enumerate}
+        \item[1.]System zeigt Auswahl an bestehenden Ernährungs- und Trainingsplänen an und fordert Benutzer auf eine Auswahl von 1 zu treffen
+        \item[2.]Benutzer trifft eine Auswahl 
+        \item[3.]System fordert auf die Auswahl zu bestätigen
+        \item[4.]Benutzer bestätigt
+        \item[5.]System löscht den ausgewählten Plan 
+    \end{enumerate}
+    \item [5a.]Benutzer bestätigt nicht
+    \begin{enumerate}
+        \item[1.]System zeigt Auswahl "abbrechen"
+    \item[2.]Benutzer wählt Auswahl und macht in MSS Schritt 3. weiter
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\ \\
+beliebig oft pro Benutzer.
+
+\subsection{Use Case Ernährungsplan erstellen}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Der Benutzer möchte einen Ernährungsplan erstellen.\\
+\textbf{Preconditions:} \\ Der Benutzer hat ein Profil erstellt und ist eingeloggt.\\
+\textbf{Postconditions:}\\Der Benutzer hat einen Ernährungsplan erstellt.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item Benutzer klickt den Button „Ernährungsplan erstellen“.
+    \item System zeigt Auswahl "Mahlzeit hinzufügen" und gibt Hinweis aus "Plan wird für je 1 Woche erstellt" 
+    \item Benutzer gibt Mahlzeit ein (Siehe Use Case 5.7 'Mahlzeit eingeben') und bestätigt die Eingabe
+    \item System fordert auf einen Tag und eine Uhrzeit einzugeben für die angegebene Mahlzeit
+    \item Benutzer gibt Daten ein und bestätigt die Eingabe
+    \item System speichert Mahlzeit in Ernährungsplan und gibt Auswahl 'weitere Mahlzeit hinzufügen' und 'Essensplanung beenden'
+    \item Benutzer wählt 'Essensplanung beenden'
+    \item System trägt Ernährungsplan in den Zeitplan des Benutzers ein.
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [5a.]  Benutzer ist ein Personaltrainer.
+    \begin{enumerate}
+        \item[1.]Personaltrainer wählt Benutzer aus für den der Ernährungsplan erstellt wurde.
+        \item[2.] weiter bei Punkt 6 des MSS
+    \end{enumerate}
+    \item [5b.]Benutzer macht ungültige Eingabe
+    \begin{enumerate}
+        \item[1.]System gibt Hinweis zur ungültigen Eingabe aus und fordert erneute Eingabe an
+        \item[2.]Benutzer macht im MSS Schritt 5. weiter
+    \end{enumerate}
+    \item[7a.] Benutzer wählt "weitere Mahlzeit hinzufügen"
+    \begin{enumerate}
+        \item [1.]Benutzer macht im MSS Schritt 3. weiter
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\beliebig oft pro benutzer \\
+
+\subsection{Use Case Trainingsplan erstellen}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Benutzer will Trainingsplan erstellen.\\
+\textbf{Preconditions:} \\ Der Benutzer hat ein Profil erstellt und ist eingeloggt.\\
+\textbf{Postconditions:}\\Der Benutzer hat einen Ernährungsplan erstellt.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item System zeigt Auswahl im Zeitplan an „Trainingsplan erstellen“
+    \item Benutzer bestätigt Auswahl
+    \item System gibt Hinweis aus „Zeitplan für 1 Woche von Montag bis Sonntag„ und zeigt Auswahl an „Trainingseinheit hinzufügen“
+    \item Benutzer wählt Auswahl 
+    \item System zeigt Auswahl an gespeicherten Trainingseinheiten und zeigt Auswahl an „Trainingseinheit erstellen“ (Siehe Use Case 5.15 Trainingseinheit erstellen)
+    \item Benutzer wählt aus der Auswahl an gespeicherten Trainingseinheit eine Trainingseinheit durch Anklicken aus 
+    \item System zeigt Auswahl „Trainingseinheit jetzt hinzufügen“
+    \item Benutzer bestätigt Eingabe
+    \item System fordert auf einen Tag und eine Uhrzeit einzugeben
+    \item Benutzer gibt Daten an und bestätigt Eingabe
+    \item System übernimmt Trainingseinheiten mit angegebenen Daten in den Trainingsplan
+    \item System zeigt Auswahl „weitere Trainingseinheit hinzufügen“ und „Planung beenden“
+    \item Benutzer wählt „Planung beenden“ und bestätigt Eingabe
+    \item System übernimmt Trainingsplan und fügt diesen dem Zeitplan hinzu
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [5a.]  Benutzer wählt Trainingseinheit erstellen
+    \begin{enumerate}
+        \item[1.]Benutzer macht im Use Case 5.15 ‚Trainingseinheit erstellen‘ weiter
+    \end{enumerate}
+    \item [6a.]Benutzer macht keine Angabe und bestätigt
+    \begin{enumerate}
+        \item[1.]System fordert Benutzer auf die Eingabe erneut durchzuführen
+        \item[2.]Benutzer macht im MSS Schritt 6. Weiter
+    \end{enumerate}
+    \item[9a.] Benutzer macht ungültige Eingabe
+    \begin{enumerate}
+        \item [1.]System gibt Hinweis mit ungültiger Eingabe aus und fordert Benutzer auf eine neue Eingabe zu machen
+        \item [2.]Benutzer macht im MSS Schritt 9. Weiter
+    \end{enumerate}
+    \item[12a.]Benutzer wählt „weitere Trainingseinheit hinzufügen“
+    \begin{enumerate}
+        \item [1.]Benutzer macht im MSS Schritt 3. Weiter
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\beliebig oft pro Benutzer  \\
+
+\subsection{Use Case  Trainingseinheit erstellen}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Benutzer will eine Trainingseinheit erstellen.\\
+\textbf{Preconditions:} \\ Benutzer hat ein Profil erstellt und ist eingeloggt. 
+Datenbankserver ist gestartet. Benutzer befindet sich in der Ansicht des Zeitplans.\\
+\textbf{Postconditions:}\\Benutzer hat eine Trainingseinheit erstellt.\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item System zeigt Auswahl „Trainingseinheit erstellen“
+    \item Benutzer wählt Auswahl
+    \item System fordert Benutzer auf eine Beschreibung und Kalorienverbrauch anzugeben
+    \item Benutzer gibt Eingabe ein und bestätigt diese
+    \item System gibt Auswahl „Trainingseinheit jetzt speichern“
+    \item Benutzer bestätigt die Auswahl
+    \item System übernimmt die Trainingseinheit in die Liste der bereits gespeicherten Trainingseinheiten in der Datenbank
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [4a.]   Benutzer macht ungültige Angabe
+    \begin{enumerate}
+        \item[1.]System gibt Hinweis zur ungültigen Eingabe aus und fordert neue Eingabe an
+        \item[2.]Benutzer macht neue Eingabe und macht im MSS Schritt 4. Weiter
+    \end{enumerate}
+    \item [5a.]Benutzer bearbeitet Trainingseinheit weiter
+    \begin{enumerate}
+        \item[1.]System zeigt Auswahl „Trainingseinheit weiter bearbeiten“
+        \item[2.]Benutzer wählt Auswahl und macht im MSS Schritt 4. Weiter
+    \end{enumerate}
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\beliebig oft pro Benutzer  \\
 \end{document}

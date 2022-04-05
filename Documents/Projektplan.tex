@@ -1,10 +1,11 @@
 
 \documentclass[12pt,a4paper,onecolumn]{article}
+\usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{datetime}
+\usepackage{tabularx}
 % \usepackage[T1]{fontenc}
 % \usepackage[sc]{mathpazo}
-\usepackage[ngerman,american]{babel}
 \usepackage[autostyle]{csquotes}
 % \usepackage{graphicx}
 % \usepackage{scrhack} % necessary for listings package
@@ -17,8 +18,7 @@
 \usepackage{hyperref} % hidelinks removes colored boxes around references and links
 % \usepackage{comment}
 
-\newdateformat{daymydate}{%
-  \monthname[\THEDAY.\THEMONTH]. \THEYEAR}
+\usepackage{enumitem}
 
 \newcommand\titleofdoc{StayHealthy} % Put your document title in this argument
 \newcommand\GroupName{Team 6} % Put your group name here. If you are the only member of the group, just put your name
@@ -37,7 +37,7 @@
         \Large{\GroupName}
        
         \vspace{0.25cm}
-        \large{Andreas Wirth, Marco Klein, Khader AlHamed, Denis Manherz}
+        \large{Khader AlHamed, Marco Klein\\Denis Manherz, Andreas Wirth}
        
         \vspace{3 cm}
         \Large{\today}% change date format to dd.mm.yyyy
@@ -59,38 +59,609 @@
 \begin{tabular}{ |c|c|c|c| } 
  \hline
  Datum & Version & Änderung & Autor\\ 
- \today & 0.0 & Dokument erstellt & DM \\ 
- cell7 & cell8 & cell9 \\ 
+ \hline
+ 25.03.2022 & 0.0 & Erstellung & Manherz \\ 
+ \hline
+ 27.03.2022 & 1.0 & Grobe Ausarbeitung & Manherz\\
+ \hline
+ 31.03.2022 & 1.1 & Ergänzungen allgemein & Wirth\\
+ \hline
+ 02.04.2022 & 1.2 & Ergänzung Arbeitspakete & Wirth\\
+ \hline
+ 04.04.2022 & 1.3 & Anpassungen nach Rücksprache & Wirth\\
  \hline
 \end{tabular}
 \end{center}
-\subsection{Inhalt}
 
 \section{Einführung}
 \subsection{Definitionen und Abkürzungen}
+\textbf{Ernährungsverhalten} - Ernährungsbezogene Handlungen die Menschen im Alltag vollziehen.\\
+\textbf{Gesundheitsverhalten} - Handlungen von gesunden Menschen die das Risiko von Erkrankungen nachweislich senken oder welche die Gesundheit positiv beeinflussen.
 \subsection{Referenzen}
-\href{https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/mgmnt/rup_sdpln_sp.htm}{Software Development Plan}
+\href{https://sceweb.uhcl.edu/helm/RationalUnifiedProcess/webtmpl/templates/mgmnt/rup_sdpln_sp.htm}{sceweb.uhcl.edu - Software Development Plan}
 \subsection{Übersicht}
+Der Inhalt dieses Dokuments beschreibt den Umfang des Projekts StayHealthy, sowie die zeitlichen Rahmenbedingungen und die generelle Organisation. 
 \section{Projektübersicht}
+Mit Hilfe der StayHealthy Software kann der Benutzer Trainings- und Ernährungspläne erstellen. In ihrem Zeitplan können sie diese dann ansehen bzw. durchführen. Im allgemeinen soll dies dem Benutzer dabei helfen sich an eine Ernährungs- bzw. Trainingsroutine zu halten. 
 \subsection{Zweck und Ziel}
+StayHealthy soll dazu dienen das Gesundheitsverhalten des Benutzers zu verbessern indem es sein Trainings- und Ernährungsverhalten überwacht und ihm sportliche Aktivitäten vorschlägt.
 \subsection{Annahmen und Einschränkungen}
+Eine funktionsfähige Datenbankanbindung ist für dieses Projekt unabdinglich, um den Fortschritt des Benutzer über die Zeit nachvollziehen zu können und um entsprechende Vorschläge anzubieten.
 \subsection{Arbeitsergebnisse}
+\begin{tabularx}{\textwidth}{ |l|X| } 
+ \hline
+\textbf{Arbeitsergebnis}  & \textbf{Beschreibung}\\ 
+ \hline
+ StayHealthy & Die fertige Software\\ 
+ \hline
+ StayHealthy-Code & Kommentierter Code\\
+ \hline
+ Projektdokumentation & Beschreibt wie die Software entwickelt werden soll\\
+ \hline
+ Softwaredokumentation & Erklärt die Funktionen der Software sowie ihre Anwendung\\
+ \hline
+ UML-Diagramme & Alle Diagramme die für das Verständnis der Architektur notwendig sind \\ 
+ \hline
+ Zeitpool & Die vollständige Zeiterfassung\\
+ \hline
+\end{tabularx}
 
 \section{Projektorganisation}
+
 \subsection{Organisationsstruktur}
+Teamübersicht:
+\vspace{0.2cm}\\
+\begin{tabularx}{\textwidth}{l X}
+Khader Alhamed & khader1.alhamed@st.oth-regensburg.de\\
+Marco Klein & marco.klein@st.oth-regensburg.de\\
+Denis Manherz & denis.manherz@st.oth-regensburg.de\\
+Andreas Wirth & andreas2.wirth@st.oth-regensburg.de\\
+\end{tabularx}
+\vspace{0.2cm}\\
+\begin{tabular}{|l|l|}
+\hline
+     \textbf{Verantwortungsbereich} & \textbf{Verantwortlicher}\\
+     \hline
+     Projekt Management & Klein\\
+     \hline
+     Administration &  Manherz\\
+     \hline 
+     Software Architektur & AlHamed \\
+     \hline
+     Qualitätsmanagement & Wirth\\
+     \hline
+     User Interface Design & Alle\\
+     \hline
+     Implementierung & Alle\\
+     \hline
+     Code Review & Alle\\
+     \hline
+\end{tabular}
 \subsection{Externe Schnittstellen}
+Stetiger Ansprechpartner und Betreuer des Projekts ist Prof. Dr. Axel Doering. Als Team nehmen wir bei Prof. Dr. Doering Beratungstermine war und besprechen Projektergebnisse in Reviewterminen. 
 
 \section{Management Abläufe}
 \subsection{Projekt Kostenvoranschlag}
+Für das Projekt entstehen vorerst keine Kosten, da es lokal auf einem System installiert werden kann. Falls die Datenbank später ausgelagert wird benötigen wir
+einen Backendserver. Dieser steht über die virtuelle Maschine, auf die wir im Rahmen des Projekts Zugriff haben, zur Verfügung. Nach Abschluss des Projekts können Kosten für das Betreiben dieses Servers anfallen.
 \subsection{Projektplan}
+Die zeitliche Dauer des Projekts umfasst 16 Wochen, wobei die Schlussabgabe am 07.07.2022 ist. Ein genauer Termin der Abschlusspräsentation ist zur Zeit noch nicht bekannt. Die genaue Zeiteinteilung der einzelnen Phasen und Iterationen werden im Zeitplan aufgeführt
 \subsubsection{Zeitplan}
+Der angestrebte Aufwand pro Teammitglied ist 150 Stunden, folglich eine gesamte Arbeitszeit von 600 Stunden. Daraus ergibt sich im Durschnitt eine wöchentliche Arbeitszeit von 9-10 Stunden für jeden Teilnehmer. In allen Arbeitspaketen ist Fehlermanagement mit inbegriffen. Die Angaben im Zeitplan beziehen sich auf Stunden.\\
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+      \textbf{\#} & \textbf{Arbeitspakete} & \textbf{DM} & \textbf{MK} & \textbf{AW} & \textbf{KA} & \textbf{Gesamt} \\
+\hline
+01 & Visiondokument & & 5 & & & 5\\
+\hline
+02 & Anforderungsspezifikation & 10 & & & & 10\\
+\hline
+03 & Projektplan & 3 & & 3 & 3 & 9\\
+\hline
+04 & Use Cases & & 8 & & 8 & 16 \\
+\hline
+05 & UML-Diagramme & & 8 & 4 & 4 & 16 \\
+\hline
+06 & Installation und Konfiguration & 2 & 2 & 2 & 2 & 8\\
+\hline
+07 & Einarbeitung & 5 & 5 & 5 & 5 & 20\\
+\hline
+08 & Datenbank aufsetzen & 4 & & 4 & & 8\\
+\hline
+09 & Ansichten erstellen & & 10 & & 10 & 20\\
+\hline
+10 & Benutzer registrieren & 4 & & 4 & & 8\\
+\hline
+11 & Benutzer anmelden & 4 & & 4 & & 8\\
+\hline
+12 & Profil bearbeiten & 4 & & 4 & & 8\\
+\hline
+13 & Profil aufwerten & 4 & & 4 & & 8\\
+\hline
+14 & Grundumsatz berechnen &  & 2 & & 2 & 4\\
+\hline
+15 & Mahlzeit eingeben & & 6 & & 6 & 12\\
+\hline
+16 & Kalorien berechnen & & 4 & & 4 & 8\\
+\hline
+17 & UC Trainingsplan erstellen & & 10 & & 10 & 20\\
+\hline
+18 & Auto Trainingsplan erstellen & 10 & & 10 & & 20\\
+\hline
+19 & Trainingseinheit erstellen & 10 &  & 10 &  & 20\\
+\hline
+20 & Ernährungsplan erstellen & & 10 & & 10 & 20 \\
+\hline
+21 & Statistik erstellen & 10 & & 10 & & 20\\
+\hline
+22 & Erinnerung senden & 4 & & 4 & & 8\\
+\hline
+23 & Termine bearbeiten & 4 & & 4 & & 8\\
+\hline
+24 & Training durchführen & & 8 & & 8 & 16\\
+\hline
+25 & Softwaredokumentation & & 8 & & 8 & 16\\
+\hline
+26 & Code Review & 10 & 10 & 10 & 10 & 40\\
+\hline
+27 & Tests & 15 & & 15 & & 30\\
+\hline
+28 & Meetings & 32 & 32 & 32 & 32& 128\\
+\hline
+29 & Abschlusspräsentation & 2 & 2 & 2 & 2 & 8\\
+\hline
+30 & Puffer & 25 & 25 & 25 & 25 & 100\\
+\hline
+\hline
+ & Gesamt & 162 & 155 & 156 & 149 & 622\\
+\hline
+\end{tabular}
 \subsubsection{Iterationsplanung/Meilensteine}
+Deadlines orientieren sich nach den vorgebenen Abgabeterminen/Meilensteinen von Herrn Doering.\\
+\begin{tabularx}{\textwidth}{|c|l|X|c|}
+\hline
+    MS & Inhalt & Ziel & \shortstack{Geplant\\ bis}\\
+     \hline
+    00 & Projektantrag & \begin{itemize}[topsep=0pt, leftmargin=1em]
+        \itemsep0em
+        \item Projektantrag wurde eingereicht
+        \end{itemize} & 19.03.22 \\
+     \hline
+    01 & Projektplan & \begin{itemize}[topsep=0pt, leftmargin=1em]
+\itemsep0em
+\item Ausgearbeiteter Projektplan liegt vor
+\end{itemize} & 04.04.22\\
+     \hline
+    02 & Requirements &\begin{itemize}[topsep=0pt, leftmargin=1em]
+\itemsep0em
+  \item Alle nötigen UML-Diagramme wurden erstellt
+  \item Datenbank wurde aufgesetzt
+  \item Grundskelett der Codebasis wurde erstellt
+  \item Grobes Mockup für GUI/UX wurde erstellt
+\end{itemize} & 22.04.22\\
+     \hline
+    03 & Architektur & \begin{itemize}[topsep=0pt, leftmargin=1em]
+\itemsep0em
+\item Die meisten Funktionalitäten sind grundlegend implementiert
+\item Testplan wurde erstellt
+\end{itemize} & 13.05.22\\
+     \hline
+    04 & Design & \begin{itemize}[topsep=0pt, leftmargin=1em]
+\itemsep0em
+\item Alle Funktionalitäten sind grundlegend implementiert
+\item Bugs werden identifiziert und behoben
+\end{itemize} & 10.06.22\\
+     \hline
+    05 & Schlussabgabe & \begin{itemize}[topsep=0pt, leftmargin=1em]
+\itemsep0em
+\item Finale Projektversion ist fertiggestellt
+\item Ausreichende Software Dokumentation ist vorhanden
+\end{itemize} & 07.07.22\\
+     \hline
+    06 & Präsentation & \begin{itemize}[topsep=0pt, leftmargin=1em]
+\itemsep0em
+\item Abschlusspräsentation ist vorbereitet
+\end{itemize} & 19.07.22\\
+     \hline
+\end{tabularx}
 \subsubsection{Besprechungen}
+Das gesamte Team trifft sich regelmäßig zu Teammeetings und zu den verpflichtenden Reviewterminen an der OTH. Bei Notwendigkeit können außerplanmäßige Teammeetings auch über eine Videokonferenz stattfinden. Die Sitzungen belaufen sich auf ca. zwei Stunden wöchentlich. Anstehende Aufgaben, bis zum nächsten Teammeeting werden verteilt, Unklarheiten sowie Fragen werden besprochen und gelöst. 
 \subsubsection{Abgabe}
+\begin{tabularx}{\textwidth}{|X|X|X|}
+\hline
+\textbf{Art} & \textbf{Abgabe spätestens} & \textbf{Inhalt}\\
+\hline
+Prototyp & 19.05.22 & siehe Meilenstein 03\\
+\hline
+\shortstack{Vorläufiges\\ Endprodukt} & 24.06.22 & siehe Meilenstein 04\\
+\hline
+\end{tabularx}
 
 \section{Risiko Management}
+Mögliche Risiken und Problemlösungen\\\\
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+    \textbf{Risiko} & \textbf{Lösungsansatz}\\
+    \hline
+    Datenbankanbindung nicht funktionsfähig & Problem finden, ggf. alternative DB integrieren\\
+    \hline
+\end{tabularx}
+
 \section{Arbeitspakete}
+Die Arbeitspakete werden im Laufe des Projekts angepasst.
+\subsection{Arbeitspaket 01 Visiondokument}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  5 \\
+     \hline
+     \textbf{Ressource} & Marco Klein\\
+     \hline
+     \textbf{Inhalt} & Visiondokument \\
+     \hline
+     \textbf{Abhängigkeit} &  keine\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 02 Anforderungsspezifikation}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  10\\
+     \hline
+     \textbf{Ressource} & Manherz\\
+     \hline
+     \textbf{Inhalt} & Anforderungsspezifikation \\
+     \hline
+     \textbf{Abhängigkeit} & Use Cases 7.4\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 03 Projektplan}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  9\\
+     \hline
+     \textbf{Ressource} & AlHamed, Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} &  Ausgearbeiteter Projektplan\\
+     \hline
+     \textbf{Abhängigkeit} & keine\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 04 Use Cases}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  16\\
+     \hline
+     \textbf{Ressource} & Klein, AlHamed\\
+     \hline
+     \textbf{Inhalt} &  Ausarbeitung der Use Cases\\
+     \hline
+     \textbf{Abhängigkeit} & keine\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 05 UML-Diagramme}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  16\\
+     \hline
+     \textbf{Ressource} & AlHamed, Klein, Wirth\\
+     \hline
+     \textbf{Inhalt} &  Use Case Diagramm, Entity Relationship Modell\\
+     \hline
+     \textbf{Abhängigkeit} & keine \\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 06 Installation und Konfiguration}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  8\\
+     \hline
+     \textbf{Ressource} & Alle\\
+     \hline
+     \textbf{Inhalt} &  Installieren und Konfigurieren von benötigten Tools\\
+     \hline
+     \textbf{Abhängigkeit} & keine\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 07 Einarbeitung}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 20 \\
+     \hline
+     \textbf{Ressource} & Alle\\
+     \hline
+     \textbf{Inhalt} &  \\
+     \hline
+     \textbf{Abhängigkeit} & keine \\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 08 Datenbank aufsetzen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 8 \\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} &  Erstellen von Tabellen\\
+     \hline
+     \textbf{Abhängigkeit} & keine\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 09 Ansichten erstellen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 20 \\
+     \hline
+     \textbf{Ressource} & AlHamed, Manherz\\
+     \hline
+     \textbf{Inhalt} & Asichten mit Button/Feld Dummys erstellen\\
+     \hline
+     \textbf{Abhängigkeit} & keine\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 10 Benutzer registrieren}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 8 \\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} & Verknüpfung von Button mit Funktionalität, Datenbankanbindung, wie UC Benutzer registrieren\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 11 Benutzer anmelden}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 8\\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Button mit Funktionalität, Datenbankanbindung,\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 12 Profil bearbeiten}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 8\\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Buttons/Eingabefeldern mit Funktionalität, Datenbankanbindung,\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 13 Profil aufwerten}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 8 \\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Button mit Funktionalität, Datenbankanbindung,\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 14 Grundumsatz berechnen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 4 \\
+     \hline
+     \textbf{Ressource} & AlHamed, Klein \\
+     \hline
+     \textbf{Inhalt} &  Grundumsatz eines Benutzers berechnen und speichern\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig \\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 15 Mahlzeit eingeben}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 12 \\
+     \hline
+     \textbf{Ressource} & AlHamed, Klein\\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Buttons/Eingabefeldern mit Funktionalität, Datenbankanbindung\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 16 Kalorien berechnen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 8 \\
+     \hline
+     \textbf{Ressource} & AlHamed, Klein \\
+     \hline
+     \textbf{Inhalt} &  Berechnung und Speicherung von Kalorien einer vom Nutzer eingegebenen Mahlzeit\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 17 UC Trainingsplan erstellen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 20 \\
+     \hline
+     \textbf{Ressource} & AlHamed, Klein \\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Buttons/Feldern mit Funktionalität, Datenbankanbindung\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 18 Auto Trainingsplan erstellen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 20 \\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} &  Automatische Erstellung von Plänen mithilfe der dazugehörigen Nutzerdaten, Datenbankandbindung\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 19 Trainingseinheit erstellen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 20 \\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth \\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Buttons/Feldern mit Funktionalität, Datenbankanbindung\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 20 Ernährungsplan erstellen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 20 \\
+     \hline
+     \textbf{Ressource} & AlHamed, Klein\\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Buttons/Feldern mit Funktionalität, Datenbankanbindung\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 21 Statistik erstellen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 20\\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} & Erstellung einer Statistik aus den Benutzerdaten in der Datenbank, Datenbankanbindung\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 22 Erinnerung senden}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 8\\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth \\
+     \hline
+     \textbf{Inhalt} &  System sendet Erinnerung an bevorstehende Trainingseinheiten\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 23 Termine bearbeiten}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 8\\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Buttons/Feldern mit Funktionalität, Datenbankanbindung\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 24 Training durchführen}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 16\\
+     \hline
+     \textbf{Ressource} & AlHamed, Klein\\
+     \hline
+     \textbf{Inhalt} &  Verknüpfung von Buttons/Feldern mit Funktionalität, Datenbankanbindung\\
+     \hline
+     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 25 Softwaredokumentation}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  16\\
+     \hline
+     \textbf{Ressource} & Manherz, Klein\\
+     \hline
+     \textbf{Inhalt} &  Softwaredokumentation\\
+     \hline
+     \textbf{Abhängigkeit} & Geschriebener Code\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 26 Code Review}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 40\\
+     \hline
+     \textbf{Ressource} & Alle\\
+     \hline
+     \textbf{Inhalt} &  Überprüfung des Codes anhand vorhandener Spezifikationen und Coding-Guidelines\\
+     \hline
+     \textbf{Abhängigkeit} & Geschriebener Code\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 27 Tests}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 30\\
+     \hline
+     \textbf{Ressource} & Manherz, Wirth\\
+     \hline
+     \textbf{Inhalt} & Test der Funktionsfähigkeit von einzelnen Komponenten sowie Fehlersuche\\
+     \hline
+     \textbf{Abhängigkeit} & Geschriebener Code\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 28 Meetings}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} & 128\\
+     \hline
+     \textbf{Ressource} & Alle\\
+     \hline
+     \textbf{Inhalt} & Regelmäßiges Treffen zur Besprechung über das Projekt, beinhaltet auch Beratungs- und Reviewtermine\\
+     \hline
+     \textbf{Abhängigkeit} & Funktionsfähiges Internet/Fortbewegungsmittel\\
+\hline
+\end{tabularx}
+\subsection{Arbeitspaket 29 Abschlusspräsentation}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  8\\
+     \hline
+     \textbf{Ressource} & Alle\\
+     \hline
+     \textbf{Inhalt} &  Ausarbeitung und Einstudieren der Präsentation\\
+     \hline
+     \textbf{Abhängigkeit} & Fertiges Projekt\\
+\hline
+\end{tabularx}
+\subsection{``Arbeitspaket'' 30 Puffer}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
+     \textbf{Zeit} &  100\\
+     \hline
+     \textbf{Ressource} & Alle\\
+     \hline
+     \textbf{Inhalt} &  Puffer für wahrscheinliche Änderungen im Zeitplan\\
+     \hline
+     \textbf{Abhängigkeit} & keine\\
+\hline
+\end{tabularx}
 \section{Infrastruktur}
+\begin{itemize}
+    \item Visiual Studio Community 2022 IDE
+    \item GitLab
+    \item Qt Creator
+    \item Overleaf
+    \item Lucidchart
+\end{itemize}
 \section{Unterstützende Prozesse}
+Als Tool zur Modellierung der Software Architektur in UML benutzen wir Lucidchart.
+Zur Implementierung benutzen wir die Programmiersprache C++. Als Entwicklungsumgebung verwenden wir Microsoft Visual Studio, da diese uns den Windows Build Prozess erleichtert und Integrationen bzw. Tools für Git, Qt und SQLite zur Verfügung stellt.\\
+Für das GUI verwenden wir das Qt Framework mit dem Qt Designer. SQLite wird für die permanente Datenhaltung verwendet.\\
+Um sicherzuststellen, dass alle Dateien, sowie Entwicklungsstände wiederherstellbar sind, benutzen wir das von der OTH Regensburg bereitgestellte GitLab Repository. Sobald ein Arbeitspaket abgeschlossen ist wird es commited und reviewed. Fehler bzw. Bugs werden in unserem GitLab als Issues dokumentiert und frühestmöglich behoben.\\
+Um die Qualität des Codes sicherzustellen richten wir uns nach dem \href{https://google.github.io/styleguide/cppguide.html}{Google C++ Style Guide}. Außerdem wird der gesamte Code kommentiert, um sicherzustellen, dass er für alle Gruppenmitglieder verständlich ist.\\
 
 \end{document}
