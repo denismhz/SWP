@@ -3,5 +3,5 @@
 StayHealthy::StayHealthy(QWidget *parent)
     : QMainWindow(parent)
 {
-    ui.setupUi(this);
+    //ui.setupUi(this);
 }
