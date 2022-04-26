@@ -10,6 +10,7 @@ class User {
   int id_;
 
   User(QString, QString);
+  User(QString, QString, int);
   ~User();
 };
 

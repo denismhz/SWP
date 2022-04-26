@@ -60,11 +60,20 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Qt\6.2.4\msvc2019_64\include\QtCore;C:\Qt\6.2.4\msvc2019_64\include\QtSql;C:\Qt\6.2.4\msvc2019_64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\6.2.4\msvc2019_64\include\QtGui;C:\Qt\6.2.4\msvc2019_64\include\QtWidgets;C:\Qt\6.2.4\msvc2019_64\include\QtCore;C:\Qt\6.2.4\msvc2019_64\include\QtSql;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Qt\6.2.4\msvc2019_64\lib\cmake\Qt6;C:\Qt\6.2.4\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Qt6Sql.lib;Qt6Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Qt\6.2.4\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt6Sql.lib;Qt6Core.lib;Qt6Widgets.lib;Qt6Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Qt\6.2.4\msvc2019_64\include\QtWidgets;C:\Qt\6.2.4\msvc2019_64\include\QtSql;C:\Qt\6.2.4\msvc2019_64\include\QtCore;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Qt\6.2.4\msvc2019_64\include;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Qt6Sql.lib;Qt6Widgets.lib;Qt6Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -94,17 +103,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="main_menu.cpp" />
     <ClCompile Include="profile.cpp" />
     <ClCompile Include="user.cpp" />
     <QtRcc Include="stayhealthy.qrc" />
-    <QtUic Include="stayhealthy.ui" />
-    <QtMoc Include="stayhealthy.h" />
+    <QtUic Include="main_menu.ui" />
+    <QtUic Include="StayHealthy.ui" />
+    <QtMoc Include="StayHealthy.h" />
     <ClCompile Include="db_handler.cpp" />
-    <ClCompile Include="stayhealthy.cpp" />
+    <ClCompile Include="StayHealthy.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="db_handler.h" />
+    <QtMoc Include="main_menu.h" />
     <ClInclude Include="profile.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>

@@ -1,7 +1,8 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include "ui_stayhealthy.h"
+#include "ui_StayHealthy.h"
+#include "user.h"
 
 class StayHealthy : public QMainWindow
 {
@@ -9,6 +10,10 @@ class StayHealthy : public QMainWindow
 
 public:
     StayHealthy(QWidget *parent = Q_NULLPTR);
+
+public slots:
+ //User* login();
+ void Register();
 
 private:
     Ui::StayHealthyClass ui;
