@@ -103,25 +103,37 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main_menu.cpp" />
-    <ClCompile Include="profile.cpp" />
-    <ClCompile Include="tests_stacked.cpp" />
-    <ClCompile Include="user.cpp" />
+    <ClCompile Include="ernaerungsplan.cc" />
+    <ClCompile Include="mahlzeit.cc" />
+    <ClCompile Include="profile.cc" />
+    <ClCompile Include="registrierung.cc" />
+    <ClCompile Include="speiseposition.cc" />
+    <ClCompile Include="statistik.cc" />
+    <ClCompile Include="trainingseinheit.cc" />
+    <ClCompile Include="trainingsplan.cc" />
+    <ClCompile Include="uebungsposition.cc" />
+    <ClCompile Include="user.cc" />
+    <ClCompile Include="zeitplan.cc" />
     <QtRcc Include="stayhealthy.qrc" />
-    <QtUic Include="main_menu.ui" />
     <QtUic Include="stayhealthy.ui" />
     <QtMoc Include="stayhealthy.h" />
-    <ClCompile Include="db_handler.cpp" />
-    <ClCompile Include="steayhealthy.cpp" />
-    <ClCompile Include="main.cpp" />
-    <QtUic Include="tests_stacked.ui" />
+    <ClCompile Include="db_handler.cc" />
+    <ClCompile Include="steayhealthy.cc" />
+    <ClCompile Include="main.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="db_handler.h" />
-    <QtMoc Include="main_menu.h" />
+    <ClInclude Include="ernaerungsplan.h" />
+    <ClInclude Include="mahlzeit.h" />
     <ClInclude Include="profile.h" />
-    <QtMoc Include="tests_stacked.h" />
+    <ClInclude Include="registrierung.h" />
+    <ClInclude Include="speiseposition.h" />
+    <ClInclude Include="statistik.h" />
+    <ClInclude Include="trainingseinheit.h" />
+    <ClInclude Include="trainingsplan.h" />
+    <ClInclude Include="uebungsposition.h" />
     <ClInclude Include="user.h" />
+    <ClInclude Include="zeitplan.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

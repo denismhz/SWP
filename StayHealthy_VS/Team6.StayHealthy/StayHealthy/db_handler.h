@@ -1,14 +1,12 @@
-//!!!!Use Singleton Pattern here!!!!
-
 #pragma once
 #ifndef STAYHEALTHY_DB_HANDLER_H_
 #define STAYHEALTHY_DB_HANDLER_H_
 #include <QtSql>
 #include <qstring.h>
-#include <memory>
 #include "user.h"
 #include "profile.h"
 
+/*<- Singleton ->*/
 class DBHandler {
  public:
   QSqlDatabase db_;
@@ -21,17 +19,22 @@ class DBHandler {
   DBHandler();
   ~DBHandler();
 
-  int AddUser(User &);
-  int DeleteUserById(int);
-  int UpdateUserByID(int, User &);
+  /*<- User DB Actions ->*/
+  bool AddUser(User &);
+  bool DeleteUserById(int);
+  bool UpdateUserByID(int, User &);
   User* GetUserById(int);
   User* GetUserByEmailAndPassword(QString, QString);
   bool CheckIfEmailExists(QString);
 
-  int AddProfileByUserId(int, Profile &);
-  int UpdateProfileByUserId(int, Profile &);
-  int DeleteProfileByUserId(int);
+  /*<- Profile DB Actions ->*/
+  bool AddProfileByUserId(int, Profile &);
+  bool UpdateProfileByUserId(int, Profile &);
+  bool DeleteProfileByUserId(int);
   Profile *GetProfileByUserId(int);
+
+  /*<- Profile DB Actions ->*/
+
 };
 
 #endif //STAYHEALTHY_DB_HANDLER_H_
