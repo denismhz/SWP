@@ -105,19 +105,22 @@
   <ItemGroup>
     <ClCompile Include="main_menu.cpp" />
     <ClCompile Include="profile.cpp" />
+    <ClCompile Include="tests_stacked.cpp" />
     <ClCompile Include="user.cpp" />
     <QtRcc Include="stayhealthy.qrc" />
     <QtUic Include="main_menu.ui" />
-    <QtUic Include="StayHealthy.ui" />
-    <QtMoc Include="StayHealthy.h" />
+    <QtUic Include="stayhealthy.ui" />
+    <QtMoc Include="stayhealthy.h" />
     <ClCompile Include="db_handler.cpp" />
-    <ClCompile Include="StayHealthy.cpp" />
+    <ClCompile Include="steayhealthy.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="tests_stacked.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="db_handler.h" />
     <QtMoc Include="main_menu.h" />
     <ClInclude Include="profile.h" />
+    <QtMoc Include="tests_stacked.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

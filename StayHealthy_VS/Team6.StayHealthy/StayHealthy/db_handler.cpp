@@ -21,7 +21,7 @@ int DBHandler::AddUser(User & new_user) {
   QString password = new_user.password_;
   if (email.isEmpty() || password.isEmpty()) return 0;
   QString prep =
-      "INSERT INTO dbo.Benutzer (EMail, Passwort) VALUES (:eMail, :password)";
+      "INSERT INTO dbo.Sportler (EMail, Password) VALUES (:eMail, :password)";
   QSqlQuery query;
   query.prepare(prep);
   query.bindValue(":eMail", email);
@@ -34,7 +34,7 @@ int DBHandler::AddUser(User & new_user) {
 }
 
 int DBHandler::DeleteUserById(int user_id) {
-  QString prep = "DELETE FROM dbo.Benutzer WHERE BenutzerID = ?";
+  QString prep = "DELETE FROM dbo.Sportler WHERE BenutzerID = ?";
   QSqlQuery query;
   query.prepare(prep);
   query.addBindValue(user_id);
@@ -45,7 +45,7 @@ int DBHandler::DeleteUserById(int user_id) {
 
 int DBHandler::UpdateUserByID(int user_id, User &new_user) {
   QString prep =
-      "UPDATE dbo.Benutzer SET EMail = :email, password = :password"
+      "UPDATE dbo.Sportler SET EMail = :email, Password = :password"
       " WHERE BenutzerID = :id;";
   QSqlQuery query;
   query.prepare(prep);
@@ -59,7 +59,7 @@ int DBHandler::UpdateUserByID(int user_id, User &new_user) {
 
 User *DBHandler::GetUserById(int user_id) {
   
-  QString prep = "SELECT * FROM dbo.Benutzer WHERE BenutzerID = :userID";
+  QString prep = "SELECT * FROM dbo.Sportler WHERE BenutzerID = :userID";
   QSqlQuery query;
   query.prepare(prep);
   query.bindValue(":userID", user_id);
@@ -70,7 +70,9 @@ User *DBHandler::GetUserById(int user_id) {
   //while (query.next()) {
     // qDebug() << "User found with id: " << query.value(2).toString() << "\n";
   //}
-  query.first();
+  if (!query.first()) {
+    return nullptr;
+  }
   QString email = query.value(0).toString();
   QString password = query.value(1).toString();
   User* user = new User(email, password);
@@ -79,7 +81,7 @@ User *DBHandler::GetUserById(int user_id) {
 }
 
 User *DBHandler::GetUserByEmailAndPassword(QString email, QString password) {
-  QString prep = "SELECT * FROM dbo.Benutzer WHERE EMail = :email AND Passwort = :password;";
+  QString prep = "SELECT * FROM dbo.Sportler WHERE EMail = :email AND Password = :password;";
   QSqlQuery query;
   query.prepare(prep);
   query.bindValue(":email", email);
@@ -99,6 +101,17 @@ User *DBHandler::GetUserByEmailAndPassword(QString email, QString password) {
     return user;
   else
     return 0;
+}
+
+bool DBHandler::CheckIfEmailExists(QString email) {
+  QString prep =
+      "SELECT * FROM dbo.Sportler WHERE EMail = :email";
+  QSqlQuery query;
+  query.prepare(prep);
+  query.bindValue(":email", email);
+  query.exec();
+  if (!query.first()) return false;
+  return true; 
 }
 
 int DBHandler::AddProfileByUserId(int user_id, Profile &new_profile) {

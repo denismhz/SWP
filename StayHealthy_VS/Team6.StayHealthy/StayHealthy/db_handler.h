@@ -26,6 +26,7 @@ class DBHandler {
   int UpdateUserByID(int, User &);
   User* GetUserById(int);
   User* GetUserByEmailAndPassword(QString, QString);
+  bool CheckIfEmailExists(QString);
 
   int AddProfileByUserId(int, Profile &);
   int UpdateProfileByUserId(int, Profile &);

@@ -26,13 +26,13 @@
     <QtRcc Include="stayhealthy.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="StayHealthy.ui">
+    <QtUic Include="stayhealthy.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="StayHealthy.h">
+    <QtMoc Include="stayhealthy.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClCompile Include="StayHealthy.cpp">
+    <ClCompile Include="steayhealthy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -52,6 +52,9 @@
     <ClCompile Include="main_menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tests_stacked.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="db_handler.h">
@@ -68,9 +71,15 @@
     <QtMoc Include="main_menu.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="tests_stacked.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="main_menu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="tests_stacked.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
