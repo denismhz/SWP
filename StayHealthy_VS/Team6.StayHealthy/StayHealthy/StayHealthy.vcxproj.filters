@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Ernaerung">
+      <UniqueIdentifier>{2c3fe675-4ddb-4ac9-8922-d387f26974d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Training">
+      <UniqueIdentifier>{c0efa842-3f00-4311-b6bd-63e3db676d1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Benutzer">
+      <UniqueIdentifier>{2641d6b9-a37d-4db1-8a4c-ccc31ea3bcac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ernaerung">
+      <UniqueIdentifier>{b754ec88-f525-48c3-97c2-a2647d1b1385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Training">
+      <UniqueIdentifier>{6ca7c525-edb0-4aa8-bdca-8e450e7fa24b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Benutzer">
+      <UniqueIdentifier>{52aa7983-7496-4b70-aba1-c25ea22081ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="stayhealthy.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtUic Include="stayhealthy.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtMoc Include="stayhealthy.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <ClCompile Include="steayhealthy.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="db_handler.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mahlzeit.cc">
+      <Filter>Source Files\Ernaerung</Filter>
+    </ClCompile>
+    <ClCompile Include="ernaerungsplan.cc">
+      <Filter>Source Files\Ernaerung</Filter>
+    </ClCompile>
+    <ClCompile Include="profile.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="registrierung.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="speiseposition.cc">
+      <Filter>Source Files\Ernaerung</Filter>
+    </ClCompile>
+    <ClCompile Include="statistik.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="trainingseinheit.cc">
+      <Filter>Source Files\Training</Filter>
+    </ClCompile>
+    <ClCompile Include="trainingsplan.cc">
+      <Filter>Source Files\Training</Filter>
+    </ClCompile>
+    <ClCompile Include="uebungsposition.cc">
+      <Filter>Source Files\Training</Filter>
+    </ClCompile>
+    <ClCompile Include="user.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="zeitplan.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="db_handler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ernaerungsplan.h">
+      <Filter>Header Files\Ernaerung</Filter>
+    </ClInclude>
+    <ClInclude Include="mahlzeit.h">
+      <Filter>Header Files\Ernaerung</Filter>
+    </ClInclude>
+    <ClInclude Include="speiseposition.h">
+      <Filter>Header Files\Ernaerung</Filter>
+    </ClInclude>
+    <ClInclude Include="uebungsposition.h">
+      <Filter>Header Files\Training</Filter>
+    </ClInclude>
+    <ClInclude Include="trainingseinheit.h">
+      <Filter>Header Files\Training</Filter>
+    </ClInclude>
+    <ClInclude Include="trainingsplan.h">
+      <Filter>Header Files\Training</Filter>
+    </ClInclude>
+    <ClInclude Include="registrierung.h">
+      <Filter>Header Files\Benutzer</Filter>
+    </ClInclude>
+    <ClInclude Include="statistik.h">
+      <Filter>Header Files\Benutzer</Filter>
+    </ClInclude>
+    <ClInclude Include="user.h">
+      <Filter>Header Files\Benutzer</Filter>
+    </ClInclude>
+    <ClInclude Include="profile.h">
+      <Filter>Header Files\Benutzer</Filter>
+    </ClInclude>
+    <ClInclude Include="zeitplan.h">
+      <Filter>Header Files\Benutzer</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
