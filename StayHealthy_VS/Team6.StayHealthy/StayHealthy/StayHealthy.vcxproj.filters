@@ -67,9 +67,6 @@
     <ClCompile Include="ernaerungsplan.cc">
       <Filter>Source Files\Ernaerung</Filter>
     </ClCompile>
-    <ClCompile Include="profile.cc">
-      <Filter>Source Files\Benutzer</Filter>
-    </ClCompile>
     <ClCompile Include="registrierung.cc">
       <Filter>Source Files\Benutzer</Filter>
     </ClCompile>
@@ -88,11 +85,20 @@
     <ClCompile Include="uebungsposition.cc">
       <Filter>Source Files\Training</Filter>
     </ClCompile>
+    <ClCompile Include="zeitplan.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="sportler.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="date_parser.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="user.cc">
       <Filter>Source Files\Benutzer</Filter>
     </ClCompile>
-    <ClCompile Include="zeitplan.cc">
-      <Filter>Source Files\Benutzer</Filter>
+    <ClCompile Include="main_menu.cc">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +132,27 @@
     <ClInclude Include="user.h">
       <Filter>Header Files\Benutzer</Filter>
     </ClInclude>
-    <ClInclude Include="profile.h">
-      <Filter>Header Files\Benutzer</Filter>
-    </ClInclude>
     <ClInclude Include="zeitplan.h">
       <Filter>Header Files\Benutzer</Filter>
     </ClInclude>
+    <ClInclude Include="sportler.h">
+      <Filter>Header Files\Benutzer</Filter>
+    </ClInclude>
+    <ClInclude Include="date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="date_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="main_menu.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="main_menu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

@@ -15,4 +15,6 @@ public:
 
 	Trainingsplan();
 	~Trainingsplan();
+
+	Trainingsplan* ErstelleTrainingsplan();
 };

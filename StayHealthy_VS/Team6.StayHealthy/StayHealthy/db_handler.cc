@@ -1,4 +1,7 @@
 #include "db_handler.h"
+#include "date.h"
+#include <strstream>
+#include <string>
 
 DBHandler::DBHandler() {
   db_ = QSqlDatabase::addDatabase("QODBC");
@@ -17,14 +20,16 @@ DBHandler::~DBHandler() {
 }
 
 bool DBHandler::AddUser(User & new_user) {
-  QString email = new_user.email_;
-  QString password = new_user.password_;
   QString prep =
-      "INSERT INTO dbo.Sportler (EMail, Password) VALUES (:eMail, :password)";
+      "INSERT INTO dbo.Sportler (EMail, Password, Nachname, Vorname, Geschlecht) VALUES (:eMail, :password, "
+      ":name, :vorname, :geschlecht)";
   QSqlQuery query;
   query.prepare(prep);
-  query.bindValue(":eMail", email);
-  query.bindValue(":password", password);
+  query.bindValue(":eMail", new_user.email_);
+  query.bindValue(":password", new_user.password_);
+  query.bindValue(":name", new_user.name_);
+  query.bindValue(":vorname", new_user.vorname_);
+  query.bindValue(":geschlecht", new_user.geschlecht_);
   query.exec();
   query.finish();
   return 1;
@@ -61,9 +66,11 @@ User *DBHandler::GetUserById(int user_id) {
   query.bindValue(":userID", user_id);
   query.exec();
   query.first();
-  QString email = query.value(0).toString();
-  QString password = query.value(1).toString();
-  User* user = new User(email, password);
+  QString email = query.value(1).toString();
+  QString password = query.value(2).toString();
+  QString name = query.value(5).toString();
+  QString vorname = query.value(6).toString();
+  User* user = new User(email, password, name, vorname, user_id);
   query.finish();
   return user;
 }
@@ -73,11 +80,13 @@ User *DBHandler::GetUserByEmailAndPassword(QString email, QString password) {
   QSqlQuery query;
   query.prepare(prep);
   query.bindValue(":email", email);
-  query.bindValue(":userID", password);
+  query.bindValue(":password", password);
   query.exec();
   bool user_exists = query.first();
   int id = query.value(0).toInt();
-  User *user = new User(email, password, id);
+  QString name = query.value(5).toString();
+  QString vorname = query.value(6).toString();
+  User *user = new User(email, password, name, vorname, id);
   query.finish();
   if (user_exists)
     return user;
@@ -85,7 +94,7 @@ User *DBHandler::GetUserByEmailAndPassword(QString email, QString password) {
     return 0;
 }
 
-bool DBHandler::CheckIfEmailExists(QString email) {
+int DBHandler::CheckIfEmailExists(QString email) {
   QString prep =
       "SELECT * FROM dbo.Sportler WHERE EMail = :email";
   QSqlQuery query;
@@ -93,58 +102,55 @@ bool DBHandler::CheckIfEmailExists(QString email) {
   query.bindValue(":email", email);
   query.exec();
   if (!query.first()) return false;
-  return true; 
+  return query.value(0).toInt();
 }
 
-bool DBHandler::AddProfileByUserId(int user_id, Profile &new_profile) {
-  QString prep =
-      "INSERT INTO dbo.Profiles (Weight_, Height_, Pref_, BenutzerID) VALUES (:weight, :height, :pref, :id);";
-  QSqlQuery query;
-  query.prepare(prep);
-  query.bindValue(":weight", new_profile.weight_);
-  query.bindValue(":height", new_profile.height_);
-  query.bindValue(":pref", new_profile.prefaerenz_);
-  query.bindValue(":id", user_id);
-  query.exec();
-  query.finish();
-  return 1;
+std::vector<Ernaerungsplan*> DBHandler::GetErnaerungsPlaeneVonBis(int user_id, date::year_month_day anfang, date::year_month_day ende)
+{
+    std::vector<Ernaerungsplan*> plane;
+    std::stringstream stream;
+    stream << "'" << anfang << "' ";
+    QString s = QString::fromUtf8(stream.str());
+    QString prep = "SELECT * FROM dbo.Ernaehrungsplan WHERE Anfangsdatum >";
+    prep += s;
+    stream.str(std::string());
+    stream.clear();
+    stream << " '" << ende << "'";
+    qDebug() << QString::fromUtf8(stream.str());
+    s = QString::fromUtf8(stream.str());
+    prep += "AND Enddatum <";
+    prep += s;
+    QSqlQuery query;
+    query.prepare(prep);
+    query.exec();
+    while (query.next()) {
+        qDebug() << query.value(0).toString() << "!!!!!!!!";
+        Ernaerungsplan* p = new Ernaerungsplan();
+        plane.push_back(p);
+    } 
+    query.finish();
+    qDebug() << prep;
+    return plane;
 }
 
-bool DBHandler::UpdateProfileByUserId(int user_id, Profile &new_profile) { 
-  QString prep =
-      "UPDATE dbo.Profiles SET Weight_ = :weight, Height_ = :height, Pref_ = "
-      ":pref WHERE BenutzerID = :id;";
-  QSqlQuery query;
-  query.prepare(prep);
-  query.bindValue(":weight", new_profile.weight_);
-  query.bindValue(":height", new_profile.height_);
-  query.bindValue(":pref", new_profile.prefaerenz_);
-  query.bindValue(":id", user_id);
-  query.exec();
-  query.finish();
-  return 1;
-}
-
-bool DBHandler::DeleteProfileByUserId(int user_id) {
-  QString prep = "DELETE FROM dbo.Profiles WHERE BenutzerID = ?";
-  QSqlQuery query;
-  query.prepare(prep);
-  query.addBindValue(user_id);
-  query.exec();
-  query.finish();
-  return 0;
-}
-
-Profile *DBHandler::GetProfileByUserId(int user_id) {
-  QString prep = "SELECT * FROM dbo.Profiles WHERE BenutzerID = :userID";
-  QSqlQuery query;
-  query.prepare(prep);
-  query.bindValue(":userID", user_id);
-  query.exec();
-  int weight = query.value(0).toInt();
-  int height = query.value(1).toInt();
-  QString pref = query.value(2).toString();
-  Profile *profile = new Profile(weight, height, pref);
-  query.finish();
-  return profile;
+std::vector<Mahlzeit*> DBHandler::GetMahlzeitenVonBis(int user_id, QString anfang, QString ende)
+{
+    std::vector<Mahlzeit*> mahlzeiten;
+    QString prep = "SELECT * FROM dbo.Mahlzeit WHERE Datum BETWEEN :start AND :end AND BenutzerID = :user_id";
+    qDebug() << anfang << ende;
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":start", anfang);
+    query.bindValue(":end", ende);
+    query.bindValue(":user_id", user_id);
+    query.exec();
+    qDebug() << user_id;
+    while (query.next()) {
+        qDebug() << query.value(0).toString() << "!!!!!!!!";
+        Mahlzeit* p = new Mahlzeit();
+        mahlzeiten.push_back(p);
+    }
+    qDebug() << query.lastQuery();
+    query.finish();
+    return mahlzeiten;
 }

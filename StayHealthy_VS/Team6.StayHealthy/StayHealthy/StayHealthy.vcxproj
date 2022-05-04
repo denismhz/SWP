@@ -55,17 +55,21 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <Linkage-gtest>static</Linkage-gtest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Qt\6.2.4\msvc2019_64\include\QtGui;C:\Qt\6.2.4\msvc2019_64\include\QtWidgets;C:\Qt\6.2.4\msvc2019_64\include\QtCore;C:\Qt\6.2.4\msvc2019_64\include\QtSql;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\6.2.4\msvc2019_64\include\QtTest;C:\Users\denis\Source\Repos\team-6\StayHealthy_VS\Team6.StayHealthy\packages\gtest.1.7.0\build\native\include;C:\Qt\6.2.4\msvc2019_64\include\QtGui;C:\Qt\6.2.4\msvc2019_64\include\QtWidgets;C:\Qt\6.2.4\msvc2019_64\include\QtCore;C:\Qt\6.2.4\msvc2019_64\include\QtSql;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Qt\6.2.4\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt6Sql.lib;Qt6Core.lib;Qt6Widgets.lib;Qt6Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>lib /NOLOGO /OUT:"$(TargetPath).lib" "$(ProjectDir)\$(Configuration)*.obj"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -103,11 +107,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="date_parser.cc" />
     <ClCompile Include="ernaerungsplan.cc" />
     <ClCompile Include="mahlzeit.cc" />
-    <ClCompile Include="profile.cc" />
+    <ClCompile Include="main_menu.cc" />
     <ClCompile Include="registrierung.cc" />
     <ClCompile Include="speiseposition.cc" />
+    <ClCompile Include="sportler.cc" />
     <ClCompile Include="statistik.cc" />
     <ClCompile Include="trainingseinheit.cc" />
     <ClCompile Include="trainingsplan.cc" />
@@ -115,6 +121,7 @@
     <ClCompile Include="user.cc" />
     <ClCompile Include="zeitplan.cc" />
     <QtRcc Include="stayhealthy.qrc" />
+    <QtUic Include="main_menu.ui" />
     <QtUic Include="stayhealthy.ui" />
     <QtMoc Include="stayhealthy.h" />
     <ClCompile Include="db_handler.cc" />
@@ -122,12 +129,15 @@
     <ClCompile Include="main.cc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="date.h" />
+    <ClInclude Include="date_parser.h" />
     <ClInclude Include="db_handler.h" />
     <ClInclude Include="ernaerungsplan.h" />
     <ClInclude Include="mahlzeit.h" />
-    <ClInclude Include="profile.h" />
+    <QtMoc Include="main_menu.h" />
     <ClInclude Include="registrierung.h" />
     <ClInclude Include="speiseposition.h" />
+    <ClInclude Include="sportler.h" />
     <ClInclude Include="statistik.h" />
     <ClInclude Include="trainingseinheit.h" />
     <ClInclude Include="trainingsplan.h" />
@@ -139,6 +149,5 @@
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
   </ImportGroup>
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

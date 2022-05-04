@@ -3,8 +3,10 @@
 #define STAYHEALTHY_DB_HANDLER_H_
 #include <QtSql>
 #include <qstring.h>
+#include <vector>
 #include "user.h"
-#include "profile.h"
+#include "ernaerungsplan.h"
+#include "date.h"
 
 /*<- Singleton ->*/
 class DBHandler {
@@ -25,15 +27,29 @@ class DBHandler {
   bool UpdateUserByID(int, User &);
   User* GetUserById(int);
   User* GetUserByEmailAndPassword(QString, QString);
-  bool CheckIfEmailExists(QString);
+  int CheckIfEmailExists(QString);
 
   /*<- Profile DB Actions ->*/
-  bool AddProfileByUserId(int, Profile &);
+  /* bool AddProfileByUserId(int, Profile&);
   bool UpdateProfileByUserId(int, Profile &);
   bool DeleteProfileByUserId(int);
-  Profile *GetProfileByUserId(int);
+  Profile *GetProfileByUserId(int);*/
 
-  /*<- Profile DB Actions ->*/
+  /*<- Ernaerungsplan DB Actions ->*/
+  bool AddErnaerungsplan(User &, Ernaerungsplan &);
+  bool UpdateErnaerungsplan(User &, Ernaerungsplan &);
+  bool DeleteErnaerungsplan(Ernaerungsplan&);
+  std::vector<Ernaerungsplan*> GetErnaerungsPlaeneVonBis(int, date::year_month_day, date::year_month_day);
+
+  /*<- Trainingsplan DB Actions ->*/
+
+
+  /*<- Mahlzeit DB Actions ->*/
+  //@param user_id, date_from, date_to
+  //dateformat: yyyy-mm-dd
+  std::vector<Mahlzeit*> GetMahlzeitenVonBis(int, QString, QString);
+
+  /*<- Trainingseinheit DB Actions ->*/
 
 };
 
