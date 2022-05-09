@@ -7,6 +7,7 @@
 #include "user.h"
 #include "ernaerungsplan.h"
 #include "date.h"
+#include "sportler.h"
 
 /*<- Singleton ->*/
 class DBHandler {
@@ -21,6 +22,9 @@ class DBHandler {
   DBHandler();
   ~DBHandler();
 
+  //throw exception if query could not be executed!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //maybe return id of added things everywhere
+
   /*<- User DB Actions ->*/
   bool AddUser(User &);
   bool DeleteUserById(int);
@@ -29,28 +33,37 @@ class DBHandler {
   User* GetUserByEmailAndPassword(QString, QString);
   int CheckIfEmailExists(QString);
 
-  /*<- Profile DB Actions ->*/
-  /* bool AddProfileByUserId(int, Profile&);
-  bool UpdateProfileByUserId(int, Profile &);
-  bool DeleteProfileByUserId(int);
-  Profile *GetProfileByUserId(int);*/
+  /*<- Sportler DB Actions ->*/
+  Sportler* GetSportlerByUserId(int);
 
   /*<- Ernaerungsplan DB Actions ->*/
   bool AddErnaerungsplan(User &, Ernaerungsplan &);
   bool UpdateErnaerungsplan(User &, Ernaerungsplan &);
   bool DeleteErnaerungsplan(Ernaerungsplan&);
-  std::vector<Ernaerungsplan*> GetErnaerungsPlaeneVonBis(int, date::year_month_day, date::year_month_day);
+  std::vector<Ernaerungsplan*> GetErnaerungsPlaeneVonBis(int, QString von, QString bis);
 
   /*<- Trainingsplan DB Actions ->*/
 
+  //@return id of added Trainingsplan
+  int AddTrainingsplan(Trainingsplan &);
+  Trainingsplan* GetTrainingsplan();
 
-  /*<- Mahlzeit DB Actions ->*/
-  //@param user_id, date_from, date_to
-  //dateformat: yyyy-mm-dd
-  std::vector<Mahlzeit*> GetMahlzeitenVonBis(int, QString, QString);
+   /*<- Uebung DB Actions ->*/
+
+  //Select random Uebungen
+  std::vector<Uebungsposition*> GetRandomUebungen(int anzahl, QString art);
+  //add Uebungsposition
+  bool AddUebungsposition(Uebungsposition&);
 
   /*<- Trainingseinheit DB Actions ->*/
 
+  //@return id of added Trainingseinheit
+  int AddTrainingseinheit(Trainingseinheit&);
+
+  /*<- Mahlzeit DB Actions ->*/
+  //@param user_id, date_from, date_to
+  std::vector<Mahlzeit*> GetMahlzeitenVonBis(int, QString von, QString bis);
+  int AddMahlzeit(Mahlzeit&);
 };
 
 #endif //STAYHEALTHY_DB_HANDLER_H_

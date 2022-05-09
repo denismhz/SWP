@@ -12,6 +12,9 @@ public:
 	MainMenu(QWidget *parent = Q_NULLPTR);
 	~MainMenu();
 
+public slots:
+	void ErstellePlanTest();
+
 private:
 	Ui::MainMenu ui;
 };
