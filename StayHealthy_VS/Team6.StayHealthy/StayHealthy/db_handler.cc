@@ -70,7 +70,8 @@ User *DBHandler::GetUserById(int user_id) {
   QString password = query.value(2).toString();
   QString name = query.value(5).toString();
   QString vorname = query.value(6).toString();
-  User* user = new User(email, password, name, vorname, user_id);
+  int geschlecht = query.value(11).toInt();
+  User* user = new User(email, password, name, vorname, geschlecht, user_id);
   query.finish();
   return user;
 }
@@ -94,6 +95,7 @@ User *DBHandler::GetUserByEmailAndPassword(QString email, QString password) {
     return 0;
 }
 
+//@return id of user with email
 int DBHandler::CheckIfEmailExists(QString email) {
   QString prep =
       "SELECT * FROM dbo.Sportler WHERE EMail = :email";
@@ -105,52 +107,141 @@ int DBHandler::CheckIfEmailExists(QString email) {
   return query.value(0).toInt();
 }
 
-std::vector<Ernaerungsplan*> DBHandler::GetErnaerungsPlaeneVonBis(int user_id, date::year_month_day anfang, date::year_month_day ende)
+Sportler* DBHandler::GetSportlerByUserId(int user_id)
 {
-    std::vector<Ernaerungsplan*> plane;
-    std::stringstream stream;
-    stream << "'" << anfang << "' ";
-    QString s = QString::fromUtf8(stream.str());
-    QString prep = "SELECT * FROM dbo.Ernaehrungsplan WHERE Anfangsdatum >";
-    prep += s;
-    stream.str(std::string());
-    stream.clear();
-    stream << " '" << ende << "'";
-    qDebug() << QString::fromUtf8(stream.str());
-    s = QString::fromUtf8(stream.str());
-    prep += "AND Enddatum <";
-    prep += s;
+    QString prep = "SELECT * FROM dbo.Sportler WHERE BenutzerID = :userID";
     QSqlQuery query;
     query.prepare(prep);
+    query.bindValue(":userID", user_id);
+    query.exec();
+    query.first();
+    int weight = query.value(11).toInt();
+    int height = query.value(7).toInt();
+    int kalorienaufnahme = query.value(9).toInt();
+    QString geb_datum = query.value(13).toString();
+    QString praeferenz = query.value(12).toString();
+    int geschlecht = query.value(10).toInt();
+    Sportler* sportler = new Sportler(geschlecht, weight, height, kalorienaufnahme, geb_datum, praeferenz);
+    query.finish();
+    return sportler;
+}
+
+std::vector<Ernaerungsplan*> DBHandler::GetErnaerungsPlaeneVonBis(int user_id, QString anfang, QString ende)
+{
+    std::vector<Ernaerungsplan*> plane;
+    QString prep = "SELECT * FROM dbo.Ernaehrungsplan WHERE Anfangsdatum >= :anfang AND Enddatum <= :ende";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":anfang", anfang);
+    query.bindValue(":ende", ende);
     query.exec();
     while (query.next()) {
-        qDebug() << query.value(0).toString() << "!!!!!!!!";
         Ernaerungsplan* p = new Ernaerungsplan();
         plane.push_back(p);
     } 
     query.finish();
-    qDebug() << prep;
     return plane;
+}
+
+int DBHandler::AddTrainingsplan(Trainingsplan & plan)
+{
+    QString prep =
+        "INSERT INTO dbo.Trainingsplan (BenutzerID, Anfangsdatum, Enddatum) VALUES (:user_id, :anfang, "
+        ":ende)";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":user_id", plan.user_id_);
+    query.bindValue(":anfang", plan.start_datum_);
+    query.bindValue(":ende", plan.end_datum_);
+    query.exec();
+    query.finish();
+    return query.lastInsertId().toInt();
+}
+
+std::vector<Uebungsposition*> DBHandler::GetRandomUebungen(int anzahl, QString art)
+{
+    std::vector<Uebungsposition*> uebungen;
+    QString prep;
+    if(!art.isEmpty()) prep = "SELECT TOP(:anzahl) * FROM dbo.Uebung WHERE Art = :art ORDER BY NEWID() ";
+    else prep = "SELECT TOP(:anzahl) * FROM dbo.Uebung ORDER BY NEWID()";
+    
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":anzahl", anzahl);
+    query.bindValue(":art", art);
+    query.exec();
+    while (query.next()) {
+        Uebungsposition* new_pos = new Uebungsposition(1, query.value(0).toInt(), query.value(2).toInt(), 0, query.value(3).toString());
+        uebungen.push_back(new_pos);
+    }
+    query.finish();
+
+    return uebungen;
+}
+
+bool DBHandler::AddUebungsposition(Uebungsposition& uebungspos)
+{
+    QString prep =
+        "INSERT INTO dbo.Uebungsposition (TrainingseinheitID, UebungsID, Menge, Beschreibung) VALUES (:te_id, :ue_id, :menge, "
+        ":beschreibung)";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":te_id", uebungspos.trainingseinheit_id_);
+    query.bindValue(":ue_id", uebungspos.uebungs_id_);
+    query.bindValue(":menge", uebungspos.menge_);
+    query.bindValue(":beschreibung", uebungspos.beschreibung_);
+    query.exec();
+    query.finish();
+    return 1;
+}
+
+int DBHandler::AddTrainingseinheit(Trainingseinheit& tein)
+{
+    QString prep =
+        "INSERT INTO dbo.Trainingseinheit (BenutzerID, TrainingsplanID, Startzeit, Endzeit, Datum)"
+        " VALUES(:user_id, :t_id, :start, :ende, :datum)";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":user_id", tein.user_id_);
+    query.bindValue(":t_id", tein.trainingsplan_id_);
+    query.bindValue(":start", tein.start_zeit_);
+    query.bindValue(":ende", tein.end_zeit_);
+    query.bindValue(":datum", tein.datum_);
+    query.exec();
+    query.finish();
+    return query.lastInsertId().toInt();
 }
 
 std::vector<Mahlzeit*> DBHandler::GetMahlzeitenVonBis(int user_id, QString anfang, QString ende)
 {
     std::vector<Mahlzeit*> mahlzeiten;
     QString prep = "SELECT * FROM dbo.Mahlzeit WHERE Datum BETWEEN :start AND :end AND BenutzerID = :user_id";
-    qDebug() << anfang << ende;
     QSqlQuery query;
     query.prepare(prep);
     query.bindValue(":start", anfang);
     query.bindValue(":end", ende);
     query.bindValue(":user_id", user_id);
     query.exec();
-    qDebug() << user_id;
     while (query.next()) {
-        qDebug() << query.value(0).toString() << "!!!!!!!!";
         Mahlzeit* p = new Mahlzeit();
         mahlzeiten.push_back(p);
     }
-    qDebug() << query.lastQuery();
     query.finish();
     return mahlzeiten;
+}
+
+int DBHandler::AddMahlzeit(Mahlzeit& m)
+{
+    QString prep =
+        "INSERT INTO dbo.Mahlzeit (BenutzerID, ErnaehrungsplanID, Uhrzeit, Datum)"
+        " VALUES(:user_id, :e_id, :uhrzeit, :datum)";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":user_id", m.user_id_);
+    query.bindValue(":e_id", m.ernaehrungsplan_id_);
+    query.bindValue(":uhrzeit", m.uhrzeit_);
+    query.bindValue(":datum", m.datum_);
+    query.exec();
+    query.finish();
+    return query.lastInsertId().toInt();
 }

@@ -6,12 +6,16 @@ class Mahlzeit
 {
 public:
 	int id_;
-	int kaloriengehalt;
+	int user_id_;
+	int kaloriengehalt_;
+	int ernaehrungsplan_id_;
 	QString uhrzeit_;
 	QString datum_;
 	std::vector<Speiseposition*> speisepositionen;
 
 	Mahlzeit();
 	~Mahlzeit();
+
+	int GetKaloriengehalt();
 };
 
