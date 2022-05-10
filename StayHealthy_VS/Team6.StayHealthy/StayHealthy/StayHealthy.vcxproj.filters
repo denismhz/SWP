@@ -39,6 +39,12 @@
     <Filter Include="Source Files\Benutzer">
       <UniqueIdentifier>{52aa7983-7496-4b70-aba1-c25ea22081ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{191697ba-a0d5-43c2-b999-e502d4fab5cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{aef28d94-8f6e-4396-bf7f-4f23ba81cc8f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="stayhealthy.qrc">
@@ -47,12 +53,6 @@
     <QtUic Include="stayhealthy.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="stayhealthy.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="steayhealthy.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc">
@@ -66,9 +66,6 @@
     </ClCompile>
     <ClCompile Include="ernaerungsplan.cc">
       <Filter>Source Files\Ernaerung</Filter>
-    </ClCompile>
-    <ClCompile Include="profile.cc">
-      <Filter>Source Files\Benutzer</Filter>
     </ClCompile>
     <ClCompile Include="registrierung.cc">
       <Filter>Source Files\Benutzer</Filter>
@@ -88,11 +85,23 @@
     <ClCompile Include="uebungsposition.cc">
       <Filter>Source Files\Training</Filter>
     </ClCompile>
+    <ClCompile Include="zeitplan.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="sportler.cc">
+      <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="date_parser.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="user.cc">
       <Filter>Source Files\Benutzer</Filter>
     </ClCompile>
-    <ClCompile Include="zeitplan.cc">
-      <Filter>Source Files\Benutzer</Filter>
+    <ClCompile Include="main_menu.cc">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="steayhealthy.cc">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -126,11 +135,30 @@
     <ClInclude Include="user.h">
       <Filter>Header Files\Benutzer</Filter>
     </ClInclude>
-    <ClInclude Include="profile.h">
-      <Filter>Header Files\Benutzer</Filter>
-    </ClInclude>
     <ClInclude Include="zeitplan.h">
       <Filter>Header Files\Benutzer</Filter>
     </ClInclude>
+    <ClInclude Include="sportler.h">
+      <Filter>Header Files\Benutzer</Filter>
+    </ClInclude>
+    <ClInclude Include="date.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="date_parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="main_menu.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="main_menu.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="stayhealthy.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>
