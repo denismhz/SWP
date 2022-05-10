@@ -5,22 +5,16 @@
 
 class Trainingsplan
 {
-private:
-	int id_;
-
 public:
-	
-	int user_id_;
+	int id_;
+	int kalorienverbrauch;
 	QString start_datum_;
-	QString end_datum_;
-	QString beschreibung_;
-	std::vector<Trainingseinheit*> trainingseinheiten_;
+	QString end_dataum;
+	QString beschreibung;
+	std::vector<Trainingseinheit*> trainingseinheiten;
 
 	Trainingsplan();
-	Trainingsplan(int user_id, int id, QString start_datum, QString end_datum, QString beschreibung);
 	~Trainingsplan();
-	
-	void ErstelleTrainingsplan(QString start_datum, QString pref);
-	int GetID();
-	int GetKalorienverbrauch();
+
+	Trainingsplan* ErstelleTrainingsplan();
 };

@@ -5,13 +5,9 @@
 
 class Ernaerungsplan
 {
-private:
+public:
 	int id_;
 	int kaloriengehalt;
-
-	int BerechneKaloriengehalt();
-
-public:
 	QString start_datum_;
 	QString end_dataum; //braucht man das hier oder ist ein plan immer eine woche
 	QString beschreibung;
@@ -19,7 +15,4 @@ public:
 
 	Ernaerungsplan();
 	~Ernaerungsplan();
-
-	int GetID();
-	int GetKaloriengehalt();
 }; 

@@ -7,8 +7,3 @@ Mahlzeit::Mahlzeit()
 Mahlzeit::~Mahlzeit()
 {
 }
-
-int Mahlzeit::GetKaloriengehalt()
-{
-	return 0;
-}

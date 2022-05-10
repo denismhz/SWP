@@ -35,8 +35,3 @@ bool Login::LoginUser(User& user)
 	}
 	return false;
 }
-
-User* Login::GetLoggedInUser()
-{
-	return this->logged_in_user_;
-}
