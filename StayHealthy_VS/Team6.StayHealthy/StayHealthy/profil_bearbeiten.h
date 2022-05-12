@@ -19,9 +19,11 @@ private slots:
 	void on_pushButtonEditProfile_clicked();
 	void on_pushButtonSaveChanges_clicked();
 	void on_pushButtonDiscardChanges_clicked();
+	void on_pushButtonDeleteProfile_clicked();
 
 signals:
 	void profileWindow_Closing();
+	void profileDeleted();
 
 private:
 	Ui::ProfilBearbeiten ui;

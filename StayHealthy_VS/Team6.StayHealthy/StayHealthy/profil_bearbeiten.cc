@@ -3,6 +3,7 @@
 #include "db_handler.h"
 
 #include <QMessageBox>
+#include <QInputDialog>
 
 
 
@@ -24,7 +25,7 @@ ProfilBearbeiten::ProfilBearbeiten(QDialog*parent)
     currentUser->vorname_ = tmpUser->vorname_;
     currentUser->SetId(tmpUser->GetId());
     currentUser->email_ = tmpUser->email_;
-    currentUser->password_ = tmpUser->email_;
+    currentUser->password_ = tmpUser->password_;
 
 
     genderGroup.addButton(ui.radioButton_m);
@@ -99,6 +100,32 @@ void ProfilBearbeiten::on_pushButtonDiscardChanges_clicked()
     ui.pushButtonEditProfile->show();
     ui.pushButtonClose->show();
     ui.pushButtonUpgradeProfile->show();
+}
+
+void ProfilBearbeiten::on_pushButtonDeleteProfile_clicked()
+{
+    bool isPasswordCorrect = false;
+    bool isOk = false;
+    QString password;
+
+    while (isPasswordCorrect == false)
+    {
+        password = QInputDialog::getText(this, "Profil loeschen", "Zum Loeschen bitte Passwort bestaetigen:", QLineEdit::Password, "", &isOk);
+
+        if (isOk == false)
+            break;
+
+        if (password == currentUser->password_)
+        {
+            isPasswordCorrect = true;
+        }            
+        else
+        {
+            QMessageBox msgBox;
+            msgBox.setText("Bitte richtiges Passwort eigeben!");
+            msgBox.exec();
+        }        
+    }
 }
 
 void ProfilBearbeiten::hideLabels()
