@@ -22,6 +22,7 @@ public:
   ~User();
 
   int GetId();
+  void SetId(int id) { id_ = id; }
 };
 
 #endif //STAYHEALTHY_USER_H_

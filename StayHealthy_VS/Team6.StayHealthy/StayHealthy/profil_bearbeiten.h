@@ -1,7 +1,10 @@
 #pragma once
 
 #include <QDialog>
+#include <QButtonGroup>
 #include "ui_profil_bearbeiten.h"
+
+#include "Sportler.h"
 
 class ProfilBearbeiten : public QDialog
 {
@@ -13,10 +16,27 @@ public:
 
 private slots:
 	void on_pushButtonClose_clicked();
+	void on_pushButtonEditProfile_clicked();
+	void on_pushButtonSaveChanges_clicked();
+	void on_pushButtonDiscardChanges_clicked();
 
 signals:
 	void profileWindow_Closing();
 
 private:
 	Ui::ProfilBearbeiten ui;
+	QButtonGroup genderGroup;
+
+	void hideLabels();
+	void showLabels();
+	void hideInputFields();
+	void showInputFields();
+	void resetInputFields();
+	void refreshLabels();
+	void setUpdatedUserData();
+	bool inputsAreValid();
+	void fillInputFields();
+
+	int userID;
+	Sportler* currentUser;
 };

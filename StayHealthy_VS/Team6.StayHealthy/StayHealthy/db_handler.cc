@@ -126,6 +126,48 @@ Sportler* DBHandler::GetSportlerByUserId(int user_id)
     return sportler;
 }
 
+bool DBHandler::UpdateSportlerByUserId(int userID, Sportler &sportler)
+{
+    QString prep =
+        "UPDATE dbo.Sportler SET "
+        "EMail = :email, "
+        "Password = :password, "
+        "Nachname = :nachname, "
+        "Vorname = :vorname, "
+        "Groesse = :groesse, "
+        "Grundumsatz = :grundumsatz, "
+        "Kalorienaufnahme = :kalorienaufnahme, "
+        "Geschlecht = :geschlecht, "
+        "Gewicht = :gewicht, "
+        "Praeferenz = :praeferenz, "
+        "GebDatum = :gebdatum"
+        " WHERE BenutzerID = :id;";
+
+
+    QSqlQuery query;
+    query.prepare(prep);
+
+    query.bindValue(":email", sportler.email_);
+    query.bindValue(":password", sportler.password_);
+    query.bindValue(":nachname", sportler.name_);
+    query.bindValue(":vorname", sportler.vorname_);
+    query.bindValue(":groesse", sportler.height_);
+    query.bindValue(":grundumsatz", sportler.GetGrundumsatz());
+    query.bindValue(":kalorienaufnahme", sportler.kalorienaufnahme_);
+    query.bindValue(":geschlecht", sportler.geschlecht_);
+    query.bindValue(":gewicht", sportler.weight_);
+    query.bindValue(":praeferenz", sportler.prefaerenz_);
+    query.bindValue(":gebdatum", sportler.geb_datum_);
+    query.bindValue(":id", sportler.GetId());
+
+
+    qDebug() << "emailDB: " << sportler.email_;
+
+    query.exec();
+    query.finish();
+    return 1;
+}
+
 std::vector<Ernaerungsplan*> DBHandler::GetErnaerungsPlaeneVonBis(int user_id, QString anfang, QString ende)
 {
     std::vector<Ernaerungsplan*> plane;
