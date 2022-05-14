@@ -9,8 +9,10 @@ public:
 	int menge_;
 	int uebungs_id_;
 	int kalorienverbrauch_;
+	int id_;
 	QString beschreibung_;
 
+	Uebungsposition();
 	Uebungsposition(int menge, int uebungs_id, int kalorienverbrauch, int trainingseinheit_id, QString bescreibung);
 	~Uebungsposition();
 

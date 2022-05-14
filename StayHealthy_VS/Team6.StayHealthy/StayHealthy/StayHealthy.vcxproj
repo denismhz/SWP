@@ -116,6 +116,7 @@
     <ClCompile Include="sportler.cc" />
     <ClCompile Include="statistik.cc" />
     <ClCompile Include="trainingseinheit.cc" />
+    <ClCompile Include="trainingseinheitui.cc" />
     <ClCompile Include="trainingsplan.cc" />
     <ClCompile Include="uebungsposition.cc" />
     <ClCompile Include="user.cc" />
@@ -127,6 +128,7 @@
     <ClCompile Include="db_handler.cc" />
     <ClCompile Include="steayhealthy.cc" />
     <ClCompile Include="main.cc" />
+    <QtUic Include="trainingseinheitui.ui" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="date.h" />
@@ -140,10 +142,14 @@
     <ClInclude Include="sportler.h" />
     <ClInclude Include="statistik.h" />
     <ClInclude Include="trainingseinheit.h" />
+    <QtMoc Include="trainingseinheitui.h" />
     <ClInclude Include="trainingsplan.h" />
     <ClInclude Include="uebungsposition.h" />
     <ClInclude Include="user.h" />
     <ClInclude Include="zeitplan.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

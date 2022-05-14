@@ -15,6 +15,7 @@ public:
 	QString datum_;
 	std::vector<Uebungsposition*> uebungspositionen;
 
+	Trainingseinheit();
 	Trainingseinheit(int, int, int, int, bool, QString, QString, QString);
 	~Trainingseinheit();
 };

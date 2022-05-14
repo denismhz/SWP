@@ -3,6 +3,8 @@
 #include <QWidget>
 #include "ui_main_menu.h"
 #include "stayhealthy.h"
+#include "qstackedwidget.h"
+#include "trainingseinheitui.h"
 
 class MainMenu : public QWidget
 {
@@ -14,7 +16,9 @@ public:
 
 public slots:
 	void ErstellePlanTest();
+	void on_trainingseinheitenButton_clicked();
 
 private:
 	Ui::MainMenu ui;
+	TrainingseinheitUI* teui;
 };
