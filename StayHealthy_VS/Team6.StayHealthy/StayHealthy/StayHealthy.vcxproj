@@ -61,10 +61,10 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Qt\6.2.4\msvc2019_64\include\QtTest;C:\Users\denis\Source\Repos\team-6\StayHealthy_VS\Team6.StayHealthy\packages\gtest.1.7.0\build\native\include;C:\Qt\6.2.4\msvc2019_64\include\QtGui;C:\Qt\6.2.4\msvc2019_64\include\QtWidgets;C:\Qt\6.2.4\msvc2019_64\include\QtCore;C:\Qt\6.2.4\msvc2019_64\include\QtSql;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Qt\6.2.4\msvc2019_64\include\QtTest;C:\Users\denis\Source\Repos\team-6\StayHealthy_VS\Team6.StayHealthy\packages\gtest.1.7.0\build\native\include;C:\Qt\6.2.4\msvc2019_64\include\QtGui;C:\Qt\6.2.4\msvc2019_64\include\QtWidgets;C:\Qt\6.2.4\msvc2019_64\include\QtCore;C:\Qt\6.2.4\msvc2019_64\include\QtSql;X:\ProgramData\Qt\6.2.4\msvc2019_64\include\QtGui;X:\ProgramData\Qt\6.2.4\msvc2019_64\include\QtWidgets;X:\ProgramData\Qt\6.2.4\msvc2019_64\include\QtCore;X:\ProgramData\Qt\6.2.4\msvc2019_64\include\QtSql;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Qt\6.2.4\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\6.2.4\msvc2019_64\lib;X:\ProgramData\Qt\6.2.4\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt6Sql.lib;Qt6Core.lib;Qt6Widgets.lib;Qt6Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -111,6 +111,7 @@
     <ClCompile Include="ernaerungsplan.cc" />
     <ClCompile Include="mahlzeit.cc" />
     <ClCompile Include="main_menu.cc" />
+    <ClCompile Include="profil_bearbeiten.cc" />
     <ClCompile Include="registrierung.cc" />
     <ClCompile Include="speiseposition.cc" />
     <ClCompile Include="sportler.cc" />
@@ -123,6 +124,7 @@
     <ClCompile Include="zeitplan.cc" />
     <QtRcc Include="stayhealthy.qrc" />
     <QtUic Include="main_menu.ui" />
+    <QtUic Include="profil_bearbeiten.ui" />
     <QtUic Include="stayhealthy.ui" />
     <QtMoc Include="stayhealthy.h" />
     <ClCompile Include="db_handler.cc" />
@@ -137,6 +139,7 @@
     <ClInclude Include="ernaerungsplan.h" />
     <ClInclude Include="mahlzeit.h" />
     <QtMoc Include="main_menu.h" />
+    <QtMoc Include="profil_bearbeiten.h" />
     <ClInclude Include="registrierung.h" />
     <ClInclude Include="speiseposition.h" />
     <ClInclude Include="sportler.h" />

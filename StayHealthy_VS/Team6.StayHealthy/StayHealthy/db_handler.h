@@ -37,6 +37,7 @@ class DBHandler {
 
   /*<- Sportler DB Actions ->*/
   Sportler* GetSportlerByUserId(int);
+  bool UpdateSportlerByUserId(int, Sportler &);
 
   /*<- Ernaerungsplan DB Actions ->*/
   bool AddErnaerungsplan(User &, Ernaerungsplan &);

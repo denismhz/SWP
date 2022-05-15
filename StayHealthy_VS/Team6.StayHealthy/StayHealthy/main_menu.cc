@@ -1,6 +1,7 @@
 #include "main_menu.h"
 #include "trainingsplan.h"
-#include "trainingseinheitui.h"
+#include "profil_bearbeiten.h"
+
 
 MainMenu::MainMenu(QWidget *parent)
 	: QWidget(parent)
@@ -18,10 +19,11 @@ MainMenu::~MainMenu()
 {
 }
 
-void MainMenu::on_trainingseinheitenButton_clicked()
+void MainMenu::on_ProfileWindow_Closing()
 {
-	teui->SetUp();
-	ui.stackedWidget->setCurrentWidget(teui);
+	qDebug() << "onClosing";
+	delete profilWindow;
+	profilWindow = NULL;
 }
 
 void MainMenu::ErstellePlanTest() {
@@ -29,4 +31,11 @@ void MainMenu::ErstellePlanTest() {
 	delete n;
 	
 	//qDebug() << n->trainingseinheiten_[1]->uebungspositionen[1]->beschreibung_;
+}
+
+void MainMenu::on_toProfilePage_clicked()
+{
+	profilWindow = new ProfilBearbeiten();
+	connect(profilWindow, SIGNAL(profileWindow_Closing()), this, SLOT(on_ProfileWindow_Closing()));	
+	profilWindow->show();
 }

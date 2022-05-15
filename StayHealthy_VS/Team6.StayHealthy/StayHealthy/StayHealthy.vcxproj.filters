@@ -103,8 +103,8 @@
     <ClCompile Include="trainingsplan.cc">
       <Filter>Source Files\Training</Filter>
     </ClCompile>
-    <ClCompile Include="trainingseinheitui.cc">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="profil_bearbeiten.cc">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -155,7 +155,7 @@
     <QtUic Include="main_menu.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="trainingseinheitui.ui">
+    <QtUic Include="profil_bearbeiten.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -166,11 +166,8 @@
     <QtMoc Include="stayhealthy.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
-    <QtMoc Include="trainingseinheitui.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="profil_bearbeiten.h">
+      <Filter>Header Files\UI</Filter>
     </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
