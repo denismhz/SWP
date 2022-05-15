@@ -106,6 +106,12 @@
     <ClCompile Include="profil_bearbeiten.cc">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="mahlzeit_eingeben_ui.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="trainingseinheitui.cc">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="db_handler.h">
@@ -158,6 +164,9 @@
     <QtUic Include="profil_bearbeiten.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="trainingseinheitui.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="main_menu.h">
@@ -167,6 +176,12 @@
       <Filter>Header Files\UI</Filter>
     </QtMoc>
     <QtMoc Include="profil_bearbeiten.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="trainingseinheitui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mahlzeit_eingeben_ui.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
   </ItemGroup>

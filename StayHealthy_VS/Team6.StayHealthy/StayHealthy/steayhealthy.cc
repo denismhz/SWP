@@ -8,9 +8,11 @@
 StayHealthy::StayHealthy(QWidget *parent)
     : QMainWindow(parent)
 {
+
+    QVBoxLayout* main_layout = new QVBoxLayout(this);
     ui.setupUi(this);
     ui.stackedWidget->setCurrentIndex(0);
-
+    ui.horizontalLayout->addWidget(ui.homeButton);
     //setup main menu
     menu = new MainMenu(this);
     ui.stackedWidget->addWidget(menu);

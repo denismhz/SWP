@@ -6,8 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-    //User* curr = DBHandler::GetInstance()->GetUserById(4);
-    //Login::GetInstance()->LoginUser(*curr);
+    DBHandler::GetInstance();
     QApplication a(argc, argv);
     StayHealthy w;
     w.show();

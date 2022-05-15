@@ -110,6 +110,7 @@
     <ClCompile Include="date_parser.cc" />
     <ClCompile Include="ernaerungsplan.cc" />
     <ClCompile Include="mahlzeit.cc" />
+    <ClCompile Include="mahlzeit_eingeben_ui.cc" />
     <ClCompile Include="main_menu.cc" />
     <ClCompile Include="profil_bearbeiten.cc" />
     <ClCompile Include="registrierung.cc" />
@@ -140,6 +141,7 @@
     <ClInclude Include="mahlzeit.h" />
     <QtMoc Include="main_menu.h" />
     <QtMoc Include="profil_bearbeiten.h" />
+    <QtMoc Include="mahlzeit_eingeben_ui.h" />
     <ClInclude Include="registrierung.h" />
     <ClInclude Include="speiseposition.h" />
     <ClInclude Include="sportler.h" />
@@ -150,9 +152,6 @@
     <ClInclude Include="uebungsposition.h" />
     <ClInclude Include="user.h" />
     <ClInclude Include="zeitplan.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
