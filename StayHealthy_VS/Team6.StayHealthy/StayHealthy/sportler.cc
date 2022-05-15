@@ -40,7 +40,9 @@ int Sportler::GrundumsatzBerechnen(int gewicht, int groesse, int alter, int gesc
 
 int Sportler::AlterBerechnen(QString geb_datum)
 {
-    year_month_day today = sys_days{ floor<days>(system_clock::now()) };
+    if (geb_datum.isEmpty())
+        return 0;
+    year_month_day today = sys_days{floor<days>(system_clock::now())};
     auto ymd_geb_datum = dateparser::QStringToYearMonthDate(geb_datum);
     auto alter = today.year() - ymd_geb_datum.year();
     return alter.count();
