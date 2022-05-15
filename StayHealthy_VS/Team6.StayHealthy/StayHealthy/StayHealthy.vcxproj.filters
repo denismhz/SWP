@@ -103,6 +103,9 @@
     <ClCompile Include="trainingsplan.cc">
       <Filter>Source Files\Training</Filter>
     </ClCompile>
+    <ClCompile Include="mahlzeit_eingeben_ui.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="db_handler.h">
@@ -159,6 +162,9 @@
     </QtMoc>
     <QtMoc Include="stayhealthy.h">
       <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="mahlzeit_eingeben_ui.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>

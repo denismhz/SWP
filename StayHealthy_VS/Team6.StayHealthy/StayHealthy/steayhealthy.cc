@@ -3,6 +3,7 @@
 #include "qmessagebox.h"
 #include "registrierung.h"
 #include "main_menu.h"
+#include "mahlzeit_eingeben_ui.h"
 
 StayHealthy::StayHealthy(QWidget *parent)
     : QMainWindow(parent)
@@ -19,6 +20,9 @@ StayHealthy::StayHealthy(QWidget *parent)
     confirm_->setWindowTitle("Confirm");
     alert_ = new QMessageBox(parent);
     alert_->setWindowTitle("Alert");
+
+    MahlzeitEingebenUI* m = new MahlzeitEingebenUI(this);
+    QMainWindow::setCentralWidget(m);
 
     //Connect Buttons
     connect(ui.toRegisterPage, SIGNAL(clicked()), this, SLOT(WelcomeRegisterPressed()));
