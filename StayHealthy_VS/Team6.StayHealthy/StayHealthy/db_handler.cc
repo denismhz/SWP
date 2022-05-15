@@ -19,6 +19,15 @@ DBHandler::~DBHandler() {
     db_.close();
 }
 
+bool DBHandler::CustomQuery(QString prep){
+    qDebug() << prep;
+    QSqlQuery query;
+    query.prepare(prep);
+    query.exec();
+    query.finish();
+    return 1;
+}
+
 bool DBHandler::AddUser(User & new_user) {
   QString prep =
       "INSERT INTO dbo.Sportler (EMail, Password, Nachname, Vorname, Geschlecht) VALUES (:eMail, :password, "
@@ -206,7 +215,6 @@ std::vector<Uebungsposition*> DBHandler::GetRandomUebungen(int anzahl, QString a
     QString prep;
     if(!art.isEmpty()) prep = "SELECT TOP(:anzahl) * FROM dbo.Uebung WHERE Art = :art ORDER BY NEWID() ";
     else prep = "SELECT TOP(:anzahl) * FROM dbo.Uebung ORDER BY NEWID()";
-    
     QSqlQuery query;
     query.prepare(prep);
     query.bindValue(":anzahl", anzahl);
@@ -236,6 +244,69 @@ bool DBHandler::AddUebungsposition(Uebungsposition& uebungspos)
     query.finish();
     return 1;
 }
+
+std::vector<Uebungsposition*> DBHandler::GetUebungsposition(int trainingseinheit_id)
+{
+    std::vector<Uebungsposition*> ueps;
+    QString prep = "select * from Uebungsposition "
+        "WHERE TrainingseinheitID = :trainingseinheit_id";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":trainingseinheit_id", trainingseinheit_id);
+    query.exec();
+    while (query.next())
+    {
+        Uebungsposition* ue = new Uebungsposition();
+        ue->beschreibung_ = query.value("Beschreibung").toString();
+        ue->menge_ = query.value("Menge").toInt();
+        ue->uebungs_id_ = query.value("UebungsID").toInt();
+        ue->trainingseinheit_id_ = query.value("TrainingseinheitID").toInt();
+        ue->id_ = query.value("UebungspositionID").toInt();
+        ueps.push_back(ue);
+    }
+    query.finish();
+    return ueps;
+}
+
+bool DBHandler::UpdateUebungsposition(int menge, int id)
+{
+    QString prep = "Update Uebungsposition SET Menge = :menge WHERE UebungspositionID = :uebungs_id";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":uebungs_id", id);
+    query.bindValue(":menge", menge);
+    query.exec();
+    query.finish();
+    return false;
+}
+
+
+std::vector<Trainingseinheit*> DBHandler::GetTrainingseinheit(int user_id)
+{
+    std::vector<Trainingseinheit*>tein;
+    QString prep = "select * from Trainingseinheit "
+        "WHERE BenutzerID = :user_id AND Durchgefuehrt = 0";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":user_id", user_id);
+    query.exec();
+    while (query.next())
+    {
+        Trainingseinheit* te = new Trainingseinheit();
+        te->datum_ = query.value("Datum").toString();
+        te->start_zeit_ = query.value("Startzeit").toString();
+        te->end_zeit_ = query.value("Endzeit").toString();
+        te->durchgefuehrt = query.value("Durchgefuehrt").toBool();
+        te->kalorienverbrauch = query.value("Kalorienverbrauch").toInt();
+        te->id_ = query.value("TrainingseinheitID").toInt();
+        te->uebungspositionen = this->GetUebungsposition(te->id_);
+        tein.push_back(te);
+    }
+    query.finish();
+    //get uebungspositionen
+    return tein;
+}
+
 
 int DBHandler::AddTrainingseinheit(Trainingseinheit& tein)
 {
@@ -287,3 +358,5 @@ int DBHandler::AddMahlzeit(Mahlzeit& m)
     query.finish();
     return query.lastInsertId().toInt();
 }
+
+

@@ -25,6 +25,8 @@ class DBHandler {
   //throw exception if query could not be executed!!!!!!!!!!!!!!!!!!!!!!!!!!
   //maybe return id of added things everywhere
 
+  bool CustomQuery(QString);
+
   /*<- User DB Actions ->*/
   bool AddUser(User &);
   bool DeleteUserById(int);
@@ -55,8 +57,13 @@ class DBHandler {
   std::vector<Uebungsposition*> GetRandomUebungen(int anzahl, QString art);
   //add Uebungsposition
   bool AddUebungsposition(Uebungsposition&);
+  std::vector<Uebungsposition*> GetUebungsposition(int trainingseinheit_id);
+  bool UpdateUebungsposition(int menge, int id);
 
   /*<- Trainingseinheit DB Actions ->*/
+
+  //@return Trainingseinheiten where durchgefuehrt = 0
+  std::vector<Trainingseinheit*> GetTrainingseinheit(int user_id);
 
   //@return id of added Trainingseinheit
   int AddTrainingseinheit(Trainingseinheit&);

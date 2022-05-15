@@ -3,6 +3,7 @@
 #include "qmessagebox.h"
 #include "registrierung.h"
 #include "main_menu.h"
+#include "trainingseinheitui.h"
 
 StayHealthy::StayHealthy(QWidget *parent)
     : QMainWindow(parent)

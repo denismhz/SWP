@@ -6,72 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>446</width>
+    <width>501</width>
     <height>431</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainMenu</string>
   </property>
-  <widget class="QWidget" name="formLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>140</x>
-     <y>170</y>
-     <width>161</width>
-     <height>91</height>
-    </rect>
-   </property>
-   <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="0">
-     <widget class="QPushButton" name="toProfilePage">
-      <property name="text">
-       <string>Profil</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="toMahlzeitenPage">
-      <property name="text">
-       <string>Mahlzeiten</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="toZeitplanPage">
-      <property name="text">
-       <string>Zeitplan</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="toPlaenePage">
-      <property name="text">
-       <string>Pläne</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QPushButton" name="homeButton">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>40</y>
+     <y>10</y>
      <width>75</width>
      <height>24</height>
     </rect>
@@ -79,6 +25,89 @@
    <property name="text">
     <string>home</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>40</y>
+     <width>421</width>
+     <height>361</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <widget class="QWidget" name="formLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>70</y>
+          <width>187</width>
+          <height>116</height>
+         </rect>
+        </property>
+        <layout class="QFormLayout" name="formLayout">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="toProfilePage">
+           <property name="text">
+            <string>Profil</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="toMahlzeitenPage">
+           <property name="text">
+            <string>Mahlzeiten</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="toZeitplanPage">
+           <property name="text">
+            <string>Zeitplan</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="toPlaenePage">
+           <property name="text">
+            <string>Pläne</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="pushButton_5">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="pushButton_6">
+           <property name="text">
+            <string>PushButton</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QPushButton" name="trainingseinheitenButton">
+           <property name="text">
+            <string>Trainingseinheiten</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_2"/>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
