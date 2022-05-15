@@ -356,6 +356,8 @@ int DBHandler::AddMahlzeit(Mahlzeit& m)
     query.bindValue(":datum", m.datum_);
     query.exec();
     query.finish();
+    //then add all the speisepositions from this Mahlzeit
+    qDebug() << query.lastInsertId();
     return query.lastInsertId().toInt();
 }
 
