@@ -85,11 +85,8 @@
     <ClCompile Include="zeitplan.cc">
       <Filter>Source Files\Benutzer</Filter>
     </ClCompile>
-    <ClCompile Include="sportler.cc">
+    <ClCompile Include="profil.cc">
       <Filter>Source Files\Benutzer</Filter>
-    </ClCompile>
-    <ClCompile Include="date_parser.cc">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="user.cc">
       <Filter>Source Files\Benutzer</Filter>
@@ -150,14 +147,8 @@
     <ClInclude Include="zeitplan.h">
       <Filter>Header Files\Benutzer</Filter>
     </ClInclude>
-    <ClInclude Include="sportler.h">
+    <ClInclude Include="profil.h">
       <Filter>Header Files\Benutzer</Filter>
-    </ClInclude>
-    <ClInclude Include="date.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="date_parser.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="login.h">
       <Filter>Header Files\Benutzer</Filter>
@@ -168,9 +159,6 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="profil_bearbeiten.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="trainingseinheitui.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -2,10 +2,6 @@
 #include <QtSql>
 #include "mahlzeit.h"
 
-User::User()
-{
-}
-
 User::User(QString email, QString password) : email_(email), password_(password), id_(0)
 {
 }
@@ -25,8 +21,7 @@ int User::GetId()
 bool User::AddUser(User& user)
 {
     QString prep =
-        "INSERT INTO dbo.Sportler (EMail, Password, Nachname, Vorname, Geschlecht) VALUES (:eMail, :password, "
-        ":name, :vorname, :geschlecht)";
+        "INSERT INTO dbo.Benutzer (EMail, Password) VALUES (:eMail, :password)";
     QSqlQuery query;
     query.prepare(prep);
     query.bindValue(":eMail", user.email_);
@@ -38,7 +33,7 @@ bool User::AddUser(User& user)
 
 bool User::DeleteUser(int id)
 {
-    QString prep = "DELETE FROM dbo.Sportler WHERE BenutzerID = ?";
+    QString prep = "DELETE FROM dbo.Benutzer WHERE BenutzerID = ?";
     QSqlQuery query;
     query.prepare(prep);
     query.addBindValue(id);
@@ -49,7 +44,7 @@ bool User::DeleteUser(int id)
 
 User* User::GetUser(int id)
 {
-    QString prep = "SELECT * FROM dbo.Sportler WHERE BenutzerID = :userID";
+    QString prep = "SELECT * FROM dbo.Benutzer WHERE BenutzerID = :userID";
     QSqlQuery query;
     query.prepare(prep);
     query.bindValue(":userID", id);
@@ -67,7 +62,7 @@ User* User::GetUser(int id)
 
 User* User::GetUser(QString email, QString password)
 {
-    QString prep = "SELECT * FROM dbo.Sportler WHERE EMail = :email AND Password = :password;";
+    QString prep = "SELECT * FROM dbo.Benutzer WHERE EMail = :email AND Password = :password;";
     QSqlQuery query;
     query.prepare(prep);
     query.bindValue(":email", email);
@@ -82,7 +77,7 @@ User* User::GetUser(QString email, QString password)
 bool User::UpdateUser(User& user)
 {
     QString prep =
-        "UPDATE dbo.Sportler "
+        "UPDATE dbo.Benutzer "
         "SET Email = :email, password = :password "
         "WHERE BenutzerID = :id";
     QSqlQuery query;

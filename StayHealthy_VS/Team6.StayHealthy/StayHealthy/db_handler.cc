@@ -1,6 +1,6 @@
 #include "db_handler.h"
-#include "date.h"
 #include <string>
+#include "trainingsplan.h"
 
 DBHandler::DBHandler() {
   db_ = QSqlDatabase::addDatabase("QODBC");
@@ -103,7 +103,7 @@ bool DBHandler::CustomQuery(QString prep){
 //@return id of user with email
 int DBHandler::CheckIfEmailExists(QString email) {
   QString prep =
-      "SELECT * FROM dbo.Sportler WHERE EMail = :email";
+      "SELECT * FROM dbo.Benutzer WHERE EMail = :email";
   QSqlQuery query;
   query.prepare(prep);
   query.bindValue(":email", email);
@@ -112,7 +112,7 @@ int DBHandler::CheckIfEmailExists(QString email) {
   return query.value(0).toInt();
 }
 
-Sportler* DBHandler::GetSportlerByUserId(int user_id)
+/*Sportler* DBHandler::GetSportlerByUserId(int user_id)
 {
     QString prep = "SELECT * FROM dbo.Sportler WHERE BenutzerID = :userID";
     QSqlQuery query;
@@ -131,9 +131,9 @@ Sportler* DBHandler::GetSportlerByUserId(int user_id)
     sportler->vorname_ = query.value("Vorname").toString();
     query.finish();
     return sportler;
-}
+}*/
 
-bool DBHandler::UpdateSportlerByUserId(int userID, Sportler &sportler)
+/*bool DBHandler::UpdateSportlerByUserId(int userID, Sportler& sportler)
 {
     QString prep =
         "UPDATE dbo.Sportler SET "
@@ -173,7 +173,7 @@ bool DBHandler::UpdateSportlerByUserId(int userID, Sportler &sportler)
     query.exec();
     query.finish();
     return 1;
-}
+}*/
 
 std::vector<Ernaerungsplan*> DBHandler::GetErnaerungsPlaeneVonBis(int user_id, QString anfang, QString ende)
 {

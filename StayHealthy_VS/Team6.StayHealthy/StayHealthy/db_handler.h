@@ -6,8 +6,8 @@
 #include <vector>
 #include "user.h"
 #include "ernaerungsplan.h"
-#include "date.h"
-#include "sportler.h"
+#include "profil.h"
+#include "trainingsplan.h"
 
 /*<- Singleton ->*/
 class DBHandler {
@@ -36,8 +36,8 @@ class DBHandler {
   int CheckIfEmailExists(QString);
 
   /*<- Sportler DB Actions ->*/
-  Sportler* GetSportlerByUserId(int);
-  bool UpdateSportlerByUserId(int, Sportler &);
+  //Sportler* GetSportlerByUserId(int);
+  //bool UpdateSportlerByUserId(int, Sportler &);
 
   /*<- Ernaerungsplan DB Actions ->*/
   bool AddErnaerungsplan(User &, Ernaerungsplan &);

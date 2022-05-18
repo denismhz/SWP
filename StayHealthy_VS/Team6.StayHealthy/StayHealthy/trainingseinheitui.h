@@ -32,7 +32,6 @@ private slots:
 	void UpdateLabel();
 
 private:
-	Ui::TrainingseinheitUI ui;
 	QStackedWidget* stack;
 	QSqlQuery* query;
 	Trainingseinheit* curr_te;

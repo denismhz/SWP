@@ -14,10 +14,7 @@
 
 TrainingseinheitUI::TrainingseinheitUI(QWidget *parent)
     : QWidget(parent)
-{
-
-    ui.setupUi(this);
-  
+{  
     timerr = new QTimer(this);
     query = nullptr;
     sec = 0;

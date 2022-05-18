@@ -3,8 +3,7 @@
 #include <QDialog>
 #include <QButtonGroup>
 #include "ui_profil_bearbeiten.h"
-
-#include "Sportler.h"
+#include "profil.h"
 
 class ProfilBearbeiten : public QDialog
 {
@@ -40,5 +39,5 @@ private:
 	void fillInputFields();
 
 	int userID;
-	Sportler* currentUser;
+	Profil* currentUserProfil;
 };

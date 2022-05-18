@@ -1,6 +1,4 @@
 #pragma once
-#ifndef STAYHEALTHY_USER_H_
-#define STAYHEALTHY_USER_H_
 #include "qstring.h"
 
 class User {
@@ -11,7 +9,6 @@ public:
   QString email_;
   QString password_;
 
-  User();
   User(QString email, QString password);
   User(QString email, QString password, int id);
   ~User();
@@ -29,5 +26,3 @@ public:
 
   static bool UpdateUser(User& user);
 };
-
-#endif //STAYHEALTHY_USER_H_

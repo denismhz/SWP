@@ -1,14 +1,12 @@
 #pragma once
-#include "user.h"
 #include "qstring.h"
-#include "zeitplan.h"
-#include "date.h"
-#include "date_parser.h"
+#include <QtSql>
+#include "user.h"
 
 //irgendwie ist superclass user hier absolut unnötig zumindest wie bis jetz alles ist
 //sportler ähnelt mehr einem profil eines users 
 
-class Sportler : public User
+class Profil
 {
 private:
 	int grundumsatz_; //kcal
@@ -28,12 +26,19 @@ public:
 	QString vorname_;
 	QString prefaerenz_;
 	QString geb_datum_;
-	Zeitplan* zeitplan_;
 
-	Sportler(int geschlecht, int weight, int height, int kalorienaufnahme, QString geb_datum, QString prefaerenz);
-	~Sportler();
+	Profil();
+	~Profil();
 
 	int GetGrundumsatz();
 	int GetAlter();
+
+	//Datenbankfunktionen
+	static bool AddProfil(Profil& profil, int id);
+
+	static Profil* GetProfil(int id);
+	static Profil* GetProfil(User& user);
+
+	static bool UpdateProfil(Profil& profil, int id);
 };
 

@@ -1,6 +1,5 @@
 #include "profil_bearbeiten.h"
 #include "registrierung.h"
-#include "db_handler.h"
 #include "login.h"
 #include <QMessageBox>
 #include <QInputDialog>
@@ -19,14 +18,7 @@ ProfilBearbeiten::ProfilBearbeiten(QDialog*parent)
 
 
     User* tmpUser = Login::GetInstance()->GetLoggedInUser();
-
-    currentUser = DBHandler::GetInstance()->GetSportlerByUserId(tmpUser->GetId());
-    //currentUser->name_ = tmpUser->name_;
-    //currentUser->vorname_ = tmpUser->vorname_;
-    currentUser->SetId(tmpUser->GetId());
-    currentUser->email_ = tmpUser->email_;
-    currentUser->password_ = tmpUser->password_;
-
+    currentUserProfil = Profil::GetProfil(*tmpUser);
 
     genderGroup.addButton(ui.radioButton_m);
     genderGroup.addButton(ui.radioButton_w);
@@ -82,10 +74,10 @@ void ProfilBearbeiten::on_pushButtonSaveChanges_clicked()
         ui.pushButtonUpgradeProfile->show();
 
         //TODO
-        currentUser->kalorienaufnahme_ = 0;
-        currentUser->prefaerenz_ = "";
+        currentUserProfil->kalorienaufnahme_ = 0;
+        currentUserProfil->prefaerenz_ = "";
 
-        DBHandler::GetInstance()->UpdateSportlerByUserId(currentUser->GetId(), *currentUser);
+        Profil::UpdateProfil(*currentUserProfil, Login::GetInstance()->GetLoggedInUser()->GetId());
     }    
 }
 
@@ -115,7 +107,7 @@ void ProfilBearbeiten::on_pushButtonDeleteProfile_clicked()
         if (isOk == false)
             break;
 
-        if (password == currentUser->password_)
+        if (password == Login::GetInstance()->GetLoggedInUser()->password_)
         {
             isPasswordCorrect = true;
         }            
@@ -189,34 +181,34 @@ void ProfilBearbeiten::resetInputFields()
 
 void ProfilBearbeiten::refreshLabels()
 {
-    ui.label_firstname->setText(currentUser->vorname_);
-    ui.label_lastname->setText(currentUser->name_);
+    ui.label_firstname->setText(currentUserProfil->vorname_);
+    ui.label_lastname->setText(currentUserProfil->name_);
 
 
-    ui.label_birthday->setText(currentUser->geb_datum_ + " (" + QString::number(currentUser->GetAlter()) + ")");
+    ui.label_birthday->setText(currentUserProfil->geb_datum_ + " (" + QString::number(currentUserProfil->GetAlter()) + ")");
 
-    if (currentUser->geschlecht_ != 0)
+    if (currentUserProfil->geschlecht_ != 0)
         ui.label_gender->setText("maennlich");
     else
         ui.label_gender->setText("weiblich");
 
-    ui.label_height->setText(QString::number(currentUser->height_));
-    ui.label_weight->setText(QString::number(currentUser->weight_));
+    ui.label_height->setText(QString::number(currentUserProfil->height_));
+    ui.label_weight->setText(QString::number(currentUserProfil->weight_));
 }
 
 void ProfilBearbeiten::setUpdatedUserData()
 {
-    currentUser->vorname_ = ui.lineEdit_firstname->text();
-    currentUser->name_ = ui.lineEdit_lastname->text();
-    currentUser->geb_datum_ = ui.dateEdit_birthday->date().toString("yyyy-MM-dd");
+    currentUserProfil->vorname_ = ui.lineEdit_firstname->text();
+    currentUserProfil->name_ = ui.lineEdit_lastname->text();
+    currentUserProfil->geb_datum_ = ui.dateEdit_birthday->date().toString("yyyy-MM-dd");
 
     if (ui.radioButton_m->isChecked())
-        currentUser->geschlecht_ = 1;
+        currentUserProfil->geschlecht_ = 1;
     else
-        currentUser->geschlecht_ = 0;
+        currentUserProfil->geschlecht_ = 0;
 
-    currentUser->height_ = ui.spinBox_height->value();
-    currentUser->weight_ = ui.spinBox_weight->value();
+    currentUserProfil->height_ = ui.spinBox_height->value();
+    currentUserProfil->weight_ = ui.spinBox_weight->value();
 }
 
 bool ProfilBearbeiten::inputsAreValid()
@@ -257,15 +249,15 @@ bool ProfilBearbeiten::inputsAreValid()
 
 void ProfilBearbeiten::fillInputFields()
 {
-    ui.lineEdit_firstname->setText(currentUser->vorname_);
-    ui.lineEdit_lastname->setText(currentUser->name_);
-    ui.dateEdit_birthday->setDate(QDate::fromString(currentUser->geb_datum_, "yyyy-MM-dd"));
+    ui.lineEdit_firstname->setText(currentUserProfil->vorname_);
+    ui.lineEdit_lastname->setText(currentUserProfil->name_);
+    ui.dateEdit_birthday->setDate(QDate::fromString(currentUserProfil->geb_datum_, "yyyy-MM-dd"));
 
-    if (currentUser->geschlecht_ == 0)
+    if (currentUserProfil->geschlecht_ == 0)
         ui.radioButton_w->setChecked(true);
     else
         ui.radioButton_m->setChecked(true);
 
-    ui.spinBox_height->setValue(currentUser->height_);
-    ui.spinBox_weight->setValue(currentUser->weight_);
+    ui.spinBox_height->setValue(currentUserProfil->height_);
+    ui.spinBox_weight->setValue(currentUserProfil->weight_);
 }
