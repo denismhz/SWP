@@ -28,7 +28,7 @@ class DBHandler {
   bool CustomQuery(QString);
 
   /*<- User DB Actions ->*/
-  bool AddUser(User &);
+  //bool AddUser(User &);
   bool DeleteUserById(int);
   bool UpdateUserByID(int, User &);
   User* GetUserById(int);
@@ -72,6 +72,8 @@ class DBHandler {
   //@param user_id, date_from, date_to
   std::vector<Mahlzeit*> GetMahlzeitenVonBis(int, QString von, QString bis);
   int AddMahlzeit(Mahlzeit&);
+
+  int AddSpeiseposition(Speiseposition &, int mahlzeit_id);
 };
 
 #endif //STAYHEALTHY_DB_HANDLER_H_

@@ -3,16 +3,15 @@
 #include "qmessagebox.h"
 #include "registrierung.h"
 #include "main_menu.h"
-#include "trainingseinheitui.h"
+#include "login.h"
 
 StayHealthy::StayHealthy(QWidget *parent)
     : QMainWindow(parent)
 {
-
     QVBoxLayout* main_layout = new QVBoxLayout(this);
     ui.setupUi(this);
     ui.stackedWidget->setCurrentIndex(0);
-    ui.horizontalLayout->addWidget(ui.homeButton);
+    
     //setup main menu
     menu = new MainMenu(this);
     ui.stackedWidget->addWidget(menu);
@@ -22,6 +21,7 @@ StayHealthy::StayHealthy(QWidget *parent)
     confirm_->setWindowTitle("Confirm");
     alert_ = new QMessageBox(parent);
     alert_->setWindowTitle("Alert");
+
 
     //Connect Buttons
     connect(ui.toRegisterPage, SIGNAL(clicked()), this, SLOT(WelcomeRegisterPressed()));
@@ -45,12 +45,15 @@ void StayHealthy::WelcomeLoginPressed()
 void StayHealthy::RegisterPressed() {
     QString email = ui.emailLineEdit_2->text();
     QString password = ui.passwordLineEdit_2->text();
-    QString name = ui.nachnameLineEdit->text();
-    QString vorname = ui.vornameLineEdit->text();
-    int geschlecht = ui.maennlichRadioButton->isChecked();
-    User* new_user = new User(email, password, name, vorname, geschlecht);
-    if (new_user->email_.isEmpty() || new_user->password_.isEmpty() || new_user->name_.isEmpty() || new_user->vorname_.isEmpty()) {
+    QString passwordwdh = ui.passwordwdh_lineedit->text();
+    User* new_user = new User(email, password);
+    if (new_user->email_.isEmpty() || new_user->password_.isEmpty()) {
         alert_->setText("Bitte alle Daten eingeben");
+        alert_->exec();
+    }
+    else if (QString::compare(password, passwordwdh, Qt::CaseSensitive))
+    {
+        alert_->setText("Passwörter stimmen nicht überein!");
         alert_->exec();
     }
     else if(Registrierung::RegistriereBenutzer(*new_user)) {
@@ -61,12 +64,11 @@ void StayHealthy::RegisterPressed() {
     else {
         alert_->setText("Registrierung fehlgeschlagen. Email adresse registriert oder falsch");
         alert_->exec();
-
-        //clear line edits
-        QList<QLineEdit*> line_edits = ui.stackedWidget->currentWidget()->findChildren<QLineEdit*>();
-        for (QLineEdit* le : line_edits) {
-            le->clear();
-        }
+    }
+    //clear line edits
+    QList<QLineEdit*> line_edits = ui.stackedWidget->currentWidget()->findChildren<QLineEdit*>();
+    for (QLineEdit* le : line_edits) {
+        le->clear();
     }
 }
 
@@ -79,18 +81,20 @@ void StayHealthy::LoginPressed()
         alert_->setText("Bitte alle Daten eingeben");
         alert_->exec();
     }
+    
     else if (!Login::GetInstance()->LoginUser(*user)) {
         alert_->setText("Login fehlgeschlagen. Email adresse oder passwort falsch");
         alert_->exec();
-        QList<QLineEdit*> line_edits = ui.stackedWidget->currentWidget()->findChildren<QLineEdit*>();
-        for (QLineEdit* le : line_edits) {
-            le->clear();
-        }
+        
     }
     else {
         confirm_->setText("Sie haben sich erfolgreich eingeloggt");
         confirm_->exec();
         ui.stackedWidget->setCurrentWidget(menu);
+    }
+    QList<QLineEdit*> line_edits = ui.stackedWidget->currentWidget()->findChildren<QLineEdit*>();
+    for (QLineEdit* le : line_edits) {
+        le->clear();
     }
 
     //hier weiterleiten zum profil ausfüllen dann sportler updaten

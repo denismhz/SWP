@@ -1,6 +1,5 @@
 #include "db_handler.h"
 #include "date.h"
-#include <strstream>
 #include <string>
 
 DBHandler::DBHandler() {
@@ -28,7 +27,7 @@ bool DBHandler::CustomQuery(QString prep){
     return 1;
 }
 
-bool DBHandler::AddUser(User & new_user) {
+/*bool DBHandler::AddUser(User& new_user) {
   QString prep =
       "INSERT INTO dbo.Sportler (EMail, Password, Nachname, Vorname, Geschlecht) VALUES (:eMail, :password, "
       ":name, :vorname, :geschlecht)";
@@ -36,15 +35,12 @@ bool DBHandler::AddUser(User & new_user) {
   query.prepare(prep);
   query.bindValue(":eMail", new_user.email_);
   query.bindValue(":password", new_user.password_);
-  query.bindValue(":name", new_user.name_);
-  query.bindValue(":vorname", new_user.vorname_);
-  query.bindValue(":geschlecht", new_user.geschlecht_);
   query.exec();
   query.finish();
   return 1;
-}
+}*/
 
-bool DBHandler::DeleteUserById(int user_id) {
+/*bool DBHandler::DeleteUserById(int user_id) {
   QString prep = "DELETE FROM dbo.Sportler WHERE BenutzerID = ?";
   QSqlQuery query;
   query.prepare(prep);
@@ -52,9 +48,9 @@ bool DBHandler::DeleteUserById(int user_id) {
   query.exec();
   query.finish();
   return 1;
-}
+}*/
 
-bool DBHandler::UpdateUserByID(int user_id, User &new_user) {
+/*bool DBHandler::UpdateUserByID(int user_id, User& new_user) {
   QString prep =
       "UPDATE dbo.Sportler SET EMail = :email, Password = :password"
       " WHERE BenutzerID = :id;";
@@ -66,9 +62,9 @@ bool DBHandler::UpdateUserByID(int user_id, User &new_user) {
   query.exec();
   query.finish();
   return 1;
-}
+}*/
 
-User *DBHandler::GetUserById(int user_id) {
+/*User* DBHandler::GetUserById(int user_id) {
   QString prep = "SELECT * FROM dbo.Sportler WHERE BenutzerID = :userID";
   QSqlQuery query;
   query.prepare(prep);
@@ -80,12 +76,12 @@ User *DBHandler::GetUserById(int user_id) {
   QString name = query.value(5).toString();
   QString vorname = query.value(6).toString();
   int geschlecht = query.value(11).toInt();
-  User* user = new User(email, password, name, vorname, geschlecht, user_id);
+  User* user = new User(email, password, user_id);
   query.finish();
   return user;
-}
+}*/
 
-User *DBHandler::GetUserByEmailAndPassword(QString email, QString password) {
+/*User* DBHandler::GetUserByEmailAndPassword(QString email, QString password) {
   QString prep = "SELECT * FROM dbo.Sportler WHERE EMail = :email AND Password = :password;";
   QSqlQuery query;
   query.prepare(prep);
@@ -96,13 +92,13 @@ User *DBHandler::GetUserByEmailAndPassword(QString email, QString password) {
   int id = query.value(0).toInt();
   QString name = query.value(5).toString();
   QString vorname = query.value(6).toString();
-  User *user = new User(email, password, name, vorname, id);
+  User *user = new User(email, password, id);
   query.finish();
   if (user_exists)
     return user;
   else
     return 0;
-}
+}*/
 
 //@return id of user with email
 int DBHandler::CheckIfEmailExists(QString email) {
@@ -131,6 +127,8 @@ Sportler* DBHandler::GetSportlerByUserId(int user_id)
     QString praeferenz = query.value(12).toString();
     int geschlecht = query.value(10).toInt();
     Sportler* sportler = new Sportler(geschlecht, weight, height, kalorienaufnahme, geb_datum, praeferenz);
+    sportler->name_ = query.value("Nachname").toString();
+    sportler->vorname_ = query.value("Vorname").toString();
     query.finish();
     return sportler;
 }
@@ -343,6 +341,22 @@ std::vector<Mahlzeit*> DBHandler::GetMahlzeitenVonBis(int user_id, QString anfan
     return mahlzeiten;
 }
 
+int DBHandler::AddSpeiseposition(Speiseposition& sp, int mahlzeit_id) {
+
+    QString prep =
+        "INSERT INTO dbo.Speiseposition (MahlzeitID, SpeiseID, Menge, Beschreibung) VALUES (:mahlzeit, :speise_id, :menge, :beschreibung)";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":mahlzeit", mahlzeit_id);
+    query.bindValue(":speise_id", sp.speise_id_);
+    query.bindValue(":menge", sp.menge_);
+    query.bindValue(":beschreibung", sp.beschreibung_);
+    query.exec();
+    query.finish();
+    qDebug() << query.lastError();
+    return query.lastInsertId().toInt();
+}
+
 int DBHandler::AddMahlzeit(Mahlzeit& m)
 {
     QString prep =
@@ -355,10 +369,14 @@ int DBHandler::AddMahlzeit(Mahlzeit& m)
     query.bindValue(":uhrzeit", m.uhrzeit_);
     query.bindValue(":datum", m.datum_);
     query.exec();
+    int mahlzeit_id = query.lastInsertId().toInt();
+    m.id_ = mahlzeit_id;
     query.finish();
     //then add all the speisepositions from this Mahlzeit
-    qDebug() << query.lastInsertId();
-    return query.lastInsertId().toInt();
+    for (auto sp : m.speisepositionen) {
+        AddSpeiseposition(*sp, m.id_);
+    }
+    return mahlzeit_id;
 }
 
 

@@ -8,6 +8,7 @@
 #include "qlabel.h"
 #include "qlineedit.h"
 #include "qstring.h"
+#include "login.h"
 
 //denke das sollte nur einheiten anzeigen die noch nicht durchgefuehrt wurden
 
@@ -90,7 +91,7 @@ void TrainingseinheitUI::SetUp() {
     }
     query = new QSqlQuery();
     query->prepare(prep);
-    query->bindValue(":user_id", 4);
+    query->bindValue(":user_id", Login::GetInstance()->GetLoggedInUser()->GetId());
     query->exec();
     //stack->setCurrentIndex(0);
     NextTe();

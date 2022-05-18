@@ -23,7 +23,7 @@ MainMenu::MainMenu(QWidget *parent)
 	connect(ui.trainingseinheitenButton, SIGNAL(clicked()), this, SLOT(on_trainingseinheitenButton_clicked()));
 	connect(ui.toMahlzeitenPage, SIGNAL(clicked()), this, SLOT(on_Mahlzeit_clicked()));
 	connect(back, SIGNAL(clicked()), this, SLOT(back_clicked()));
-	ui.toPlaenePage->hide();
+	//ui.toPlaenePage->hide();
 }
 
 MainMenu::~MainMenu()

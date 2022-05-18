@@ -106,11 +106,14 @@
     <ClCompile Include="profil_bearbeiten.cc">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
-    <ClCompile Include="mahlzeit_eingeben_ui.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="trainingseinheitui.cc">
       <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="mahlzeit_eingeben_ui.cc">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="login.cc">
+      <Filter>Source Files\Benutzer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +159,9 @@
     <ClInclude Include="date_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="login.h">
+      <Filter>Header Files\Benutzer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="main_menu.ui">
@@ -178,10 +184,10 @@
     <QtMoc Include="profil_bearbeiten.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
-    <QtMoc Include="trainingseinheitui.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="mahlzeit_eingeben_ui.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="trainingseinheitui.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
   </ItemGroup>

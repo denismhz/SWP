@@ -1,7 +1,7 @@
 #include "profil_bearbeiten.h"
 #include "registrierung.h"
 #include "db_handler.h"
-
+#include "login.h"
 #include <QMessageBox>
 #include <QInputDialog>
 
@@ -21,8 +21,8 @@ ProfilBearbeiten::ProfilBearbeiten(QDialog*parent)
     User* tmpUser = Login::GetInstance()->GetLoggedInUser();
 
     currentUser = DBHandler::GetInstance()->GetSportlerByUserId(tmpUser->GetId());
-    currentUser->name_ = tmpUser->name_;
-    currentUser->vorname_ = tmpUser->vorname_;
+    //currentUser->name_ = tmpUser->name_;
+    //currentUser->vorname_ = tmpUser->vorname_;
     currentUser->SetId(tmpUser->GetId());
     currentUser->email_ = tmpUser->email_;
     currentUser->password_ = tmpUser->password_;

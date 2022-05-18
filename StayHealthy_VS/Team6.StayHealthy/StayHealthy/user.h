@@ -10,19 +10,24 @@ private:
 public:
   QString email_;
   QString password_;
-  QString name_;
-  QString vorname_;
-
-  int geschlecht_;
 
   User();
-  User(QString, QString);
-  User(QString, QString, QString, QString, int);
-  User(QString, QString, QString, QString, int, int);
+  User(QString email, QString password);
+  User(QString email, QString password, int id);
   ~User();
 
   int GetId();
   void SetId(int id) { id_ = id; }
+
+  //Datenbankfunktionen
+  static bool AddUser(User& user);
+
+  static bool DeleteUser(int id);
+
+  static User* GetUser(int id);
+  static User* GetUser(QString email, QString password);
+
+  static bool UpdateUser(User& user);
 };
 
 #endif //STAYHEALTHY_USER_H_

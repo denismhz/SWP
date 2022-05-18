@@ -24,6 +24,8 @@ public:
 	int kalorienaufnahme_; //kcal startwert durchschnittliche aufnahme pro woche von sportler angegeben
 	int geschlecht_;
 	
+	QString name_;
+	QString vorname_;
 	QString prefaerenz_;
 	QString geb_datum_;
 	Zeitplan* zeitplan_;

@@ -114,6 +114,7 @@
     <ClCompile Include="main_menu.cc" />
     <ClCompile Include="profil_bearbeiten.cc" />
     <ClCompile Include="registrierung.cc" />
+    <ClCompile Include="login.cc" />
     <ClCompile Include="speiseposition.cc" />
     <ClCompile Include="sportler.cc" />
     <ClCompile Include="statistik.cc" />
@@ -138,6 +139,7 @@
     <ClInclude Include="date_parser.h" />
     <ClInclude Include="db_handler.h" />
     <ClInclude Include="ernaerungsplan.h" />
+    <ClInclude Include="login.h" />
     <ClInclude Include="mahlzeit.h" />
     <QtMoc Include="main_menu.h" />
     <QtMoc Include="profil_bearbeiten.h" />

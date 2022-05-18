@@ -9,6 +9,7 @@
 #include "qlabel.h"
 #include "qdatetime.h"
 #include "registrierung.h"
+#include "login.h"
 
 MahlzeitEingebenUI::MahlzeitEingebenUI(QWidget *parent)
     : QWidget(parent)
@@ -73,6 +74,7 @@ void MahlzeitEingebenUI::AddSpeisePos()
     speisepos->menge_ = this->findChild<QLineEdit*>("menge")->text().toInt();
     speisepos->beschreibung_ = this->findChild<QComboBox*>("speisen")->currentText();
 
+    //get speiseid
     QString prep = "SELECT SpeiseID from Speise WHERE Titel = :titel;";
     QSqlQuery query;
     query.prepare(prep);
@@ -87,6 +89,7 @@ void MahlzeitEingebenUI::AddSpeisePos()
 
     QHBoxLayout* speisepos_layout = new QHBoxLayout(speisepos_widget);
     new_mahlzeit->speisepositionen.push_back(speisepos);
+    qDebug() << new_mahlzeit->speisepositionen.size();
 
     QLabel* speisepos_beschreibung = new QLabel(speisepos->beschreibung_, speisepos_widget);
     QLabel* speisepos_menge = new QLabel(QString::number(speisepos->menge_), speisepos_widget);
@@ -114,7 +117,8 @@ void MahlzeitEingebenUI::Finish()
     new_mahlzeit->uhrzeit_ = QTime::currentTime().toString();
     new_mahlzeit->ernaehrungsplan_id_ = 0;
     new_mahlzeit->user_id_ = Login::GetInstance()->GetLoggedInUser()->GetId();
-    DBHandler::GetInstance()->AddMahlzeit(*new_mahlzeit);
+    new_mahlzeit->id_ = DBHandler::GetInstance()->AddMahlzeit(*new_mahlzeit);
+    qDebug() << new_mahlzeit->speisepositionen.size();
     this->findChild<QWidget*>("add_new_mahlzeit")->show();
     this->findChild<QWidget*>("mahlzeit_eingeben_widget")->hide();
 
