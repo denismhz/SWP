@@ -1,6 +1,4 @@
 #include "registrierung.h"
-#include "user.h"
-#include "db_handler.h"
 
 bool Registrierung::ValidiereEmail(QString email)
 {
@@ -13,7 +11,7 @@ bool Registrierung::ValidiereEmail(QString email)
 
 bool Registrierung::RegistriereBenutzer(User& new_user)
 {
-	if (!Registrierung::ValidiereEmail(new_user.email_) || DBHandler::GetInstance()->CheckIfEmailExists(new_user.email_)) {
+	if (!Registrierung::ValidiereEmail(new_user.email_) || CheckIfEmailExists(new_user.email_)) {
 		return false;
 	}
 	User::AddUser(new_user);
@@ -22,5 +20,17 @@ bool Registrierung::RegistriereBenutzer(User& new_user)
 
 bool Registrierung::BenutzerExistiert(User& check_user)
 {
-	return DBHandler::GetInstance()->CheckIfEmailExists(check_user.email_);
+	return CheckIfEmailExists(check_user.email_);
+}
+
+bool Registrierung::CheckIfEmailExists(QString& email)
+{
+	QString prep =
+		"SELECT * FROM dbo.Benutzer WHERE EMail = :email";
+	QSqlQuery query;
+	query.prepare(prep);
+	query.bindValue(":email", email);
+	query.exec();
+	if (!query.first()) return false;
+	return true;
 }

@@ -6,87 +6,77 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>501</width>
-    <height>431</height>
+    <width>546</width>
+    <height>436</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainMenu</string>
   </property>
-  <widget class="QPushButton" name="homeButton">
+  <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>75</width>
-     <height>24</height>
+     <x>60</x>
+     <y>20</y>
+     <width>419</width>
+     <height>359</height>
     </rect>
    </property>
-   <property name="text">
-    <string>home</string>
+   <property name="currentIndex">
+    <number>0</number>
    </property>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>421</width>
-     <height>361</height>
-    </rect>
-   </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QStackedWidget" name="stackedWidget">
-      <property name="currentIndex">
-       <number>0</number>
+   <widget class="QWidget" name="page">
+    <widget class="QWidget" name="formLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>110</y>
+       <width>187</width>
+       <height>116</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetNoConstraint</enum>
       </property>
-      <widget class="QWidget" name="page">
-       <widget class="QWidget" name="formLayoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>70</y>
-          <width>187</width>
-          <height>116</height>
-         </rect>
+      <property name="labelAlignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="formAlignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <item row="0" column="0">
+       <widget class="QPushButton" name="toProfilePage">
+        <property name="text">
+         <string>Profil</string>
         </property>
-        <layout class="QFormLayout" name="formLayout">
-         <item row="0" column="0">
-          <widget class="QPushButton" name="toProfilePage">
-           <property name="text">
-            <string>Profil</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QPushButton" name="trainingseinheitenButton">
-           <property name="text">
-            <string>Trainingseinheiten</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QPushButton" name="toPlaenePage">
-           <property name="text">
-            <string>Pläne</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QPushButton" name="toMahlzeitenPage">
-           <property name="text">
-            <string>Mahlzeiten</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
        </widget>
-      </widget>
-      <widget class="QWidget" name="page_2"/>
-     </widget>
-    </item>
-   </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="trainingseinheitenButton">
+        <property name="text">
+         <string>Trainingseinheiten</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="toPlaenePage">
+        <property name="text">
+         <string>Pläne</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QPushButton" name="toMahlzeitenPage">
+        <property name="text">
+         <string>Mahlzeiten</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2"/>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

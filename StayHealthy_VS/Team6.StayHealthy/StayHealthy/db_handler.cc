@@ -101,7 +101,7 @@ bool DBHandler::CustomQuery(QString prep){
 }*/
 
 //@return id of user with email
-int DBHandler::CheckIfEmailExists(QString email) {
+/*int DBHandler::CheckIfEmailExists(QString email) {
   QString prep =
       "SELECT * FROM dbo.Benutzer WHERE EMail = :email";
   QSqlQuery query;
@@ -110,7 +110,7 @@ int DBHandler::CheckIfEmailExists(QString email) {
   query.exec();
   if (!query.first()) return false;
   return query.value(0).toInt();
-}
+}*/
 
 /*Sportler* DBHandler::GetSportlerByUserId(int user_id)
 {

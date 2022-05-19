@@ -126,7 +126,6 @@
     <QtRcc Include="stayhealthy.qrc" />
     <QtUic Include="main_menu.ui" />
     <QtUic Include="profil_bearbeiten.ui" />
-    <QtUic Include="stayhealthy.ui" />
     <QtMoc Include="stayhealthy.h" />
     <ClCompile Include="db_handler.cc" />
     <ClCompile Include="steayhealthy.cc" />

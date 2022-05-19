@@ -6,15 +6,25 @@
 #include "login.h"
 
 StayHealthy::StayHealthy(QWidget *parent)
-    : QMainWindow(parent)
+    : QWidget(parent)
 {
     QVBoxLayout* main_layout = new QVBoxLayout(this);
-    ui.setupUi(this);
-    ui.stackedWidget->setCurrentIndex(0);
+    main_layout->setAlignment(Qt::AlignCenter);
+
+    stack_ = new QStackedWidget(this);
+    QVBoxLayout* stack_layout = new QVBoxLayout(stack_);
+    main_layout->addWidget(stack_);
     
+    stack_->addWidget(SetupWelcomeUI());
+    stack_->addWidget(SetupRegisterUI());
+    stack_->addWidget(SetupLoginUI());
+
+
+
+
     //setup main menu
-    menu = new MainMenu(this);
-    ui.stackedWidget->addWidget(menu);
+    menu = new MainMenu(stack_);
+    stack_->addWidget(menu);
 
     //setup message boxes
     confirm_ = new QMessageBox(parent);
@@ -22,30 +32,53 @@ StayHealthy::StayHealthy(QWidget *parent)
     alert_ = new QMessageBox(parent);
     alert_->setWindowTitle("Alert");
 
+    QPushButton* back_button = new QPushButton("Zuruck", this);
+    back_button->setObjectName("back");
+    
+    main_layout->addWidget(back_button);
+    
+   
+    this->setStyleSheet("QPushButton {display: inline-block; outline : 0;"
+                        "border: none; cursor: pointer; font-weight: 600;"
+                        "border-radius: 4px; font-size: 13px; height: 30px;"
+                        "border-width: 1px;"
+                        "background-color: lightgrey; color: black; padding: 0 20px;}"
+                        "QPushButton:hover{background-color: darkgrey;}"
+                        "QLabel {font-size: 13px; font-weight: 600;}"
+                        "QLineEdit { border: none; }");
+   
+
+    stack_->setCurrentIndex(0);
 
     //Connect Buttons
-    connect(ui.toRegisterPage, SIGNAL(clicked()), this, SLOT(WelcomeRegisterPressed()));
-    connect(ui.toLoginPage, SIGNAL(clicked()), this, SLOT(WelcomeLoginPressed()));
-    connect(ui.registerButton, SIGNAL(clicked()), this, SLOT(RegisterPressed()));
-    connect(ui.loginButton, SIGNAL(clicked()), this, SLOT(LoginPressed()));
-    connect(ui.homeButton, SIGNAL(clicked()), this, SLOT(HomePressed()));
-    connect(ui.homeButtonL, SIGNAL(clicked()), this, SLOT(HomePressed()));
+
+
+    connect(back_button, SIGNAL(clicked()), this, SLOT(HomePressed()));
+    //connect(ui.homeButtonL, SIGNAL(clicked()), this, SLOT(HomePressed()));
 }
 
 void StayHealthy::WelcomeRegisterPressed()
 {
-    ui.stackedWidget->setCurrentIndex(2);
+    stack_->setCurrentIndex(1);
 }
 
 void StayHealthy::WelcomeLoginPressed()
 {
-    ui.stackedWidget->setCurrentIndex(1);
+    stack_->setCurrentIndex(2);
 }
 
 void StayHealthy::RegisterPressed() {
-    QString email = ui.emailLineEdit_2->text();
-    QString password = ui.passwordLineEdit_2->text();
-    QString passwordwdh = ui.passwordwdh_lineedit->text();
+   
+    QString password = stack_->currentWidget()->findChild<QLineEdit*>("reg_pass")->text();
+    QString passwordwdh = stack_->currentWidget()->findChild<QLineEdit*>("reg_pass_wdh")->text();
+    QString email = stack_->currentWidget()->findChild<QLineEdit*>("reg_email")->text();
+
+    //clear line edits
+    QList<QLineEdit*> line_edits = stack_->currentWidget()->findChildren<QLineEdit*>();
+    for (QLineEdit* le : line_edits) {
+        le->clear();
+    }
+
     User* new_user = new User(email, password);
     if (new_user->email_.isEmpty() || new_user->password_.isEmpty()) {
         alert_->setText("Bitte alle Daten eingeben");
@@ -59,23 +92,26 @@ void StayHealthy::RegisterPressed() {
     else if(Registrierung::RegistriereBenutzer(*new_user)) {
         confirm_->setText("Sie haben sich erfolgreich registriert");
         confirm_->exec();
-        ui.stackedWidget->setCurrentIndex(0);
+        stack_->setCurrentIndex(0);
     }
     else {
         alert_->setText("Registrierung fehlgeschlagen. Email adresse registriert oder falsch");
         alert_->exec();
     }
-    //clear line edits
-    QList<QLineEdit*> line_edits = ui.stackedWidget->currentWidget()->findChildren<QLineEdit*>();
-    for (QLineEdit* le : line_edits) {
-        le->clear();
-    }
+    
+    delete new_user;
 }
 
 void StayHealthy::LoginPressed()
 {
-    QString email = ui.emailLineEdit->text();
-    QString password = ui.passwordLineEdit->text();
+    QString email = stack_->currentWidget()->findChild<QLineEdit*>("login_email")->text();
+    QString password = stack_->currentWidget()->findChild<QLineEdit*>("login_pass")->text();
+    qDebug() << email << password << ":::asd";
+
+    QList<QLineEdit*> line_edits = stack_->currentWidget()->findChildren<QLineEdit*>();
+    for (QLineEdit* le : line_edits) {
+        le->clear();
+    }
     User* user = new User(email, password);
     if (user->email_.isEmpty() || user->password_.isEmpty()) {
         alert_->setText("Bitte alle Daten eingeben");
@@ -85,25 +121,106 @@ void StayHealthy::LoginPressed()
     else if (!Login::GetInstance()->LoginUser(*user)) {
         alert_->setText("Login fehlgeschlagen. Email adresse oder passwort falsch");
         alert_->exec();
-        
     }
     else {
         confirm_->setText("Sie haben sich erfolgreich eingeloggt");
+        stack_->setCurrentWidget(menu);
+        this->findChild<QPushButton*>("back")->hide();
         confirm_->exec();
-        ui.stackedWidget->setCurrentWidget(menu);
     }
-    QList<QLineEdit*> line_edits = ui.stackedWidget->currentWidget()->findChildren<QLineEdit*>();
-    for (QLineEdit* le : line_edits) {
-        le->clear();
-    }
-
+    delete user;
     //hier weiterleiten zum profil ausfüllen dann sportler updaten
     //Note: email lookup is case insensitive
 }
 
 void StayHealthy::HomePressed()
 {
-    ui.stackedWidget->setCurrentIndex(0);
+    stack_->setCurrentIndex(0);
+}
+
+QWidget* StayHealthy::SetupLoginUI() {
+    
+    QWidget* login_page = new QWidget(stack_);
+    QFormLayout* form = new QFormLayout(login_page);
+
+    QVBoxLayout* login_page_layout = new QVBoxLayout(login_page);
+    login_page_layout->setAlignment(Qt::AlignCenter);
+   
+    QLabel* email_label = new QLabel("Email: ");
+    login_page_layout->addWidget(email_label);
+    QLineEdit* login_email = new QLineEdit(login_page);
+    login_email->setObjectName("login_email");
+    login_page_layout->addWidget(login_email);
+    form->addRow(email_label, login_email);
+
+    QLabel* password_label = new QLabel("Passwort: ");
+    login_page_layout->addWidget(password_label);
+    QLineEdit* login_pass = new QLineEdit(login_page);
+    login_pass->setEchoMode(QLineEdit::Password);
+    login_pass->setObjectName("login_pass");
+    login_page_layout->addWidget(login_pass);
+    form->addRow(password_label, login_pass);
+
+    QPushButton* login_button = new QPushButton("Login", login_page);
+    login_page_layout->addWidget(login_button);
+    form->addRow(login_button);
+   
+    connect(login_button, SIGNAL(clicked()), this, SLOT(LoginPressed()));
+
+    return login_page;
+}
+
+QWidget* StayHealthy::SetupWelcomeUI()
+{
+    QWidget* welcome_page = new QWidget(stack_);
+    QHBoxLayout* welcome_page_layout = new QHBoxLayout(welcome_page);
+    QPushButton* toRegisterPage = new QPushButton("Registrieren", welcome_page);
+    QPushButton* toLoginPage = new QPushButton("Login", welcome_page);
+    welcome_page_layout->addWidget(toRegisterPage);
+    welcome_page_layout->addWidget(toLoginPage);
+
+    connect(toRegisterPage, SIGNAL(clicked()), this, SLOT(WelcomeRegisterPressed()));
+    connect(toLoginPage, SIGNAL(clicked()), this, SLOT(WelcomeLoginPressed()));
+
+    return welcome_page;
+}
+
+QWidget* StayHealthy::SetupRegisterUI()
+{
+    
+    QWidget* register_page = new QWidget(stack_);
+    QFormLayout* form = new QFormLayout(register_page);
+
+    QVBoxLayout* register_page_layout = new QVBoxLayout(register_page);
+
+    QLabel* email_label = new QLabel("Email: ");
+    QLineEdit* reg_email = new QLineEdit(register_page);
+    register_page_layout->addWidget(reg_email);
+    reg_email->setObjectName("reg_email");
+    
+    form->addRow(email_label, reg_email);
+
+    QLabel* password_label = new QLabel("Passwort: ");
+    QLineEdit* reg_pass = new QLineEdit(register_page);
+    reg_pass->setEchoMode(QLineEdit::Password);
+    reg_pass->setObjectName("reg_pass");
+    register_page_layout->addWidget(reg_pass);
+    form->addRow(password_label, reg_pass);
+
+    QLabel* password_wdh_label = new QLabel("Passwort Wiederholen: ");
+    QLineEdit* reg_pass_wdh = new QLineEdit(register_page);
+    reg_pass_wdh->setEchoMode(QLineEdit::Password);
+    reg_pass_wdh->setObjectName("reg_pass_wdh");
+    register_page_layout->addWidget(reg_pass_wdh);
+    form->addRow(password_wdh_label, reg_pass_wdh);
+
+    QPushButton* registerButton = new QPushButton("Registrieren");
+    register_page_layout->addWidget(registerButton);
+    form->addRow(registerButton);
+
+    connect(registerButton, SIGNAL(clicked()), this, SLOT(RegisterPressed()));
+
+    return register_page;
 }
 
 

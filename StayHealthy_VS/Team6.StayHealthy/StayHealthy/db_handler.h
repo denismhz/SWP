@@ -27,22 +27,7 @@ class DBHandler {
 
   bool CustomQuery(QString);
 
-  /*<- User DB Actions ->*/
-  //bool AddUser(User &);
-  bool DeleteUserById(int);
-  bool UpdateUserByID(int, User &);
-  User* GetUserById(int);
-  User* GetUserByEmailAndPassword(QString, QString);
-  int CheckIfEmailExists(QString);
-
-  /*<- Sportler DB Actions ->*/
-  //Sportler* GetSportlerByUserId(int);
-  //bool UpdateSportlerByUserId(int, Sportler &);
-
   /*<- Ernaerungsplan DB Actions ->*/
-  bool AddErnaerungsplan(User &, Ernaerungsplan &);
-  bool UpdateErnaerungsplan(User &, Ernaerungsplan &);
-  bool DeleteErnaerungsplan(Ernaerungsplan&);
   std::vector<Ernaerungsplan*> GetErnaerungsPlaeneVonBis(int, QString von, QString bis);
 
   /*<- Trainingsplan DB Actions ->*/

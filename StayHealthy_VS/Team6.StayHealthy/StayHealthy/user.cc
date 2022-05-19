@@ -50,19 +50,30 @@ User* User::GetUser(int id)
     query.bindValue(":userID", id);
     query.exec();
     query.first();
-    QString email = query.value(1).toString();
-    QString password = query.value(2).toString();
-    QString name = query.value(5).toString();
-    QString vorname = query.value(6).toString();
-    int geschlecht = query.value(11).toInt();
+    QString email = query.value("Email").toString();
+    QString password = query.value("Password").toString();
     User* user = new User(email, password, id);
+    query.finish();
+    return user;
+}
+
+User* User::GetUser(QString email)
+{
+    QString prep = "SELECT * FROM dbo.Benutzer WHERE Email = :email;";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":email", email);
+    query.exec();
+    query.first();
+    int id = query.value("BenutzerID").toInt();
+    User* user = new User(email, query.value("Password").toString(), id);
     query.finish();
     return user;
 }
 
 User* User::GetUser(QString email, QString password)
 {
-    QString prep = "SELECT * FROM dbo.Benutzer WHERE EMail = :email AND Password = :password;";
+    QString prep = "SELECT * FROM dbo.Benutzer WHERE Email = :email AND Password = :password;";
     QSqlQuery query;
     query.prepare(prep);
     query.bindValue(":email", email);

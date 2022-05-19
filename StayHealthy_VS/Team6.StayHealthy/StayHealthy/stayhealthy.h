@@ -4,7 +4,7 @@
 #include "ui_stayhealthy.h"
 #include "qmessagebox.h"
 
-class StayHealthy : public QMainWindow
+class StayHealthy : public QWidget
 {
     Q_OBJECT
 
@@ -23,5 +23,12 @@ public slots:
     void HomePressed();
 
 private:
-    Ui::StayHealthyClass ui;
+    //Ui::StayHealthyClass ui;
+    QStackedWidget* stack_;
+
+    QWidget* SetupWelcomeUI();
+    QWidget* SetupRegisterUI();
+    QWidget* SetupLoginUI();
+    
+
 };

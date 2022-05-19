@@ -2,6 +2,7 @@
 #include "trainingsplan.h"
 #include "profil_bearbeiten.h"
 #include "qpushbutton.h"
+#include "trainingseinheit.h"
 
 
 MainMenu::MainMenu(QWidget *parent)
@@ -18,7 +19,7 @@ MainMenu::MainMenu(QWidget *parent)
 	ui.stackedWidget->layout()->addWidget(teui);
 	main_layout->addWidget(back);
 	main_layout->addWidget(ui.stackedWidget);
-	connect(ui.homeButton, SIGNAL(clicked()), parentWidget(), SLOT(HomePressed())); 
+	//connect(ui.homeButton, SIGNAL(clicked()), parentWidget(), SLOT(HomePressed())); 
 	connect(ui.toPlaenePage, SIGNAL(clicked()), this, SLOT(ErstellePlanTest()));
 	connect(ui.trainingseinheitenButton, SIGNAL(clicked()), this, SLOT(on_trainingseinheitenButton_clicked()));
 	connect(ui.toMahlzeitenPage, SIGNAL(clicked()), this, SLOT(on_Mahlzeit_clicked()));

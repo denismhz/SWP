@@ -22,6 +22,7 @@ public:
   static bool DeleteUser(int id);
 
   static User* GetUser(int id);
+  static User* GetUser(QString email);
   static User* GetUser(QString email, QString password);
 
   static bool UpdateUser(User& user);

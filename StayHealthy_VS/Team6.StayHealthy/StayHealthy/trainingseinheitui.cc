@@ -10,8 +10,6 @@
 #include "qstring.h"
 #include "login.h"
 
-//denke das sollte nur einheiten anzeigen die noch nicht durchgefuehrt wurden
-
 TrainingseinheitUI::TrainingseinheitUI(QWidget *parent)
     : QWidget(parent)
 {  
