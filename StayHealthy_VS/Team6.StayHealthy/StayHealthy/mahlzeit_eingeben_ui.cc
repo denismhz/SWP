@@ -11,11 +11,13 @@
 #include "registrierung.h"
 #include "login.h"
 
-MahlzeitEingebenUI::MahlzeitEingebenUI(QWidget *parent)
-    : QWidget(parent)
+MahlzeitEingebenUI::MahlzeitEingebenUI(QWidget *parent, int e_plan_id)
+    : QWidget(parent), e_plan_id_(e_plan_id)
 {
     speisepos_area = new QScrollArea(this);
     new_mahlzeit = nullptr;
+    scroll_widget_ = new QWidget(this);
+    QVBoxLayout* scroll_layout = new QVBoxLayout(scroll_widget_);
 
     QVBoxLayout* main_layout = new QVBoxLayout(this);
     main_layout->setAlignment(Qt::AlignTop);
@@ -53,7 +55,7 @@ MahlzeitEingebenUI::MahlzeitEingebenUI(QWidget *parent)
     add_speise_button->setFixedWidth(100);
     eingabe_layout->addWidget(add_speise_button);
 
-    QPushButton* done = new QPushButton("Fertig", this);
+    QPushButton* done = new QPushButton("Mahlzeit hinzufügen", this);
     connect(done, SIGNAL(clicked()), this, SLOT(Finish()));
     main_layout->addWidget(done);
 }
@@ -81,11 +83,11 @@ void MahlzeitEingebenUI::AddSpeisePos()
     query.bindValue(":titel", speisepos->beschreibung_);
     query.exec();
     query.first();
-    speisepos->speise_id_ = query.value(0).toInt();
+    speisepos->speise_id_ = query.value("SpeiseID").toInt();
 
-    QWidget* speisepos_widget = new QWidget(this);
+    QWidget* speisepos_widget = new QWidget(scroll_widget_);
     speisepos_widget->setObjectName("speisepos_widget");
-    this->layout()->addWidget(speisepos_widget);
+    scroll_widget_->layout()->addWidget(speisepos_widget);
 
     QHBoxLayout* speisepos_layout = new QHBoxLayout(speisepos_widget);
     new_mahlzeit->speisepositionen.push_back(speisepos);
@@ -95,6 +97,8 @@ void MahlzeitEingebenUI::AddSpeisePos()
     QLabel* speisepos_menge = new QLabel(QString::number(speisepos->menge_), speisepos_widget);
     speisepos_layout->addWidget(speisepos_beschreibung);
     speisepos_layout->addWidget(speisepos_menge);
+    speisepos_area->setWidget(scroll_widget_);
+    speisepos_area->setWidgetResizable(true);
 }
 
 void MahlzeitEingebenUI::Finish()
@@ -115,9 +119,10 @@ void MahlzeitEingebenUI::Finish()
     }
     new_mahlzeit->datum_ = QDate::currentDate().toString(Qt::DateFormat::ISODate);
     new_mahlzeit->uhrzeit_ = QTime::currentTime().toString();
-    new_mahlzeit->ernaehrungsplan_id_ = 0;
+    new_mahlzeit->ernaehrungsplan_id_ = e_plan_id_;
     new_mahlzeit->user_id_ = Login::GetInstance()->GetLoggedInUser()->GetId();
-    new_mahlzeit->id_ = DBHandler::GetInstance()->AddMahlzeit(*new_mahlzeit);
+    //new_mahlzeit->id_ = DBHandler::GetInstance()->AddMahlzeit(*new_mahlzeit);
+    new_mahlzeit->id_ = Mahlzeit::AddMahlzeit(*new_mahlzeit);
     qDebug() << new_mahlzeit->speisepositionen.size();
     this->findChild<QWidget*>("add_new_mahlzeit")->show();
     this->findChild<QWidget*>("mahlzeit_eingeben_widget")->hide();

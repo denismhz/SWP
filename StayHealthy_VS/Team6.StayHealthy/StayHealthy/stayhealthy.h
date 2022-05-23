@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include "ui_stayhealthy.h"
+#include "qstackedwidget.h"
 #include "qmessagebox.h"
 
 class StayHealthy : public QWidget

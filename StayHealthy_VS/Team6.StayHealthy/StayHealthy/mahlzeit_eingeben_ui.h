@@ -11,8 +11,12 @@ class MahlzeitEingebenUI : public QWidget
 	Q_OBJECT
 
 public:
-	MahlzeitEingebenUI(QWidget *parent);
+	MahlzeitEingebenUI(QWidget *parent, int e_plan_id);
 	~MahlzeitEingebenUI();
+	int e_plan_id_;
+	QWidget* scroll_widget_;
+	Mahlzeit* new_mahlzeit;
+	std::vector<Mahlzeit*> mahlzeiten;
 
 private slots:
 	void ShowEingabe();
@@ -20,7 +24,6 @@ private slots:
 	void Finish();
 
 private:
-	Mahlzeit* new_mahlzeit;
 	QScrollArea* speisepos_area;
 	void FillComboBox(QComboBox* box);
 };

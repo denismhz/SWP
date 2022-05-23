@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_trainingseinheitui.h"
 #include <vector>
 #include "trainingseinheit.h"
 #include "db_handler.h"

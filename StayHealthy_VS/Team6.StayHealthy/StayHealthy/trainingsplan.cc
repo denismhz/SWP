@@ -71,7 +71,7 @@ void Trainingsplan::ErstelleTrainingsplan(QString start_datum, QString pref)
 	int kalorien_pro_uebung = 0;
 
 	//get all mahlzeiten from last week to calculate kalorienaufnahme
-	mahlzeiten = DBHandler::GetInstance()->GetMahlzeitenVonBis(user->GetId(), m_datum_start, m_datum_ende);
+	//mahlzeiten = DBHandler::GetInstance()->GetMahlzeitenVonBis(user->GetId(), m_datum_start, m_datum_ende);
 	if (mahlzeiten.empty()) {
 		kalorienaufnahme_letzte_7_tage = profil->kalorienaufnahme_;
 		qDebug() << "empty" << kalorienaufnahme_letzte_7_tage;

@@ -3,7 +3,7 @@
 #include <qstring.h>
 #include <mahlzeit.h>
 
-class Ernaerungsplan
+class Ernaehrungsplan
 {
 private:
 	int id_;
@@ -14,12 +14,21 @@ private:
 public:
 	QString start_datum_;
 	QString end_dataum; //braucht man das hier oder ist ein plan immer eine woche
-	QString beschreibung;
+	int user_id_;
 	std::vector<Mahlzeit*> mahlzeiten;
 
-	Ernaerungsplan();
-	~Ernaerungsplan();
+	Ernaehrungsplan();
+	~Ernaehrungsplan();
 
 	int GetID();
+	void SetID(int id);
 	int GetKaloriengehalt();
+
+	//Datenbank funktionen
+	static Ernaehrungsplan* GetErnaehrungsplan(int user_id, QString start_datum);
+	static std::vector<Ernaehrungsplan*> GetErnaehrungsplan(int user_id);
+
+	static int AddErnaehrungsplan(Ernaehrungsplan&);
+
+	static bool DeleteErnaehrungsplan(int id);
 }; 

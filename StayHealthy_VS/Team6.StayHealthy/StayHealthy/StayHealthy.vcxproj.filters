@@ -79,9 +79,6 @@
     <ClCompile Include="uebungsposition.cc">
       <Filter>Source Files\Training</Filter>
     </ClCompile>
-    <ClCompile Include="zeitplan.cc">
-      <Filter>Source Files\Benutzer</Filter>
-    </ClCompile>
     <ClCompile Include="profil.cc">
       <Filter>Source Files\Benutzer</Filter>
     </ClCompile>
@@ -108,6 +105,15 @@
     </ClCompile>
     <ClCompile Include="login.cc">
       <Filter>Source Files\Benutzer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ernaehrungsplanui.cpp">
+      <Filter>Source Files\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -141,9 +147,6 @@
     <ClInclude Include="user.h">
       <Filter>Header Files\Benutzer</Filter>
     </ClInclude>
-    <ClInclude Include="zeitplan.h">
-      <Filter>Header Files\Benutzer</Filter>
-    </ClInclude>
     <ClInclude Include="profil.h">
       <Filter>Header Files\Benutzer</Filter>
     </ClInclude>
@@ -175,5 +178,11 @@
     <QtMoc Include="trainingseinheitui.h">
       <Filter>Header Files\UI</Filter>
     </QtMoc>
+    <QtMoc Include="ernaehrungsplanui.h">
+      <Filter>Header Files\UI</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

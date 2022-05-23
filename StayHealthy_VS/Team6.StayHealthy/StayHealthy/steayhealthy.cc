@@ -4,6 +4,7 @@
 #include "registrierung.h"
 #include "main_menu.h"
 #include "login.h"
+#include "ernaehrungsplanui.h"
 
 StayHealthy::StayHealthy(QWidget *parent)
     : QWidget(parent)
@@ -19,7 +20,8 @@ StayHealthy::StayHealthy(QWidget *parent)
     stack_->addWidget(SetupRegisterUI());
     stack_->addWidget(SetupLoginUI());
 
-
+    //ErnaehrungsplanUI* ppp = new ErnaehrungsplanUI(this);
+    //stack_->addWidget(ppp);
 
 
     //setup main menu
@@ -38,17 +40,18 @@ StayHealthy::StayHealthy(QWidget *parent)
     main_layout->addWidget(back_button);
     
    
-    this->setStyleSheet("QPushButton {display: inline-block; outline : 0;"
-                        "border: none; cursor: pointer; font-weight: 600;"
+    this->setStyleSheet("QPushButton {outline : 0;"
+                        "border: none; font-weight: 600;"
                         "border-radius: 4px; font-size: 13px; height: 30px;"
                         "border-width: 1px;"
-                        "background-color: lightgrey; color: black; padding: 0 20px;}"
+                        "background-color: lightgrey; color: black; padding: 0 15px;}"
                         "QPushButton:hover{background-color: darkgrey;}"
                         "QLabel {font-size: 13px; font-weight: 600;}"
                         "QLineEdit { border: none; }");
    
 
     stack_->setCurrentIndex(0);
+    //stack_->setCurrentWidget(ppp);
 
     //Connect Buttons
 

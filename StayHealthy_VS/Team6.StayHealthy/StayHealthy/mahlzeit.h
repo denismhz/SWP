@@ -17,5 +17,11 @@ public:
 	~Mahlzeit();
 
 	int GetKaloriengehalt();
+
+	//Datenbankfunktionen
+	static std::vector<Mahlzeit*> GetMahlzeit(int user_id);
+	static std::vector<Mahlzeit*> GetMahlzeit(int user_id, int eplan_id);
+
+	static int AddMahlzeit(Mahlzeit&);
 };
 

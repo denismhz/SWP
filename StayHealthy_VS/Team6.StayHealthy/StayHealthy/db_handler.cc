@@ -1,6 +1,7 @@
 #include "db_handler.h"
 #include <string>
 #include "trainingsplan.h"
+#include "ernaerungsplan.h"
 
 DBHandler::DBHandler() {
   db_ = QSqlDatabase::addDatabase("QODBC");
@@ -175,9 +176,9 @@ bool DBHandler::CustomQuery(QString prep){
     return 1;
 }*/
 
-std::vector<Ernaerungsplan*> DBHandler::GetErnaerungsPlaeneVonBis(int user_id, QString anfang, QString ende)
+/*std::vector<Ernaehrungsplan*> DBHandler::GetErnaerungsPlaeneVonBis(int user_id, QString anfang, QString ende)
 {
-    std::vector<Ernaerungsplan*> plane;
+    std::vector<Ernaehrungsplan*> plane;
     QString prep = "SELECT * FROM dbo.Ernaehrungsplan WHERE Anfangsdatum >= :anfang AND Enddatum <= :ende";
     QSqlQuery query;
     query.prepare(prep);
@@ -185,12 +186,12 @@ std::vector<Ernaerungsplan*> DBHandler::GetErnaerungsPlaeneVonBis(int user_id, Q
     query.bindValue(":ende", ende);
     query.exec();
     while (query.next()) {
-        Ernaerungsplan* p = new Ernaerungsplan();
+        Ernaehrungsplan* p = new Ernaehrungsplan();
         plane.push_back(p);
     } 
     query.finish();
     return plane;
-}
+}*/
 
 int DBHandler::AddTrainingsplan(Trainingsplan & plan)
 {
@@ -323,7 +324,7 @@ int DBHandler::AddTrainingseinheit(Trainingseinheit& tein)
     return query.lastInsertId().toInt();
 }
 
-std::vector<Mahlzeit*> DBHandler::GetMahlzeitenVonBis(int user_id, QString anfang, QString ende)
+/*std::vector<Mahlzeit*> DBHandler::GetMahlzeitenVonBis(int user_id, QString anfang, QString ende)
 {
     std::vector<Mahlzeit*> mahlzeiten;
     QString prep = "SELECT * FROM dbo.Mahlzeit WHERE Datum BETWEEN :start AND :end AND BenutzerID = :user_id";
@@ -339,9 +340,9 @@ std::vector<Mahlzeit*> DBHandler::GetMahlzeitenVonBis(int user_id, QString anfan
     }
     query.finish();
     return mahlzeiten;
-}
+}*/
 
-int DBHandler::AddSpeiseposition(Speiseposition& sp, int mahlzeit_id) {
+/*int DBHandler::AddSpeiseposition(Speiseposition& sp, int mahlzeit_id) {
 
     QString prep =
         "INSERT INTO dbo.Speiseposition (MahlzeitID, SpeiseID, Menge, Beschreibung) VALUES (:mahlzeit, :speise_id, :menge, :beschreibung)";
@@ -355,9 +356,9 @@ int DBHandler::AddSpeiseposition(Speiseposition& sp, int mahlzeit_id) {
     query.finish();
     qDebug() << query.lastError();
     return query.lastInsertId().toInt();
-}
+}*/
 
-int DBHandler::AddMahlzeit(Mahlzeit& m)
+/*int DBHandler::AddMahlzeit(Mahlzeit& m)
 {
     QString prep =
         "INSERT INTO dbo.Mahlzeit (BenutzerID, ErnaehrungsplanID, Uhrzeit, Datum)"
@@ -377,6 +378,6 @@ int DBHandler::AddMahlzeit(Mahlzeit& m)
         AddSpeiseposition(*sp, m.id_);
     }
     return mahlzeit_id;
-}
+}*/
 
 

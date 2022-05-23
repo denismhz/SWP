@@ -3,6 +3,7 @@
 #include "profil_bearbeiten.h"
 #include "qpushbutton.h"
 #include "trainingseinheit.h"
+#include "login.h"
 
 
 MainMenu::MainMenu(QWidget *parent)
@@ -10,13 +11,15 @@ MainMenu::MainMenu(QWidget *parent)
 {
 	ui.setupUi(this);
 	teui = new TrainingseinheitUI(this);
-	me = new MahlzeitEingebenUI(this);
+	me = new MahlzeitEingebenUI(this, 0);
+	ep = new ErnaehrungsplanUI(this);
 	QVBoxLayout* main_layout = new QVBoxLayout(this);
 	QPushButton* back = new QPushButton("zuruck",this);
 
 	ui.stackedWidget->addWidget(me);
 	ui.stackedWidget->addWidget(teui);
-	ui.stackedWidget->layout()->addWidget(teui);
+	ui.stackedWidget->addWidget(teui);
+	ui.stackedWidget->addWidget(ep);
 	main_layout->addWidget(back);
 	main_layout->addWidget(ui.stackedWidget);
 	//connect(ui.homeButton, SIGNAL(clicked()), parentWidget(), SLOT(HomePressed())); 
@@ -24,6 +27,7 @@ MainMenu::MainMenu(QWidget *parent)
 	connect(ui.trainingseinheitenButton, SIGNAL(clicked()), this, SLOT(on_trainingseinheitenButton_clicked()));
 	connect(ui.toMahlzeitenPage, SIGNAL(clicked()), this, SLOT(on_Mahlzeit_clicked()));
 	connect(back, SIGNAL(clicked()), this, SLOT(back_clicked()));
+	connect(ui.ernaehrungsplaen_button, SIGNAL(clicked()), this, SLOT(on_Ernaehrungsplane_clicked()));
 	//ui.toPlaenePage->hide();
 }
 
@@ -47,6 +51,20 @@ void MainMenu::on_ProfileWindow_Closing()
 void MainMenu::on_Mahlzeit_clicked()
 {
 	ui.stackedWidget->setCurrentWidget(me);
+}
+
+void MainMenu::on_Ernaehrungsplane_clicked()
+{
+	ep->plane_ = Ernaehrungsplan::GetErnaehrungsplan(Login::GetInstance()->GetLoggedInUser()->GetId());
+	if (ep->plane_.size() == 0) {
+		qDebug() << "no ep";
+		Ernaehrungsplan* ee = new Ernaehrungsplan();
+		ep->SetUpUI(*ee);
+		ui.stackedWidget->setCurrentWidget(ep);
+		return;
+	}
+	ep->SetUpUI(*ep->plane_[0]);
+	ui.stackedWidget->setCurrentWidget(ep);
 }
 
 void MainMenu::back_clicked()

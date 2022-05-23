@@ -28,7 +28,7 @@ class DBHandler {
   bool CustomQuery(QString);
 
   /*<- Ernaerungsplan DB Actions ->*/
-  std::vector<Ernaerungsplan*> GetErnaerungsPlaeneVonBis(int, QString von, QString bis);
+  std::vector<Ernaehrungsplan*> GetErnaerungsPlaeneVonBis(int, QString von, QString bis);
 
   /*<- Trainingsplan DB Actions ->*/
 

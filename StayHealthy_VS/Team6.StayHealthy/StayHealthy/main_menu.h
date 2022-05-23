@@ -6,6 +6,7 @@
 #include "qstackedwidget.h"
 #include "trainingseinheitui.h"
 #include "mahlzeit_eingeben_ui.h"
+#include "ernaehrungsplanui.h"
 
 // Forward Declarations
 class ProfilBearbeiten;	
@@ -28,10 +29,12 @@ private slots:
 	void on_toProfilePage_clicked();
 	void on_ProfileWindow_Closing();
 	void on_Mahlzeit_clicked();
+	void on_Ernaehrungsplane_clicked();
 	void back_clicked();
 
 private:
 	Ui::MainMenu ui;
 	TrainingseinheitUI* teui;
 	MahlzeitEingebenUI* me;
+	ErnaehrungsplanUI* ep;
 };
