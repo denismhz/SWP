@@ -50,6 +50,10 @@ TrainingseinheitUI::TrainingseinheitUI(QWidget *parent)
 
 TrainingseinheitUI::~TrainingseinheitUI()
 {
+    delete curr_te;
+    timerr->deleteLater();
+    stack->deleteLater();
+    delete query;
 }
 
 void TrainingseinheitUI::PrevTe()

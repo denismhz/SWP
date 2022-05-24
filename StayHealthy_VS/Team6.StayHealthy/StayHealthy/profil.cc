@@ -27,7 +27,7 @@ bool Profil::AddProfil(Profil& profil, int user_id)
 {
     QString prep =
         "INSERT INTO dbo.Profil (BenutzerID, Geschlecht, Vorname, "
-        "Nachname, Praeferenz, GebDatum, Gewicht, Groeße, "
+        "Nachname, Praeferenz, GebDatum, Gewicht, Groesse, "
         "Grundumsatz, Kalorienaufnahme) VALUES (:user_id, :geschlecht, "
         ":vorname, :nachname, :pref, :geb, :gewicht, :groesse, :gu, :ka)";
     QSqlQuery query;
@@ -42,9 +42,7 @@ bool Profil::AddProfil(Profil& profil, int user_id)
     query.bindValue(":groesse", profil.height_);
     query.bindValue(":gu", profil.grundumsatz_);
     query.bindValue(":ka", profil.kalorienaufnahme_);
-    query.exec();
-    query.finish();
-    return 1;
+    return query.exec();
 }
 
 Profil* Profil::GetProfil(int id)
@@ -54,7 +52,7 @@ Profil* Profil::GetProfil(int id)
     query.prepare(prep);
     query.bindValue(":user_id", id);
     query.exec();
-    query.first();
+    if(!query.first()) return nullptr;
     Profil* profil = new Profil();
     profil->geschlecht_ = query.value("Geschlecht").toInt();
     profil->vorname_ = query.value("Vorname").toString();

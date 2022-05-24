@@ -19,6 +19,18 @@ ProfilBearbeiten::ProfilBearbeiten(QDialog*parent)
 
     User* tmpUser = Login::GetInstance()->GetLoggedInUser();
     currentUserProfil = Profil::GetProfil(*tmpUser);
+    if (!currentUserProfil) {
+        currentUserProfil = new Profil();
+        currentUserProfil->geb_datum_ = "2000-10-10";
+        currentUserProfil->name_ = "";
+        currentUserProfil->vorname_ = "";
+        currentUserProfil->geschlecht_ = 1;
+        currentUserProfil->height_ = 100;
+        currentUserProfil->weight_ = 70;
+        currentUserProfil->kalorienaufnahme_ = 20000;
+        currentUserProfil->prefaerenz_ = "";
+        Profil::AddProfil(*currentUserProfil, Login::GetInstance()->GetLoggedInUser()->GetId());
+    };
 
     genderGroup.addButton(ui.radioButton_m);
     genderGroup.addButton(ui.radioButton_w);
@@ -77,7 +89,8 @@ void ProfilBearbeiten::on_pushButtonSaveChanges_clicked()
         currentUserProfil->kalorienaufnahme_ = 0;
         currentUserProfil->prefaerenz_ = "";
 
-        Profil::UpdateProfil(*currentUserProfil, Login::GetInstance()->GetLoggedInUser()->GetId());
+        if (!Profil::UpdateProfil(*currentUserProfil, Login::GetInstance()->GetLoggedInUser()->GetId())) {
+        }
     }    
 }
 
