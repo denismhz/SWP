@@ -61,10 +61,10 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Qt\6.2.4\msvc2019_64\include\QtTest;C:\Users\denis\Source\Repos\team-6\StayHealthy_VS\Team6.StayHealthy\packages\gtest.1.7.0\build\native\include;C:\Qt\6.2.4\msvc2019_64\include\QtGui;C:\Qt\6.2.4\msvc2019_64\include\QtWidgets;C:\Qt\6.2.4\msvc2019_64\include\QtCore;C:\Qt\6.2.4\msvc2019_64\include\QtSql;X:\ProgramData\Qt\6.2.4\msvc2019_64\include\QtGui;X:\ProgramData\Qt\6.2.4\msvc2019_64\include\QtWidgets;X:\ProgramData\Qt\6.2.4\msvc2019_64\include\QtCore;X:\ProgramData\Qt\6.2.4\msvc2019_64\include\QtSql;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;C:\Qt\6.2.4\msvc2019_64\include\QtGui;C:\Qt\6.2.4\msvc2019_64\include\QtWidgets;C:\Qt\6.2.4\msvc2019_64\include\QtCore;C:\Qt\6.2.4\msvc2019_64\include\QtSql;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>C:\Users\yasday\source\repos\team-6\StayHealthy_VS\Team6.StayHealthy\packages\gmock.1.11.0\lib\native\include;C:\Qt\6.2.4\msvc2019_64\lib;X:\ProgramData\Qt\6.2.4\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Qt\6.2.4\msvc2019_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>Qt6Sql.lib;Qt6Core.lib;Qt6Widgets.lib;Qt6Gui.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -150,20 +150,9 @@
     <ClInclude Include="uebungsposition.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
     <Import Project="$(QtMsBuild)\qt.targets" />
   </ImportGroup>
-  <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\packages\gmock.1.11.0\build\native\gmock.targets" Condition="Exists('..\packages\gmock.1.11.0\build\native\gmock.targets')" />
-  </ImportGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\gmock.1.11.0\build\native\gmock.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\gmock.1.11.0\build\native\gmock.targets'))" />
-  </Target>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>
