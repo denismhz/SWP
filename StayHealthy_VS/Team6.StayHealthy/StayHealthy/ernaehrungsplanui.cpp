@@ -35,7 +35,8 @@ void ErnaehrungsplanUI::SetUpUI(Ernaehrungsplan& plan) {
 	QWidget* title_widget = new QWidget(plan_widget_);
 	QHBoxLayout* title_layout = new QHBoxLayout(title_widget);
 	title_layout->setAlignment(Qt::AlignCenter);
-	QString title_txt = QString("E-plan id: %0 %1").arg(plan.GetID());
+	QString title_txt = QString("<h5>E-plan %0 / %1 von %2 bis %3</h5>")
+		.arg(index+1).arg(plane_.size()).arg(plan.start_datum_).arg(plan.end_dataum);
 	QLabel* title = new QLabel(title_txt, title_widget);
 	QPushButton* next = new QPushButton("next", title_widget);
 	connect(next, SIGNAL(clicked()), this, SLOT(Next()));
@@ -54,7 +55,8 @@ void ErnaehrungsplanUI::SetUpUI(Ernaehrungsplan& plan) {
 	m_stack_layout->setAlignment(Qt::AlignCenter);
 	main_layout->addWidget(m_stack);
 
-	for (auto m : plan.mahlzeiten) {
+	for (int i = 0; i < plan.mahlzeiten.size(); i++) {
+		auto m = plan.mahlzeiten[i];
 		QWidget* m_widget = new QWidget(m_stack);
 		QVBoxLayout* m_main_layout = new QVBoxLayout(m_widget);
 
@@ -63,7 +65,8 @@ void ErnaehrungsplanUI::SetUpUI(Ernaehrungsplan& plan) {
 		m_title_widget->setObjectName(QString::number(m->id_));
 		QHBoxLayout* m_title_layout = new QHBoxLayout(m_title_widget);
 		m_title_layout->setAlignment(Qt::AlignCenter);
-		QString m_title_txt = QString("Mahlzeit id: %0").arg(m->id_);
+		QString m_title_txt = QString("<h6>Mahlzeit %0 / %1 am %2 um</h6>")
+			.arg(i + 1).arg(plan.mahlzeiten.size()).arg(m->datum_).arg(m->uhrzeit_);
 		QLabel* m_title = new QLabel(m_title_txt, m_title_widget);
 
 		QPushButton* m_next = new QPushButton("next", m_title_widget);

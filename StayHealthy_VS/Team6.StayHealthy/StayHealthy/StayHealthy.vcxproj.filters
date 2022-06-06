@@ -106,12 +106,6 @@
     <ClCompile Include="login.cc">
       <Filter>Source Files\Benutzer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gtest\gtest-all.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\lib\native\src\gmock\gmock-all.cc">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ernaehrungsplanui.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>

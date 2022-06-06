@@ -11,7 +11,11 @@ Mahlzeit::~Mahlzeit()
 
 int Mahlzeit::GetKaloriengehalt()
 {
-	return 0;
+    int sum = 0;
+    for (auto sp : this->speisepositionen) {
+        sum += sp->kaloriengehalt_;
+    }
+    return sum;
 }
 
 std::vector<Mahlzeit*> Mahlzeit::GetMahlzeit(int user_id)
@@ -78,4 +82,17 @@ int Mahlzeit::AddMahlzeit(Mahlzeit& m)
         Speiseposition::AddSpeiseposition(*sp);
     }
     return mahlzeit_id;
+}
+
+bool Mahlzeit::DeleteMahlzeit(int id)
+{
+    //delete Speisepos
+    QString prep =
+        "DELETE FROM dbo.Mahlzeit WHERE MahlzeitID = :m_id;";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":m_id", id);
+    if(!query.exec()) return false;
+    query.finish();
+    return true;
 }

@@ -8,7 +8,7 @@ public:
 	int menge_;
 	int speise_id_;
 	int mahlzeit_id_;
-	int kaloriengehalt;
+	int kaloriengehalt_;
 	QString beschreibung_;
 
 	Speiseposition();
@@ -18,5 +18,7 @@ public:
 	static std::vector<Speiseposition*> GetSpeiseposition(int mahlzeit_id);
 
 	static int AddSpeiseposition(Speiseposition&);
+
+	static int DeleteSpeiseposition(int id);
 };
 

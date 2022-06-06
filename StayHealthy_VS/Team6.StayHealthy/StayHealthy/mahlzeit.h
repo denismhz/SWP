@@ -23,5 +23,7 @@ public:
 	static std::vector<Mahlzeit*> GetMahlzeit(int user_id, int eplan_id);
 
 	static int AddMahlzeit(Mahlzeit&);
+
+	static bool DeleteMahlzeit(int id);
 };
 
