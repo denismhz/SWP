@@ -86,8 +86,8 @@ void ProfilBearbeiten::on_pushButtonSaveChanges_clicked()
         ui.pushButtonUpgradeProfile->show();
 
         //TODO
-        currentUserProfil->kalorienaufnahme_ = 0;
-        currentUserProfil->prefaerenz_ = "";
+        //currentUserProfil->kalorienaufnahme_ = 0;
+        //currentUserProfil->prefaerenz_ = "";
 
         if (!Profil::UpdateProfil(*currentUserProfil, Login::GetInstance()->GetLoggedInUser()->GetId())) {
         }
@@ -141,6 +141,8 @@ void ProfilBearbeiten::hideLabels()
     ui.label_gender->hide();
     ui.label_height->hide();
     ui.label_weight->hide();
+    ui.label_cal->hide();
+    ui.label_pref->hide();
 }
 
 void ProfilBearbeiten::showLabels()
@@ -151,6 +153,8 @@ void ProfilBearbeiten::showLabels()
     ui.label_gender->show();
     ui.label_height->show();
     ui.label_weight->show();
+    ui.label_cal->show();
+    ui.label_pref->show();
 }
 
 void ProfilBearbeiten::hideInputFields()
@@ -162,6 +166,8 @@ void ProfilBearbeiten::hideInputFields()
     ui.radioButton_w->hide();
     ui.spinBox_height->hide();
     ui.spinBox_weight->hide();
+    ui.lineEdit_cal->hide();
+    ui.lineEdit_pref->hide();
 }
 
 void ProfilBearbeiten::showInputFields()
@@ -175,12 +181,16 @@ void ProfilBearbeiten::showInputFields()
     ui.radioButton_w->show();
     ui.spinBox_height->show();
     ui.spinBox_weight->show();
+    ui.lineEdit_cal->show();
+    ui.lineEdit_pref->show();
 }
 
 void ProfilBearbeiten::resetInputFields()
 {
     ui.lineEdit_firstname->clear();
     ui.lineEdit_lastname->clear();
+    ui.lineEdit_cal->clear();
+    ui.lineEdit_pref->clear();
     ui.dateEdit_birthday->setDate(QDate(2000, 01, 01));
 
     genderGroup.setExclusive(false);
@@ -207,6 +217,8 @@ void ProfilBearbeiten::refreshLabels()
 
     ui.label_height->setText(QString::number(currentUserProfil->height_));
     ui.label_weight->setText(QString::number(currentUserProfil->weight_));
+    ui.label_cal->setText(QString::number(currentUserProfil->kalorienaufnahme_));
+    ui.label_pref->setText(currentUserProfil->prefaerenz_);
 }
 
 void ProfilBearbeiten::setUpdatedUserData()
@@ -214,6 +226,8 @@ void ProfilBearbeiten::setUpdatedUserData()
     currentUserProfil->vorname_ = ui.lineEdit_firstname->text();
     currentUserProfil->name_ = ui.lineEdit_lastname->text();
     currentUserProfil->geb_datum_ = ui.dateEdit_birthday->date().toString("yyyy-MM-dd");
+    currentUserProfil->kalorienaufnahme_ = ui.lineEdit_cal->text().toInt();
+    currentUserProfil->prefaerenz_ = ui.lineEdit_pref->text();
 
     if (ui.radioButton_m->isChecked())
         currentUserProfil->geschlecht_ = 1;
@@ -241,6 +255,18 @@ bool ProfilBearbeiten::inputsAreValid()
         retVal = false;
     }
 
+    if (ui.lineEdit_cal->text().isEmpty())
+    {
+        msg.append("Bitte Kalorienaufnahme eingeben!\n");
+        retVal = false;
+    }
+
+    if (ui.lineEdit_pref->text().isEmpty())
+    {
+        msg.append("Bitte Praeferenz eingeben!\n");
+        retVal = false;
+    }
+
     if (!ui.radioButton_m->isChecked() && !ui.radioButton_w->isChecked())
     {
         msg.append("Bitte Geschlecht auswaehlen!");
@@ -264,6 +290,8 @@ void ProfilBearbeiten::fillInputFields()
 {
     ui.lineEdit_firstname->setText(currentUserProfil->vorname_);
     ui.lineEdit_lastname->setText(currentUserProfil->name_);
+    ui.lineEdit_cal->setText(QString::number(currentUserProfil->kalorienaufnahme_));
+    ui.lineEdit_pref->setText(currentUserProfil->prefaerenz_);
     ui.dateEdit_birthday->setDate(QDate::fromString(currentUserProfil->geb_datum_, "yyyy-MM-dd"));
 
     if (currentUserProfil->geschlecht_ == 0)

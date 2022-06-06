@@ -176,7 +176,4 @@
       <Filter>Header Files\UI</Filter>
     </QtMoc>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
 </Project>
