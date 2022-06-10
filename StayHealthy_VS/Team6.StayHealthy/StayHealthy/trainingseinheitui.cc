@@ -68,7 +68,7 @@ void TrainingseinheitUI::PrevTe()
     te->durchgefuehrt = query->value("Durchgefuehrt").toBool();
     te->kalorienverbrauch = query->value("Kalorienverbrauch").toInt();
     te->id_ = query->value("TrainingseinheitID").toInt();
-    te->uebungspositionen = DBHandler::GetInstance()->GetUebungsposition(te->id_);
+    te->uebungspositionen = Uebungsposition::GetUebungsposition(te->id_);
     curr_te = te;
     qDebug() << curr_te->id_;
     //qDebug() << query->value("TrainingseinheitID");
@@ -133,8 +133,8 @@ void TrainingseinheitUI::Finish()
 
     for (int i = 0; i < line_edits.size(); i++) {
         int menge = line_edits[i]->text().toInt();
-        int id = curr_te->uebungspositionen[i]->id_;
-        DBHandler::GetInstance()->UpdateUebungsposition(menge, id);
+        curr_te->uebungspositionen[i]->menge_ = menge;
+        Uebungsposition::UpdateUebungsposition(*curr_te->uebungspositionen[i]);
     }
     //update trainingseinheit druchgefuehrt
     QString prep1 =
@@ -197,7 +197,7 @@ void TrainingseinheitUI::NextTe() {
     te->durchgefuehrt = query->value("Durchgefuehrt").toBool();
     te->kalorienverbrauch = query->value("Kalorienverbrauch").toInt();
     te->id_ = query->value("TrainingseinheitID").toInt();
-    te->uebungspositionen = DBHandler::GetInstance()->GetUebungsposition(te->id_);
+    te->uebungspositionen = Uebungsposition::GetUebungsposition(te->id_);
     curr_te = te;
     qDebug() << curr_te->id_;
     if (stack->currentIndex() + 1 >= stack->count()) SetUpTeUI(*te);

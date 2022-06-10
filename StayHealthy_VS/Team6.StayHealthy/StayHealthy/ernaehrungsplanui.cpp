@@ -171,6 +171,9 @@ void ErnaehrungsplanUI::Update()
 void ErnaehrungsplanUI::Delete()
 {
 	Ernaehrungsplan::DeleteErnaehrungsplan(plane_[index]->GetID());
+	for (auto m : plane_[index]->mahlzeiten) {
+		Mahlzeit::DeleteMahlzeit(m->id_);
+	}
 	//remove from plane
 	std::vector<Ernaehrungsplan*>::iterator it = plane_.begin() + index;
 	qDebug() << (*it)->GetID() << " :erased";

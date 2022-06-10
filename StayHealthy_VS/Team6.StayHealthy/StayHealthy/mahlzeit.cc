@@ -32,6 +32,7 @@ std::vector<Mahlzeit*> Mahlzeit::GetMahlzeit(int user_id)
         p->ernaehrungsplan_id_ = query.value("ErnaehrungsplanID").toInt();
         p->datum_ = query.value("Datum").toString();
         p->uhrzeit_ = query.value("Uhrzeit").toString();
+        p->speisepositionen = Speiseposition::GetSpeiseposition(p->id_);
         mahlzeiten.push_back(p);
     }
     query.finish();
@@ -53,7 +54,30 @@ std::vector<Mahlzeit*> Mahlzeit::GetMahlzeit(int user_id, int eplan_id)
         p->ernaehrungsplan_id_ = query.value("ErnaehrungsplanID").toInt();
         p->datum_ = query.value("Datum").toString();
         p->uhrzeit_ = query.value("Uhrzeit").toString();
-        qDebug() << p->id_ << " :id get";
+        //qDebug() << p->id_ << " :id get";
+        p->speisepositionen = Speiseposition::GetSpeiseposition(p->id_);
+        mahlzeiten.push_back(p);
+    }
+    query.finish();
+    return mahlzeiten;
+}
+
+std::vector<Mahlzeit*> Mahlzeit::GetMahlzeit(int user_id, QString start_date, QString end_date)
+{
+    std::vector<Mahlzeit*> mahlzeiten;
+    QString prep = "SELECT * FROM dbo.Mahlzeit WHERE Datum BETWEEN :start AND :end AND BenutzerID = :user_id";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":start", start_date);
+    query.bindValue(":end", end_date);
+    query.bindValue(":user_id", user_id);
+    query.exec();
+    while (query.next()) {
+        Mahlzeit* p = new Mahlzeit();
+        p->id_ = query.value("MahlzeitID").toInt();
+        p->ernaehrungsplan_id_ = query.value("ErnaehrungsplanID").toInt();
+        p->datum_ = query.value("Datum").toString();
+        p->uhrzeit_ = query.value("Uhrzeit").toString();
         p->speisepositionen = Speiseposition::GetSpeiseposition(p->id_);
         mahlzeiten.push_back(p);
     }

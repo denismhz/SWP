@@ -99,7 +99,7 @@ bool Ernaehrungsplan::DeleteErnaehrungsplan(int id)
     QSqlQuery query;
     query.prepare(prep);
     query.bindValue(":user_id", id);
-    query.exec();
+    query.exec();    
     query.finish();
     return true;
 }

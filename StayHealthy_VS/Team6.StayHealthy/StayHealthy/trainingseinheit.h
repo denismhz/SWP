@@ -16,7 +16,17 @@ public:
 	std::vector<Uebungsposition*> uebungspositionen;
 
 	Trainingseinheit();
-	Trainingseinheit(int, int, int, int, bool, QString, QString, QString);
+	Trainingseinheit(int, int, int, bool, QString, QString, QString);
 	~Trainingseinheit();
+
+	//DB funtions
+	static int AddTrainingseinheit(Trainingseinheit&);
+
+	static bool UpdateTrainingseinheit(int id);
+
+	static std::vector<Trainingseinheit*> GetTrainingseinheit(int user_id);
+	static std::vector<Trainingseinheit*> GetTrainingseinheit(int user_id, int trainingsplan_id);
+
+	static bool DeleteTrainingseinheit(int id);
 };
 

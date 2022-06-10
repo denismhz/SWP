@@ -17,5 +17,14 @@ public:
 	~Uebungsposition();
 
 	int KalorienverbrauchBerechnen();
+
+	//DB functions
+	static int AddUebungsposition(Uebungsposition&);
+
+	static bool UpdateUebungsposition(Uebungsposition&);
+
+	static std::vector<Uebungsposition*> GetUebungsposition(int trainingseinheit_id);
+
+	static bool DeleteUebungsposition(int id);
 };
 

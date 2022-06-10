@@ -20,7 +20,18 @@ public:
 	Trainingsplan(int user_id, int id, QString start_datum, QString end_datum, QString beschreibung);
 	~Trainingsplan();
 	
-	void ErstelleTrainingsplan(QString start_datum, QString pref);
+	static void ErstelleTrainingsplan(QString start_datum, QString pref);
 	int GetID();
 	int GetKalorienverbrauch();
+
+	//DB functions
+	static int AddTrainingsplan(Trainingsplan&);
+
+	static bool UpdateTrainingsplan(Trainingsplan&);
+
+	static std::vector<Trainingsplan*> GetTrainingsplan(int user_id);
+	static std::vector<Trainingsplan*> GetTrainingsplan(int user_id, QString begin_date);
+	static std::vector<Trainingsplan*> GetTrainingsplan(int user_id, QString begin_date, QString end_date);
+
+	static bool DeleteTrainingsplan(Trainingsplan&);
 };

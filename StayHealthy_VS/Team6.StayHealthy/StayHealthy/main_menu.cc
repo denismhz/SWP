@@ -4,12 +4,14 @@
 #include "qpushbutton.h"
 #include "trainingseinheit.h"
 #include "login.h"
+#include "qlayout.h"
 
 
 MainMenu::MainMenu(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
+
 	teui = new TrainingseinheitUI(this);
 	me = new MahlzeitEingebenUI(this, 0);
 	ep = new ErnaehrungsplanUI(this);
@@ -73,10 +75,37 @@ void MainMenu::back_clicked()
 }
 
 void MainMenu::ErstellePlanTest() {
-	Trainingsplan* n{}; n->ErstelleTrainingsplan("2022-06-03", "");
-	delete n;
 	
-	//qDebug() << n->trainingseinheiten_[1]->uebungspositionen[1]->beschreibung_;
+	QDialog *date_get = new QDialog(this);
+	QVBoxLayout* dialog_layout = new QVBoxLayout(date_get);
+
+	QDateEdit* date_edit = new QDateEdit(date_get);
+	dialog_layout->addWidget(date_edit);
+
+	QPushButton* save = new QPushButton("Save", date_get);
+	dialog_layout->addWidget(save);
+
+	connect(save, SIGNAL(clicked()), date_get, SLOT(accept()));
+
+	date_edit->setDate(QDate::currentDate());
+
+	QDate end = date_edit->date().addDays(7);
+
+	save->deleteLater();
+	date_edit->deleteLater();
+	dialog_layout->deleteLater();
+	date_get->deleteLater();
+	if (date_get->exec() == 0) return;
+	if (!Trainingsplan::GetTrainingsplan(Login::GetInstance()->GetLoggedInUser()->GetId(), date_edit->date().toString(Qt::ISODate)).empty()) {
+		//in diesem zeitraum gibts schon einen plan
+		QMessageBox no = QMessageBox(this);
+		no.setWindowTitle("NONO");
+		no.setText("Es existiert bereits ein Trainingsplan in diesem Zeitraum oder Datum liegt in der Vergangenheit");
+		no.exec();
+		return;
+	}
+	Trainingsplan::ErstelleTrainingsplan(date_edit->date().toString(Qt::ISODate), 
+		Profil::GetProfil(Login::GetInstance()->GetLoggedInUser()->GetId())->prefaerenz_);
 }
 
 void MainMenu::on_toProfilePage_clicked()
