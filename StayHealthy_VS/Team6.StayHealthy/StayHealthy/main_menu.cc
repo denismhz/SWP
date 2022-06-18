@@ -5,6 +5,7 @@
 #include "trainingseinheit.h"
 #include "login.h"
 #include "qlayout.h"
+#include "trainingsplanui.h"
 
 
 MainMenu::MainMenu(QWidget *parent)
@@ -16,6 +17,7 @@ MainMenu::MainMenu(QWidget *parent)
 	me = new MahlzeitEingebenUI(this, 0);
 	ep = new ErnaehrungsplanUI(this);
 	tein = new TrainingseinheitEingeben(this, 0);
+	tp = new TrainingsplanUI(this);
 	QVBoxLayout* main_layout = new QVBoxLayout(this);
 	QPushButton* back = new QPushButton("zuruck",this);
 
@@ -24,15 +26,18 @@ MainMenu::MainMenu(QWidget *parent)
 	ui.stackedWidget->addWidget(teui);
 	ui.stackedWidget->addWidget(ep);
 	ui.stackedWidget->addWidget(tein);
+	ui.stackedWidget->addWidget(tp);
+
 	main_layout->addWidget(back);
 	main_layout->addWidget(ui.stackedWidget);
-	//connect(ui.homeButton, SIGNAL(clicked()), parentWidget(), SLOT(HomePressed())); 
+
 	connect(ui.toPlaenePage, SIGNAL(clicked()), this, SLOT(ErstellePlanTest()));
 	connect(ui.trainingseinheitenButton, SIGNAL(clicked()), this, SLOT(on_trainingseinheitenButton_clicked()));
 	connect(ui.toMahlzeitenPage, SIGNAL(clicked()), this, SLOT(on_Mahlzeit_clicked()));
 	connect(back, SIGNAL(clicked()), this, SLOT(back_clicked()));
 	connect(ui.ernaehrungsplaen_button, SIGNAL(clicked()), this, SLOT(on_Ernaehrungsplane_clicked()));
 	connect(ui.toTrainingseinheitenEingeben, SIGNAL(clicked()), this, SLOT(on_TrainingseinheitButton_clicked()));
+	connect(ui.toTrainingsplan, SIGNAL(clicked()), this, SLOT(on_TrainingsplanButton_clicked()));
 	//ui.toPlaenePage->hide();
 }
 
@@ -80,6 +85,20 @@ void MainMenu::back_clicked()
 void MainMenu::on_TrainingseinheitButton_clicked()
 {
 	ui.stackedWidget->setCurrentWidget(tein);
+}
+
+void MainMenu::on_TrainingsplanButton_clicked()
+{
+	tp->plane_ = Trainingsplan::GetTrainingsplan(Login::GetInstance()->GetLoggedInUser()->GetId());
+	if (tp->plane_.size() == 0) {
+		qDebug() << "no ep";
+		Trainingsplan* ee = new Trainingsplan();
+		tp->SetUpUI(*ee);
+		ui.stackedWidget->setCurrentWidget(tp);
+		return;
+	}
+	tp->SetUpUI(*tp->plane_[0]);
+	ui.stackedWidget->setCurrentWidget(tp);
 }
 
 void MainMenu::ErstellePlanTest() {

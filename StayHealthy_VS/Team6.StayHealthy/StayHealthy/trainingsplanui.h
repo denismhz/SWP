@@ -1,19 +1,16 @@
 #pragma once
 
 #include <QWidget>
+#include "trainingsplan.h"
 #include "qstackedwidget.h"
-#include "ernaerungsplan.h"
 
-class ErnaehrungsplanUI : public QWidget
+class TrainingsplanUI : public QWidget
 {
 	Q_OBJECT
 
 public:
-	ErnaehrungsplanUI(QWidget *parent);
-	~ErnaehrungsplanUI();
-
-	std::vector<Ernaehrungsplan*> plane_;
-	void SetUpUI(Ernaehrungsplan&);
+	std::vector<Trainingsplan*> plane_;
+	void SetUpUI(Trainingsplan&);
 
 private slots:
 
@@ -32,6 +29,8 @@ private:
 
 	QWidget* plan_widget_;
 	QStackedWidget* stack_;
-};
 
-//setup ui
+public:
+	TrainingsplanUI(QWidget *parent);
+	~TrainingsplanUI();
+};

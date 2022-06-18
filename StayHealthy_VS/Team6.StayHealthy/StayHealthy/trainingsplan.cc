@@ -96,6 +96,11 @@ int Trainingsplan::GetID()
 	return this->id_;
 }
 
+void Trainingsplan::SetID(int id)
+{
+	this->id_ = id;
+}
+
 int Trainingsplan::GetKalorienverbrauch()
 {
 	if (trainingseinheiten_.empty()) return 0;
@@ -142,7 +147,7 @@ std::vector<Trainingsplan*> Trainingsplan::GetTrainingsplan(int user_id)
 		p->id_ = query.value("TrainingsplanID").toInt();
 		p->start_datum_ = query.value("Anfangsdatum").toString();
 		p->end_datum_ = query.value("Enddatum").toString();
-		p->trainingseinheiten_ = Trainingseinheit::GetTrainingseinheit(p->id_);
+		p->trainingseinheiten_ = Trainingseinheit::GetTrainingseinheit(user_id, p->id_);
 		plane.push_back(p);
 	}
 	query.finish();
@@ -191,3 +196,17 @@ std::vector<Trainingsplan*> Trainingsplan::GetTrainingsplan(int user_id, QString
 	query.finish();
 	return plane;
 }
+
+bool Trainingsplan::DeleteTrainingsplan(int id)
+{
+	QString prep =
+		"DELETE FROM dbo.Ernaehrungsplan WHERE ErnaehrungsplanID = :user_id;";
+	QSqlQuery query;
+	query.prepare(prep);
+	query.bindValue(":user_id", id);
+	query.exec();
+	query.finish();
+	return true;
+	return true;
+}
+

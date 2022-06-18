@@ -8,6 +8,7 @@
 #include "mahlzeit_eingeben_ui.h"
 #include "ernaehrungsplanui.h"
 #include "trainingseinheit_eingeben.h"
+#include "trainingsplanui.h"
 
 // Forward Declarations
 class ProfilBearbeiten;	
@@ -33,6 +34,7 @@ private slots:
 	void on_Ernaehrungsplane_clicked();
 	void back_clicked();
 	void on_TrainingseinheitButton_clicked();
+	void on_TrainingsplanButton_clicked();
 
 private:
 	Ui::MainMenu ui;
@@ -40,4 +42,5 @@ private:
 	MahlzeitEingebenUI* me;
 	ErnaehrungsplanUI* ep;
 	TrainingseinheitEingeben* tein;
+	TrainingsplanUI* tp;
 };

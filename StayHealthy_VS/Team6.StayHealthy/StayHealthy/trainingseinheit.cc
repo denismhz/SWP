@@ -89,3 +89,15 @@ std::vector<Trainingseinheit*> Trainingseinheit::GetTrainingseinheit(int user_id
     query.finish();
     return tein;
 }
+
+bool Trainingseinheit::DeleteTrainingseinheit(int id)
+{
+    QString prep =
+        "DELETE FROM dbo.Trainingseinheit WHERE TrainingseinheitID = :m_id;";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":m_id", id);
+    if (!query.exec()) return false;
+    query.finish();
+    return true;
+}

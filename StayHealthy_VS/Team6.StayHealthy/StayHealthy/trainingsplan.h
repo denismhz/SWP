@@ -22,6 +22,7 @@ public:
 	
 	static void ErstelleTrainingsplan(QString start_datum, QString pref);
 	int GetID();
+	void SetID(int id);
 	int GetKalorienverbrauch();
 
 	//DB functions
@@ -33,5 +34,5 @@ public:
 	static std::vector<Trainingsplan*> GetTrainingsplan(int user_id, QString begin_date);
 	static std::vector<Trainingsplan*> GetTrainingsplan(int user_id, QString begin_date, QString end_date);
 
-	static bool DeleteTrainingsplan(Trainingsplan&);
+	static bool DeleteTrainingsplan(int id);
 };

@@ -122,6 +122,7 @@
     <ClCompile Include="trainingseinheitui.cc" />
     <ClCompile Include="trainingseinheit_eingeben.cc" />
     <ClCompile Include="trainingsplan.cc" />
+    <ClCompile Include="trainingsplanui.cc" />
     <ClCompile Include="uebungsposition.cc" />
     <ClCompile Include="user.cc" />
     <QtRcc Include="stayhealthy.qrc" />
@@ -149,6 +150,7 @@
     <QtMoc Include="trainingseinheitui.h" />
     <QtMoc Include="trainingseinheit_eingeben.h" />
     <ClInclude Include="trainingsplan.h" />
+    <QtMoc Include="trainingsplanui.h" />
     <ClInclude Include="uebungsposition.h" />
     <ClInclude Include="user.h" />
   </ItemGroup>
