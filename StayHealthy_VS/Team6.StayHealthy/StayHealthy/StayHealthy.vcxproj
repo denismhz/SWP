@@ -120,6 +120,7 @@
     <ClCompile Include="statistik.cc" />
     <ClCompile Include="trainingseinheit.cc" />
     <ClCompile Include="trainingseinheitui.cc" />
+    <ClCompile Include="trainingseinheit_eingeben.cc" />
     <ClCompile Include="trainingsplan.cc" />
     <ClCompile Include="uebungsposition.cc" />
     <ClCompile Include="user.cc" />
@@ -146,6 +147,7 @@
     <ClInclude Include="statistik.h" />
     <ClInclude Include="trainingseinheit.h" />
     <QtMoc Include="trainingseinheitui.h" />
+    <QtMoc Include="trainingseinheit_eingeben.h" />
     <ClInclude Include="trainingsplan.h" />
     <ClInclude Include="uebungsposition.h" />
     <ClInclude Include="user.h" />

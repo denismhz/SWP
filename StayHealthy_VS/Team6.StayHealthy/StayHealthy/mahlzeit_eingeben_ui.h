@@ -16,7 +16,6 @@ public:
 	int e_plan_id_;
 	QWidget* scroll_widget_;
 	Mahlzeit* new_mahlzeit;
-	std::vector<Mahlzeit*> mahlzeiten;
 
 private slots:
 	void ShowEingabe();

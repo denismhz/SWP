@@ -109,6 +109,9 @@
     <ClCompile Include="ernaehrungsplanui.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="trainingseinheit_eingeben.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="db_handler.h">
@@ -174,6 +177,9 @@
     </QtMoc>
     <QtMoc Include="ernaehrungsplanui.h">
       <Filter>Header Files\UI</Filter>
+    </QtMoc>
+    <QtMoc Include="trainingseinheit_eingeben.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
 </Project>
