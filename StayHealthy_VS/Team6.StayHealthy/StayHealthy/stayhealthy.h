@@ -29,6 +29,4 @@ private:
     QWidget* SetupWelcomeUI();
     QWidget* SetupRegisterUI();
     QWidget* SetupLoginUI();
-    
-
 };
