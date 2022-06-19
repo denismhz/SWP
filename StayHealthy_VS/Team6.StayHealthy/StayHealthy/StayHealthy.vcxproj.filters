@@ -115,6 +115,9 @@
     <ClCompile Include="trainingsplanui.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="statistikui.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="db_handler.h">
@@ -185,6 +188,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="trainingsplanui.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="statistikui.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

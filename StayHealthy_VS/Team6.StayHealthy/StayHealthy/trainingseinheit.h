@@ -22,10 +22,9 @@ public:
 	//DB funtions
 	static int AddTrainingseinheit(Trainingseinheit&);
 
-	static bool UpdateTrainingseinheit(int id);
-
 	static std::vector<Trainingseinheit*> GetTrainingseinheit(int user_id);
 	static std::vector<Trainingseinheit*> GetTrainingseinheit(int user_id, int trainingsplan_id);
+	static std::vector<Trainingseinheit*> GetTrainingseinheit(int user_id, QString datum);
 
 	static bool DeleteTrainingseinheit(int id);
 };

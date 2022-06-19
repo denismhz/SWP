@@ -85,6 +85,30 @@ std::vector<Mahlzeit*> Mahlzeit::GetMahlzeit(int user_id, QString start_date, QS
     return mahlzeiten;
 }
 
+std::vector<Mahlzeit*> Mahlzeit::GetMahlzeit(int user_id, QString datum)
+{
+    std::vector<Mahlzeit*> mahlzeiten;
+    QString prep = "SELECT * FROM dbo.Mahlzeit WHERE BenutzerID = :user_id AND Datum >= :datum;";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":user_id", user_id);
+    query.bindValue(":datum", datum);
+    query.exec();
+    while (query.next()) {
+        Mahlzeit* p = new Mahlzeit();
+        p->id_ = query.value("MahlzeitID").toInt();
+        p->ernaehrungsplan_id_ = query.value("ErnaehrungsplanID").toInt();
+        p->datum_ = query.value("Datum").toString();
+        p->uhrzeit_ = query.value("Uhrzeit").toString();
+        //qDebug() << p->id_ << " :id get";
+        p->speisepositionen = Speiseposition::GetSpeiseposition(p->id_);
+        mahlzeiten.push_back(p);
+    }
+    query.finish();
+    return mahlzeiten;
+}
+
+
 int Mahlzeit::AddMahlzeit(Mahlzeit& m)
 {
     QString prep =

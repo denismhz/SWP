@@ -94,6 +94,13 @@
         </property>
        </widget>
       </item>
+      <item row="3" column="1">
+       <widget class="QPushButton" name="toStatistik">
+        <property name="text">
+         <string>Statistik anzeigen</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </widget>

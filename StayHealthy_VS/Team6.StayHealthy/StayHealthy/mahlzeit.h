@@ -22,6 +22,7 @@ public:
 	static std::vector<Mahlzeit*> GetMahlzeit(int user_id);
 	static std::vector<Mahlzeit*> GetMahlzeit(int user_id, int eplan_id);
 	static std::vector<Mahlzeit*> GetMahlzeit(int user_id, QString start_date, QString end_date);
+	static std::vector<Mahlzeit*> GetMahlzeit(int user_id, QString datum);
 
 	static int AddMahlzeit(Mahlzeit&);
 

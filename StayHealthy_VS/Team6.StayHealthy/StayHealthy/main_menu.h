@@ -9,6 +9,7 @@
 #include "ernaehrungsplanui.h"
 #include "trainingseinheit_eingeben.h"
 #include "trainingsplanui.h"
+#include "statistikui.h"
 
 // Forward Declarations
 class ProfilBearbeiten;	
@@ -35,6 +36,7 @@ private slots:
 	void back_clicked();
 	void on_TrainingseinheitButton_clicked();
 	void on_TrainingsplanButton_clicked();
+	void on_StatistikButton_clicked();
 
 private:
 	Ui::MainMenu ui;
@@ -43,4 +45,5 @@ private:
 	ErnaehrungsplanUI* ep;
 	TrainingseinheitEingeben* tein;
 	TrainingsplanUI* tp;
+	StatistikUI* stat;
 };

@@ -18,6 +18,7 @@ MainMenu::MainMenu(QWidget *parent)
 	ep = new ErnaehrungsplanUI(this);
 	tein = new TrainingseinheitEingeben(this, 0);
 	tp = new TrainingsplanUI(this);
+	stat = new StatistikUI(this);
 	QVBoxLayout* main_layout = new QVBoxLayout(this);
 	QPushButton* back = new QPushButton("zuruck",this);
 
@@ -27,6 +28,7 @@ MainMenu::MainMenu(QWidget *parent)
 	ui.stackedWidget->addWidget(ep);
 	ui.stackedWidget->addWidget(tein);
 	ui.stackedWidget->addWidget(tp);
+	ui.stackedWidget->addWidget(stat);
 
 	main_layout->addWidget(back);
 	main_layout->addWidget(ui.stackedWidget);
@@ -38,6 +40,7 @@ MainMenu::MainMenu(QWidget *parent)
 	connect(ui.ernaehrungsplaen_button, SIGNAL(clicked()), this, SLOT(on_Ernaehrungsplane_clicked()));
 	connect(ui.toTrainingseinheitenEingeben, SIGNAL(clicked()), this, SLOT(on_TrainingseinheitButton_clicked()));
 	connect(ui.toTrainingsplan, SIGNAL(clicked()), this, SLOT(on_TrainingsplanButton_clicked()));
+	connect(ui.toStatistik, SIGNAL(clicked()), this, SLOT(on_StatistikButton_clicked()));
 	//ui.toPlaenePage->hide();
 }
 
@@ -99,6 +102,11 @@ void MainMenu::on_TrainingsplanButton_clicked()
 	}
 	tp->SetUpUI(*tp->plane_[0]);
 	ui.stackedWidget->setCurrentWidget(tp);
+}
+
+void MainMenu::on_StatistikButton_clicked()
+{
+	ui.stackedWidget->setCurrentWidget(stat);
 }
 
 void MainMenu::ErstellePlanTest() {

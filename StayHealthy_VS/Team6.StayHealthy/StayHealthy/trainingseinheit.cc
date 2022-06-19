@@ -90,6 +90,34 @@ std::vector<Trainingseinheit*> Trainingseinheit::GetTrainingseinheit(int user_id
     return tein;
 }
 
+std::vector<Trainingseinheit*> Trainingseinheit::GetTrainingseinheit(int user_id, QString datum)
+{
+    std::vector<Trainingseinheit*>tein;
+    QString prep = "select * from Trainingseinheit "
+        "WHERE BenutzerID = :user_id AND Datum >= :datum";
+    QSqlQuery query;
+    query.prepare(prep);
+    query.bindValue(":user_id", user_id);
+    query.bindValue(":datum", datum);
+    query.exec();
+    while (query.next())
+    {
+        Trainingseinheit* te = new Trainingseinheit();
+        te->datum_ = query.value("Datum").toString();
+        te->start_zeit_ = query.value("Startzeit").toString();
+        te->end_zeit_ = query.value("Endzeit").toString();
+        te->durchgefuehrt = query.value("Durchgefuehrt").toBool();
+        te->kalorienverbrauch = query.value("Kalorienverbrauch").toInt();
+        te->id_ = query.value("TrainingseinheitID").toInt();
+        te->uebungspositionen = Uebungsposition::GetUebungsposition(te->id_);
+        tein.push_back(te);
+    }
+    query.finish();
+    //get uebungspositionen
+    return tein;
+}
+
+
 bool Trainingseinheit::DeleteTrainingseinheit(int id)
 {
     QString prep =
