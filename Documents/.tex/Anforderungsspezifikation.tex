@@ -37,11 +37,7 @@
     description={Ein Ernährungsplan ist ein wöchentlicher Plan der aus ein oder mehreren Mahlzeiten besteht.}
 }
 
-\newglossaryentry{Zeitplan}
-{
-    name=Zeitplan,
-    description={Ein Zeitplan besteht aus ein oder mehreren Ernährungsplänen, sowie aus ein oder mehreren Trainingsplänen}
-}
+
 
 \newglossaryentry{Sportler}
 {
@@ -61,11 +57,6 @@
     description={ist z.B. 1 Gramm Tomaten.}
 }
 
-\newglossaryentry{Personaltrainer}
-{
-    name=Personaltrainer,
-    description={ist ein Benutzer.}
-}
 
 \begin{document}
 \begin{titlepage}
@@ -81,7 +72,7 @@
         \Large{\GroupName}
        
         \vspace{0.25cm}
-        \large{Andreas Wirth, Marco Klein, Khader AlHamed, Denis Manherz}
+        \large{Marco Klein, Khader AlHamed, Denis Manherz}
        
         \vspace{3 cm}
         \Large{\today}% change date format to dd.mm.yyyy
@@ -134,7 +125,7 @@ Ein Lebensstil der sich positiv auf die allgemeine Gesundheit auswirkt und diese
 Die wesentliche Funktion von StayHealthy ist das dokumentieren von Kalorienaufnahme um anhand dieser körperliche Aktivitäten vorzuschlagen die den Kalorienhaushalt im Gleichgewicht halten.
 Darüber hinaus werden dem Benutzer anhand von seinen angegebenen Präferenzen passende \gls{Mahlzeit}en vorgeschlagen.
 \\Der Benutzer kann in der Anwendung \gls{Mahlzeit}en auswählen und angeben wie viel er von diesen zu sich genommen hat. Die Anwendung berechnet dann den Kaloriengehalt der angegebenen \gls{Mahlzeit}en. Außerdem gibt der Benutzer an, an welchen Tagen und zu welchen Tageszeiten er gerne trainieren möchte. 
-\\Das System erstellt aus einer Auswahl von \gls{Übung}en einen Trainingplan für den jeweiligen Termin, hierbei werden natürlich auch die individuellen Benutzerdaten d.h. Kalorienaufnahme, Alter, Gewicht, Größe, Grundumsatz und Trainingsart berücksichtigt. Das System erinnert den Benutzer an bevorstehende \gls{Trainingseinheit}en. Der Benutzer kann diesen \gls{Trainingsplan} in seinem \gls{Zeitplan} bearbeiten, akzeptieren, ablehnen oder verschieben. \\Um dem Benutzer zu ermöglichen auch außerhalb seiner gewünschten Zeitslots zu trainieren, kann er einzelne \gls{Übung}en auswählen und die Zeit bzw. die Wiederholungen angeben. \\
+\\Das System erstellt aus einer Auswahl von \gls{Übung}en einen Trainingplan für den jeweiligen Termin, hierbei werden natürlich auch die individuellen Benutzerdaten d.h. Kalorienaufnahme, Alter, Gewicht, Größe, Grundumsatz und Trainingsart berücksichtigt. Das System erinnert den Benutzer an bevorstehende \gls{Trainingseinheit}en. Der Benutzer kann diesen \gls{Trainingsplan} in seinem Zeitplan bearbeiten, akzeptieren, ablehnen oder verschieben. \\Um dem Benutzer zu ermöglichen auch außerhalb seiner gewünschten Zeitslots zu trainieren, kann er einzelne \gls{Übung}en auswählen und die Zeit bzw. die Wiederholungen angeben. \\
 Möchte der Benutzer gezielter trainieren kann er sein Profil upgraden. Dieses Upgrade ermöglicht es einem Personal Trainer Zugriff auf die Benutzerdaten zu bekommen und mit diesen je nach den Wünschen des Benutzers für diesen zugeschnittene Trainings- und Ernährungspläne zu erstellen.\\
 Für einen Überblick wird dem Benutzer eine Statistik über sein Ernährungs- und Sportverhalten angeboten.\\
 \newpage
@@ -148,10 +139,7 @@ Die angegebenen Daten vom Benutzer sind richtig.
 
 \section{Spezifische Anforderungen}
 \subsection{Funktionale Anforderungen}
-\subsubsection{Funktionale Anforderung - Benutzeraufwertung}
-Das System markiert einen Benutzer als aufgewertet und ordnet diesen Benutzer einem Personal Trainer zu, der dann Zugriff auf die Benutzerdaten erhält.
-\subsubsection{Funktionale Anforderung - Terminverwaltung}
-Das System trägt Trainingspläne in den Kalender eines Benutzers ein, dabei berücksichtigt es die vom Benutzer präferierten Zeitslots.
+
 \subsubsection{Funktionale Anforderung - Kalorienberechnung}
 Das System berechnet den Kaloriengehalt der \gls{Mahlzeit}en und Ernährungspläne die der Benutzer erstellt hat und den Kalorienverbrauch von Trainingsplänen und Trainingseinheiten.
 \subsubsection{Funktionale Anforderung - Grundumsatzberechnung}
@@ -160,8 +148,7 @@ Aus den Benutzerdaten berechnet das System den Grundumsatz des jeweiligen Benutz
 Aus den gewonnenen Benutzerdaten erstellt das System eine Statistik über den Kalorienverbrauch und die sportliche Aktivität eines Benutzers über einen vom Benutzer gewählten Zeitraum in Tagen. Das heißt der Kalorienverbrauch wird mit der Kalorienaufnahme verglichen. Aufwärts- oder Abwertstrends für den Benutzer hervorgehoben.
 \subsubsection{Funktionale Anforderung - Trainingsplanerstellung}
 Je nach Kalorienaufnahme während er letzten 7 Tage eines Benutzers erstellt das System einen \gls{Trainingsplan} aus 3 Trainingseinheiten, die jeweils 3 verschiedene zufällige \gls{Übung}en enthalten, sodass Kalorienaufnahme, und Kalorienverbrauch im Gleichgewicht sind.
-\subsubsection{Funktionale Anforderung - Erinnerung}
-Das System erinnert den Benutzer einen Tag und nochmal eine Stunde vor Anfang einer \gls{Trainingseinheit}.
+
 
 \subsection{Bedienbarkeit}
 \subsubsection{Bedienbarkeitsanforderung - Benutzereingabe}
@@ -200,11 +187,11 @@ Die StayHealthy Software benötigt zur Speicherung seiner Daten eine Datenbank.
 Es werden keine Lizenzen benötigt die verwendete Datenbank ist eine kostenlose Version von Microsoft SQL Server.
 
 \section{Use Cases}
-\subsection{Use Case Diagram}
-\includegraphics[scale=0.8]{Anwendungsfalldiagramm.png}
+\subsection{Use Case Diagramm}
+\includegraphics[scale=0.8]{Anwendungsfalldiagramm.pdf}
 
 \subsection{Aktoren und Stakeholder}
-Benutzer, Personal Trainer
+Benutzer
 \subsection{01 Use Case Benutzer registrieren}
 \textbf{Primary Actor:}\\ Benutzer\\
 \textbf{Stakeholders and Interests:}\\Benutzer will sich in der Anwendung registrieren.\\
@@ -390,95 +377,9 @@ Benutzer möchte die Durchführung einer \gls{Trainingseinheit} bestätigen.\\
 \textbf{Frequency of Occurence:}\\ \\
 Maximal so oft wie \gls{Trainingseinheit}en geplant wurden. 
 
-\subsection{08 Use Case Training vorschlagen}
-\textbf{Primary Actor:}\\ Benutzer\\
-\textbf{Stakeholders and Interests:}\\
-Benutzer will einen individuellen \gls{Trainingsplan} bekommen. \gls{Personaltrainer} erstellt einen individuellen \gls{Trainingsplan} für Benutzer.\\
-\textbf{Preconditions:} \\ Der Benutzer hat sich angemeldet und ein Profil erstellt. Datenbankserver ist gestartet. Benutzer hat sein Profil geupgradet.\\
-\textbf{Postconditions:}\\Der Benutzer hat einen individuellen \gls{Trainingsplan} bekommen.\\
-\textbf{Main Success Scenario:}
-\begin{enumerate}
-    \item Benutzer klickt den Button „Personaltrainer“
-    \item System zeigt Auswahl "Trainingsplan individuell erstellen"
-    \item Benutzer bestätigt Auswahl
-    \item System fordert für den Zeitraum von einer Woche für jeden Tag ein Datum und eine Uhrzeit an der trianiert werden will und ob trianiert werden will
-    \item Benutzer macht die Eingabe der Daten
-    \item System schlägt für jeden der Termine eine Traniningseinheit vor und fordert pro Vorschlag die Annahme des Vorschlages
-    \item Benutzer bestätigt Vorschlag
-    \item System übernimmt Vorschlag in den \gls{Trainingsplan} des \gls{Personaltrainer}es
-    \item System fordert bei vollendeter Durchführung auf die Planung zu beenden mit 'beenden'
-    \item Benutzer bestätigt mit 'beenden'
-    \item System speichert \gls{Trainingsplan} und fügt diesen dem \gls{Zeitplan} hinzu
-\end{enumerate} 
-\textbf{Extensions:}\\
-\begin{enumerate}
-    \item [7a.]  Benutzer nimmt Vorschlag nicht an.
-    \begin{enumerate}
-        \item[1.]System fordert Benutzer auf selbst eine \gls{Trainingseinheit} zu wählen und zeigt Auswahl von der in Datenbank gespeicherteten \gls{Trainingseinheit}en.
-        \item[2.]Benutzer wählt aus und bestätigt die Eingabe.
-    \end{enumerate}
-    \item [10a.] Benutzer bestätigt Eingabe nicht
-     \begin{enumerate}
-        \item[1.]System zeigt Auswahl 'Vorschläge überarbeiten'
-        \item[2.]Benutzer wählt entsprechende Termine aus lehnt diese ab
-        \item[3.]System fordert Benutzer auf selbst eine \gls{Trainingseinheit} zu wählen und zeigt Auswahl von der in Datenbank gespeicherten \gls{Trainingseinheit}en
-        \item[4.]Benutzer wählt aus und bestätigt die Eingabe
-    \end{enumerate}
-\end{enumerate}
-\textbf{Frequency of Occurence:}\\ \\
-beliebig oft pro Benutzer
 
-\subsection{09 Use Case Profil upgraden}
-\textbf{Primary Actor:}\\ Benutzer\\
-\textbf{Stakeholders and Interests:}\\
-Benutzer möchte sein Profil upgraden um die Funktion des \gls{Personaltrainer}s zu nutzen.\\
-\textbf{Preconditions:} \\ Benutzer hat ein Profil erstellt. 
-Benutzer ist eingeloggt. Datenbankserver ist gestartet.\\
-\textbf{Postconditions:}\\Benutzer hat ein Profil erfolgreich upgegradet.\\
-\textbf{Main Success Scenario:}
-\begin{enumerate}
-    \item System zeigt Auswahl „Profil upgraden“.
-    \item Benutzer wählt Auswahl „Profil upgraden“.
-    \item System weist Benutzer einem \gls{Personaltrainer} zu.
-\end{enumerate}
-\textbf{Frequency of Occurence:}\\ \\
-Einmal pro Benutzer.
 
-\subsection{10 Use Case Zeitplan bearbeiten}
-\textbf{Primary Actor:}\\ Benutzer\\
-\textbf{Stakeholders and Interests:}\\
-Benutzer möchte seinen \gls{Zeitplan} bearbeiten.\\
-\textbf{Preconditions:} \\ Benutzer hat ein Profil erstellt. Benutzer ist eingeloggt. Datenbankserver ist gestartet.\\
-\textbf{Postconditions:}\\Benutzer hat seinen \gls{Zeitplan} bearbeitet.\\
-\textbf{Main Success Scenario:}
-\begin{enumerate}
-    \item Benutzer wählt die Option „Zeitplan bearbeiten“. 
-    \item System gibt die Auswahl „bestehenden Termin ändern“.
-    \item Benutzer gibt neue Trainingszeit ein.
-    \item System fordert auf Eingabe zu bestätigen mit "bestätigen"
-    \item Benutzer bestätigt
-    \item System zeigt bearbeiteten \gls{Zeitplan} an
-\end{enumerate}
-\textbf{Extensions:}
-\begin{enumerate}
-    \item [1a.]  Benutzer wählt Auswahl „Plan löschen“
-    \begin{enumerate}
-        \item[1.]System zeigt Auswahl an bestehenden Ernährungs- und Trainingsplänen an und fordert Benutzer auf eine Auswahl von 1 zu treffen
-        \item[2.]Benutzer trifft eine Auswahl 
-        \item[3.]System fordert auf die Auswahl zu bestätigen
-        \item[4.]Benutzer bestätigt
-        \item[5.]System löscht den ausgewählten Plan 
-    \end{enumerate}
-    \item [5a.]Benutzer bestätigt nicht
-    \begin{enumerate}
-        \item[1.]System zeigt Auswahl 'abbrechen'
-    \item[2.]Benutzer wählt Auswahl und macht in MSS Schritt 3 weiter
-    \end{enumerate}
-\end{enumerate}
-\textbf{Frequency of Occurence:}\\ \\
-beliebig oft pro Benutzer
-
-\subsection{11 Use Case Ernährungsplan erstellen}
+\subsection{07 Use Case Ernährungsplan erstellen}
 \textbf{Primary Actor:}\\ Benutzer\\
 \textbf{Stakeholders and Interests:}\\
 Der Benutzer möchte einen \gls{Ernährungsplan} erstellen.\\
@@ -493,7 +394,7 @@ Der Benutzer möchte einen \gls{Ernährungsplan} erstellen.\\
     \item Benutzer gibt Daten ein und bestätigt die Eingabe
     \item System speichert \gls{Mahlzeit} in \gls{Ernährungsplan} und gibt Auswahl 'weitere Mahlzeit hinzufügen' und 'Essensplanung beenden'
     \item Benutzer wählt 'Essensplanung beenden'
-    \item System trägt Ernährungsplan in den \gls{Zeitplan} des Benutzers ein.
+    \item System trägt Ernährungsplan in den Zeitplan des Benutzers ein.
 \end{enumerate}
 \textbf{Extensions:}
 \begin{enumerate}
@@ -514,7 +415,7 @@ Der Benutzer möchte einen \gls{Ernährungsplan} erstellen.\\
 \end{enumerate}
 \textbf{Frequency of Occurence:}\\beliebig oft pro benutzer \\
 
-\subsection{12 Use Case Trainingsplan erstellen}
+\subsection{08 Use Case Trainingsplan erstellen}
 \textbf{Primary Actor:}\\ Benutzer\\
 \textbf{Stakeholders and Interests:}\\
 Benutzer will \gls{Trainingsplan} erstellen.\\
@@ -522,7 +423,7 @@ Benutzer will \gls{Trainingsplan} erstellen.\\
 \textbf{Postconditions:}\\Der Benutzer hat einen \gls{Ernährungsplan} erstellt.\\
 \textbf{Main Success Scenario:}
 \begin{enumerate}
-    \item System zeigt Auswahl im \gls{Zeitplan} an „Trainingsplan erstellen“
+    \item System zeigt Auswahl im Zeitplan an „Trainingsplan erstellen“
     \item Benutzer bestätigt Auswahl
     \item System gibt Hinweis aus „Zeitplan für 1 Woche von Montag bis Sonntag„ und zeigt Auswahl an „\gls{Trainingseinheit} hinzufügen“
     \item Benutzer wählt Auswahl 
@@ -535,7 +436,7 @@ Benutzer will \gls{Trainingsplan} erstellen.\\
     \item System übernimmt \gls{Trainingseinheit}en mit angegebenen Daten in den \gls{Trainingsplan}
     \item System zeigt Auswahl „weitere \gls{Trainingseinheit} hinzufügen“ und „Planung beenden“
     \item Benutzer wählt „Planung beenden“ und bestätigt Eingabe
-    \item System übernimmt \gls{Trainingsplan} und fügt diesen dem \gls{Zeitplan} hinzu
+    \item System übernimmt \gls{Trainingsplan} und fügt diesen dem Zeitplan hinzu
 \end{enumerate}
 \textbf{Extensions:}
 \begin{enumerate}
@@ -560,13 +461,13 @@ Benutzer will \gls{Trainingsplan} erstellen.\\
 \end{enumerate}
 \textbf{Frequency of Occurence:}\\beliebig oft pro Benutzer  \\
 
-\subsection{13 Use Case  Trainingseinheit erstellen}
+\subsection{09 Use Case  Trainingseinheit erstellen}
 \textbf{Primary Actor:}\\ Benutzer\\
 \textbf{Stakeholders and Interests:}\\
 Benutzer will eine \gls{Trainingseinheit} erstellen.\\
 \textbf{Preconditions:} \\ Benutzer hat ein Profil erstellt und ist eingeloggt. 
-Datenbankserver ist gestartet. Benutzer befindet sich in der Ansicht des \gls{Zeitplan}s.\\
-\textbf{Postconditions:}\\Benutzer hat eine \gls{Trainingseinheit} erstellt und diese wurde in der Datenbankhinterlegt. Die Trainingseinheit wird im \gls{Zeitplan} des Benutzers angezeigt.\\
+Datenbankserver ist gestartet. Benutzer befindet sich in der Ansicht des Zeitplans.\\
+\textbf{Postconditions:}\\Benutzer hat eine \gls{Trainingseinheit} erstellt und diese wurde in der Datenbankhinterlegt. Die Trainingseinheit wird im Zeitplan des Benutzers angezeigt.\\
 \textbf{Main Success Scenario:}
 \begin{enumerate}
     \item System zeigt Auswahl „\gls{Trainingseinheit} erstellen“
@@ -591,6 +492,36 @@ Datenbankserver ist gestartet. Benutzer befindet sich in der Ansicht des \gls{Ze
     \end{enumerate}
 \end{enumerate}
 \textbf{Frequency of Occurence:}\\beliebig oft pro Benutzer  \\
+\subsection{10 Use Case  Auto Trainingsplan erstellen}
+\textbf{Primary Actor:}\\ Benutzer\\
+\textbf{Stakeholders and Interests:}\\
+Benutzer will sich einen \gls{Trainingsplan} erstellen lassen.\\
+\textbf{Preconditions:} \\ Benutzer hat ein Profil erstellt und ist eingeloggt. 
+Datenbankserver ist gestartet. Benutzer befindet sich im Hauptmenü.\\
+\textbf{Postconditions:}\\Keine\\
+\textbf{Main Success Scenario:}
+\begin{enumerate}
+    \item System zeigt Auswahl „Auto Trainingsplan erstellen“
+    \item Benutzer wählt Auswahl
+    \item System fordert Benutzer auf ein Start Datum und ein End Datum einzugeben. 
+    \item Benutzer gibt Eingabe ein.
+    \item System schlägt einen„\gls{Trainingsplan} vor.“
+    \item Benutzer schließt den Vorgang ab mit bestätigen durch Auswahl "ok"
+    \item System übernimmt den \gls{Trainingsplan} in die Liste der bereits gespeicherten Trainingspläne des Benutzers in der Datenbank.
+\end{enumerate}
+\textbf{Extensions:}
+\begin{enumerate}
+    \item [4a.]   Benutzer macht ungültige Angabe
+    \begin{enumerate}
+        \item[1.]System gibt Hinweis zur ungültigen Eingabe aus und fordert neue Eingabe an
+        \item[2.]Benutzer macht neue Eingabe und macht im MSS Schritt 4. Weiter
+    \end{enumerate}
+    
+    
+    
+\end{enumerate}
+\textbf{Frequency of Occurence:}\\beliebig oft pro Benutzer  \\
+
 \printglossary
 \end{document}
 

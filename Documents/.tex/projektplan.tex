@@ -15,6 +15,7 @@
 % \usepackage{booktabs}
 % \usepackage[final]{microtype}
 \usepackage{caption}
+\usepackage{xcolor}
 \usepackage{hyperref} % hidelinks removes colored boxes around references and links
 % \usepackage{comment}
 
@@ -38,7 +39,7 @@
         \Large{\GroupName}
        
         \vspace{0.25cm}
-        \large{Khader AlHamed, Marco Klein\\Denis Manherz, Andreas Wirth}
+        \large{Khader AlHamed, Marco Klein\\Denis Manherz}
        
         \vspace{3 cm}
         \Large{\today}% change date format to dd.mm.yyyy
@@ -126,7 +127,7 @@ Teamübersicht:
 Khader Alhamed & khader1.alhamed@st.oth-regensburg.de\\
 Marco Klein & marco.klein@st.oth-regensburg.de\\
 Denis Manherz & denis.manherz@st.oth-regensburg.de\\
-Andreas Wirth & andreas2.wirth@st.oth-regensburg.de\\
+\\
 \end{tabularx}
 \vspace{0.2cm}\\
 \begin{tabular}{|l|l|}
@@ -139,7 +140,7 @@ Andreas Wirth & andreas2.wirth@st.oth-regensburg.de\\
      \hline 
      Software Architektur & AlHamed \\
      \hline
-     Qualitätsmanagement & Wirth\\
+     Qualitätsmanagement & Alle\\
      \hline
      User Interface Design & Alle\\
      \hline
@@ -158,87 +159,85 @@ einen Backendserver. Dieser steht über die virtuelle Maschine, auf die wir im R
 \subsection{Projektplan}
 Die zeitliche Dauer des Projekts umfasst 16 Wochen, wobei die Schlussabgabe am 07.07.2022 ist. Ein genauer Termin der Abschlusspräsentation ist zur Zeit noch nicht bekannt. Die genaue Zeiteinteilung der einzelnen Phasen und Iterationen werden im Zeitplan aufgeführt
 \subsubsection{Zeitplan}
-Der angestrebte Aufwand pro Teammitglied ist 150 Stunden, folglich eine gesamte Arbeitszeit von 600 Stunden. Daraus ergibt sich im Durschnitt eine wöchentliche Arbeitszeit von 9-10 Stunden für jeden Teilnehmer. In allen Arbeitspaketen ist Fehlermanagement mit inbegriffen. Die Angaben im Zeitplan beziehen sich auf Stunden.\\
+Der angestrebte Aufwand pro Teammitglied ist 150 Stunden, folglich eine gesamte Arbeitszeit von 450 Stunden. Daraus ergibt sich im Durschnitt eine wöchentliche Arbeitszeit von 9-10 Stunden für jeden Teilnehmer. In allen Arbeitspaketen ist Fehlermanagement mit inbegriffen. Die Angaben im Zeitplan beziehen sich auf Stunden.\\
 
 \subsubsection{Arbeitspakete Allgemeine Aufwendungen}
-\begin{tabular}{|l|c|c|c|c|c|c|}
+\begin{tabular}{|l|c|c|c|c|c|}
 \hline
-      \textbf{\#} & \textbf{Arbeitspaket} & \textbf{DM} & \textbf{MK} & \textbf{AW} & \textbf{KA} & \textbf{Gesamt} \\
+      \textbf{\#} & \textbf{Arbeitspaket} & \textbf{DM} & \textbf{MK} & \textbf{KA} &  \textbf{Gesamt} \\
 
 \hline
-01 & Visiondokument & & 5 & & & 5\\
+01 & Visiondokument & & 5 & &  5\\
 \hline
-02 & Anforderungsspezifikation & 10 & & & & 10\\
+02 & Anforderungsspezifikation & 10 & & & 10\\
 \hline
-03 & Projektplan & 3 & & 3 & 3 & 9\\
+03 & Projektplan & 3 & & 3 &  6\\
 \hline
-04 & Use Cases & & 8 & & 8 & 16 \\
+04 & Use Cases & & 8 & 8 &   16 \\
 \hline
-05 & UML-Diagramme & & 8 & 4 & 4 & 16 \\
+05 & UML-Diagramme & & 8 & 4 &   12 \\
 \hline
-06 & Installation und Konfiguration & 2 & 2 & 2 & 2 & 8\\
+06 & Installation und Konfiguration & 2 & 2 & 2 &   6\\
 \hline
-07 & Einarbeitung & 5 & 5 & 5 & 5 & 20\\
+07 & Einarbeitung & 5 & 5 & 5 &   15\\
 \hline
-08 & Datenbank aufsetzen & 4 & & 4 & & 8\\
+08 & Datenbank aufsetzen & 4 & &  &  4\\
 \hline
-09 & Softwaredokumentation & & 8 & & 8 & 16\\
+09 & Softwaredokumentation & & 8 & 8 &   16\\
 \hline
-10 & Code Review & 10 & 10 & 10 & 10 & 40\\
+10 & Code Review & 3 & 3 & 3 &   9\\
 \hline
-11 & Tests & 15 & & 15 & & 30\\
+11 & Tests & 10 & 10  & 10 &  30\\
 \hline
-12 & Meetings & 32 & 32 & 32 & 32& 128\\
+12 & Meetings & 32 & 32 & 32 &  96\\
 \hline
-13 & Abschlusspräsentation & 2 & 2 & 2 & 2 & 8\\
+13 & Abschlusspräsentation & 2 & 2 & 2 &   6\\
 \hline
 \hline
- & Gesamt & 83 & 80 & 77 & 74 & 314\\
+ & Gesamt & 71 & 83 & 77 &  231\\
 \hline
 \end{tabular}
 
 \subsubsection{Arbeitspakete Use-Cases}
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-      \textbf{\#} & \textbf{Arbeitspaket} & \textbf{DM} & \textbf{MK} & \textbf{AW} & \textbf{KA} & \textbf{Gesamt} \\
+      \textbf{\#} & \textbf{Arbeitspaket} & \textbf{DM} & \textbf{MK} & \textbf{KA} & \textbf{Gesamt} \\
 
 
 
 \hline
-14 & Ansichten erstellen & & 10 & & 10 & 20\\
+14 & Ansichten erstellen & & 10 &  10 & 20\\
 \hline
-15 & Benutzer registrieren & 4 & & 4 & & 8\\
+15 & Benutzer registrieren & 4 & 4  & & 8\\
 \hline
-16 & Benutzer anmelden & 4 & & 4 & & 8\\
+16 & Benutzer anmelden & 4 & 4 &   & 8\\
 \hline
-17 & Profil bearbeiten & 4 & & 4 & & 8\\
+17 & Profil bearbeiten & 4 & & 4 & 8\\
 \hline
-18 & Profil aufwerten & 4 & & 4 & & 8\\
+18 & Grundumsatz berechnen &  & 2 &  2 & 4\\
 \hline
-19 & Grundumsatz berechnen &  & 2 & & 2 & 4\\
+19 & Mahlzeit eingeben &6 & 6 &   & 12\\
 \hline
-20 & Mahlzeit eingeben & & 6 & & 6 & 12\\
+20 & Kalorien berechnen & & 4 &  4 & 8\\
 \hline
-21 & Kalorien berechnen & & 4 & & 4 & 8\\
+21 & UC Trainingsplan erstellen & 10& 10 &   & 20\\
 \hline
-22 & UC Trainingsplan erstellen & & 10 & & 10 & 20\\
+22 & Auto Trainingsplan erstellen & 10 &   &10 & 20\\
 \hline
-23 & Auto Trainingsplan erstellen & 10 & & 10 & & 20\\
+23 & Trainingseinheit erstellen & 10 & 5   & 5 & 20\\
 \hline
-24 & Trainingseinheit erstellen & 10 &  & 10 &  & 20\\
+24 & Ernährungsplan erstellen &10 &  &  10 & 20 \\
 \hline
-25 & Ernährungsplan erstellen & & 10 & & 10 & 20 \\
+25 & Statistik erstellen & 10 &5   & 5& 20\\
 \hline
-26 & Statistik erstellen & 10 & & 10 & & 20\\
+26 & Review Termin Vorbereitung & 5 & 5&  5 & 15\\
 \hline
-27 & Erinnerung senden & 4 & & 4 & & 8\\
+27 & Termine bearbeiten & 3& 3 & 3 & 9\\
 \hline
-28 & Termine bearbeiten & 4 & & 4 & & 8\\
-\hline
-29 & Training durchführen & & 8 & & 8 & 16\\
+28 & Training durchführen & & 8 & 8 & 16\\
 \hline
 \hline
- & Gesamt & 54 & 50 & 54 & 50 & 208\\
+ & Gesamt & 76 & 66 & 66 &  208\\
 \hline
 \end{tabular}
 
@@ -246,18 +245,16 @@ Der angestrebte Aufwand pro Teammitglied ist 150 Stunden, folglich eine gesamte 
 
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-      \textbf{\#} & \textbf{Arbeitspaket} & \textbf{DM} & \textbf{MK} & \textbf{AW} & \textbf{KA} & \textbf{Gesamt} \\
+      \textbf{\#} & \textbf{Arbeitspaket} & \textbf{DM} & \textbf{MK} & \textbf{KA} & \textbf{Gesamt} \\
 \hline
-30 & Puffer & 25 & 25 & 25 & 25 & 100\\
+ & Allgemeine Aufwendungen & 71 & 83  & 77 & 231\\
 \hline
- & Allgemeine Aufwendungen & 83 & 80 & 77 & 74 & 314\\
-\hline
- & Use-Cases & 54 & 50 & 54 & 50 & 208\\
+ & Use-Cases & 76 & 66 & 66 & 208\\
 
 
 \hline
 \hline
- & Gesamt & 162 & 155 & 156 & 149 & 622\\
+ & Gesamt & 148 & 149 & 143 & 439\\
 \hline
 
 \end{tabular}
@@ -377,7 +374,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
      \textbf{Zeit} &  9\\
      \hline
-     \textbf{Ressource} & AlHamed, Manherz, Wirth\\
+     \textbf{Ressource} & AlHamed, Manherz\\
      \hline
      \textbf{Inhalt} &  Ausgearbeiteter Projektplan\\
      \hline
@@ -403,7 +400,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
      \textbf{Zeit} &  16\\
      \hline
-     \textbf{Ressource} & AlHamed, Klein, Wirth\\
+     \textbf{Ressource} & AlHamed, Klein\\
      \hline
      \textbf{Inhalt} &  Use Case Diagramm, Entity Relationship Modell\\
      \hline
@@ -442,7 +439,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
      \textbf{Zeit} & 8 \\
      \hline
-     \textbf{Ressource} & Manherz, Wirth\\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} &  Erstellen von Tabellen\\
      \hline
@@ -481,7 +478,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
      \textbf{Zeit} & 30\\
      \hline
-     \textbf{Ressource} & Manherz, Wirth\\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} & Test der Funktionsfähigkeit von einzelnen Komponenten sowie Fehlersuche\\
      \hline
@@ -502,7 +499,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 13 Abschlusspräsentation}
+\subsection{Arbeitspaket 13 Vorbereitung auf Review Termine}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} &  8\\
@@ -533,7 +530,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
      \textbf{Zeit} & 8 \\
      \hline
-     \textbf{Ressource} & Manherz, Wirth\\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} & Verknüpfung von Button mit Funktionalität, Datenbankanbindung, wie UC Benutzer registrieren\\
      \hline
@@ -546,7 +543,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
      \textbf{Zeit} & 8\\
      \hline
-     \textbf{Ressource} & Manherz, Wirth\\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} &  Verknüpfung von Button mit Funktionalität, Datenbankanbindung,\\
      \hline
@@ -559,7 +556,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
      \textbf{Zeit} & 8\\
      \hline
-     \textbf{Ressource} & Manherz, Wirth\\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} &  Verknüpfung von Buttons/Eingabefeldern mit Funktionalität, Datenbankanbindung,\\
      \hline
@@ -567,20 +564,9 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 18 Profil aufwerten}
-\begin{tabularx}{\textwidth}{|l|X|}
-\hline
-     \textbf{Zeit} & 8 \\
-     \hline
-     \textbf{Ressource} & Manherz, Wirth\\
-     \hline
-     \textbf{Inhalt} &  Verknüpfung von Button mit Funktionalität, Datenbankanbindung,\\
-     \hline
-     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
-\hline
-\end{tabularx}
 
-\subsection{Arbeitspaket 19 Grundumsatz berechnen}
+
+\subsection{Arbeitspaket 18 Grundumsatz berechnen}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 4 \\
@@ -593,7 +579,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 20 Mahlzeit eingeben}
+\subsection{Arbeitspaket 19 Mahlzeit eingeben}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 12 \\
@@ -606,7 +592,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 21 Kalorien berechnen}
+\subsection{Arbeitspaket 20 Kalorien berechnen}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 8 \\
@@ -619,7 +605,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 22 UC Trainingsplan erstellen}
+\subsection{Arbeitspaket 21 UC Trainingsplan erstellen}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 20 \\
@@ -632,12 +618,12 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 23 Auto Trainingsplan erstellen}
+\subsection{Arbeitspaket 22 Auto Trainingsplan erstellen}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 20 \\
      \hline
-     \textbf{Ressource} & Manherz, Wirth\\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} &  Automatische Erstellung von Plänen mithilfe der dazugehörigen Nutzerdaten, Datenbankandbindung\\
      \hline
@@ -645,12 +631,12 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 24 Trainingseinheit erstellen}
+\subsection{Arbeitspaket 23 Trainingseinheit erstellen}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 20 \\
      \hline
-     \textbf{Ressource} & Manherz, Wirth \\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} &  Verknüpfung von Buttons/Feldern mit Funktionalität, Datenbankanbindung\\
      \hline
@@ -658,7 +644,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 25 Ernährungsplan erstellen}
+\subsection{Arbeitspaket 24 Ernährungsplan erstellen}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 20 \\
@@ -671,12 +657,12 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 26 Statistik erstellen}
+\subsection{Arbeitspaket 25 Statistik erstellen}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 20\\
      \hline
-     \textbf{Ressource} & Manherz, Wirth\\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} & Erstellung einer Statistik aus den Benutzerdaten in der Datenbank, Datenbankanbindung\\
      \hline
@@ -684,25 +670,25 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 27 Erinnerung senden}
+\subsection{Arbeitspaket 26 Review Termin}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 8\\
      \hline
-     \textbf{Ressource} & Manherz, Wirth \\
+     \textbf{Ressource} & Alle\\
      \hline
-     \textbf{Inhalt} &  System sendet Erinnerung an bevorstehende Trainingseinheiten\\
+     \textbf{Inhalt} &  Vorbereitung Präsentation für Review Termine\\
      \hline
-     \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
+     \textbf{Abhängigkeit} & keine\\
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 28 Termine bearbeiten}
+\subsection{Arbeitspaket 27 Termine bearbeiten}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 8\\
      \hline
-     \textbf{Ressource} & Manherz, Wirth\\
+     \textbf{Ressource} & Manherz\\
      \hline
      \textbf{Inhalt} &  Verknüpfung von Buttons/Feldern mit Funktionalität, Datenbankanbindung\\
      \hline
@@ -710,7 +696,7 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
 \hline
 \end{tabularx}
 
-\subsection{Arbeitspaket 29 Training durchführen}
+\subsection{Arbeitspaket 28 Training durchführen}
 \begin{tabularx}{\textwidth}{|l|X|}
 \hline
      \textbf{Zeit} & 16\\
@@ -720,21 +706,6 @@ Die Arbeitspakete werden im Laufe des Projekts angepasst.
      \textbf{Inhalt} &  Verknüpfung von Buttons/Feldern mit Funktionalität, Datenbankanbindung\\
      \hline
      \textbf{Abhängigkeit} & Datenbank einsatzfähig\\
-\hline
-\end{tabularx}
-
-
-
-\subsection{``Arbeitspaket'' 30 Puffer}
-\begin{tabularx}{\textwidth}{|l|X|}
-\hline
-     \textbf{Zeit} &  100\\
-     \hline
-     \textbf{Ressource} & Alle\\
-     \hline
-     \textbf{Inhalt} &  Puffer für wahrscheinliche Änderungen im Zeitplan\\
-     \hline
-     \textbf{Abhängigkeit} & keine\\
 \hline
 \end{tabularx}
 
