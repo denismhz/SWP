@@ -62,7 +62,7 @@
       <item row="2" column="0">
        <widget class="QPushButton" name="toPlaenePage">
         <property name="text">
-         <string>Plan anfordern</string>
+         <string>Trainingsplan anfordern</string>
         </property>
        </widget>
       </item>

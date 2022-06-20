@@ -11,12 +11,6 @@ ProfilBearbeiten::ProfilBearbeiten(QDialog*parent)
 {
     ui.setupUi(this);
 
-    //connect(ui.pushButtonClose, SIGNAL(clicked()), this, SLOT(on_pushButtonClose_clicked()));
-    //connect(ui.pushButtonEditProfile, SIGNAL(clicked()), this, SLOT(on_pushButtonEditProfile_clicked()));
-    //connect(ui.pushButtonSaveChanges, SIGNAL(clicked()), this, SLOT(on_pushButtonSaveChanges_clicked()));
-    //connect(ui.pushButtonDiscardChanges, SIGNAL(clicked()), this, SLOT(on_pushButtonDiscardChanges_clicked()));
-
-
     User* tmpUser = Login::GetInstance()->GetLoggedInUser();
     currentUserProfil = Profil::GetProfil(*tmpUser);
     if (!currentUserProfil) {
@@ -65,7 +59,6 @@ void ProfilBearbeiten::on_pushButtonEditProfile_clicked()
 
     ui.pushButtonEditProfile->hide();
     ui.pushButtonClose->hide();
-    ui.pushButtonUpgradeProfile->hide();
 }
 
 
@@ -83,11 +76,6 @@ void ProfilBearbeiten::on_pushButtonSaveChanges_clicked()
 
         ui.pushButtonEditProfile->show();
         ui.pushButtonClose->show();
-        ui.pushButtonUpgradeProfile->show();
-
-        //TODO
-        //currentUserProfil->kalorienaufnahme_ = 0;
-        //currentUserProfil->prefaerenz_ = "";
 
         if (!Profil::UpdateProfil(*currentUserProfil, Login::GetInstance()->GetLoggedInUser()->GetId())) {
         }
@@ -104,7 +92,6 @@ void ProfilBearbeiten::on_pushButtonDiscardChanges_clicked()
 
     ui.pushButtonEditProfile->show();
     ui.pushButtonClose->show();
-    ui.pushButtonUpgradeProfile->show();
 }
 
 void ProfilBearbeiten::on_pushButtonDeleteProfile_clicked()

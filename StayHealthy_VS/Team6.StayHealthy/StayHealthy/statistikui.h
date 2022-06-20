@@ -13,6 +13,8 @@ private:
 	QLabel* label_;
 	QSlider* days_slider_;
 	QTableView* tableView;
+	int ep_insgesamt;
+	int tp_insgesamt;
 
 private slots:
 	void DoSomething();

@@ -52,15 +52,13 @@ void Trainingsplan::ErstelleTrainingsplan(QString start_datum, QString pref)
 	mahlzeiten = Mahlzeit::GetMahlzeit(user->GetId(), m_datum_start, m_datum_ende);
 	if (mahlzeiten.empty()) {
 		kalorienaufnahme_letzte_7_tage = profil->kalorienaufnahme_;
-		qDebug() << "empty" << kalorienaufnahme_letzte_7_tage;
 	}
 	else {
 		for (Mahlzeit* m : mahlzeiten) {
 			kalorienaufnahme_letzte_7_tage += m->GetKaloriengehalt();
-			qDebug() << m->GetKaloriengehalt();
-			qDebug() << kalorienaufnahme_letzte_7_tage << ":letzte 7";
 		}
 	}
+	if (kalorienaufnahme_letzte_7_tage < profil->kalorienaufnahme_) kalorienaufnahme_letzte_7_tage = profil->kalorienaufnahme_;
 
 	//wieviele kalorien sollen pro übung bzw. einheit verbraucht werden
 	kalorienaufnahme_letzte_7_tage -= profil->GetGrundumsatz() * 7;
@@ -200,7 +198,7 @@ std::vector<Trainingsplan*> Trainingsplan::GetTrainingsplan(int user_id, QString
 bool Trainingsplan::DeleteTrainingsplan(int id)
 {
 	QString prep =
-		"DELETE FROM dbo.Ernaehrungsplan WHERE ErnaehrungsplanID = :user_id;";
+		"DELETE FROM dbo.Trainingsplan WHERE TrainingsplanID = :user_id;";
 	QSqlQuery query;
 	query.prepare(prep);
 	query.bindValue(":user_id", id);

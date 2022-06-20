@@ -63,8 +63,8 @@ void TrainingsplanUI::SetUpUI(Trainingsplan& plan)
 		m_title_widget->setObjectName(QString::number(m->id_));
 		QHBoxLayout* m_title_layout = new QHBoxLayout(m_title_widget);
 		m_title_layout->setAlignment(Qt::AlignCenter);
-		QString m_title_txt = QString("<h6>Trainingseinheit %0 / %1 am %2 um</h6>")
-			.arg(i + 1).arg(plan.trainingseinheiten_.size()).arg(m->datum_).arg(m->datum_);
+		QString m_title_txt = QString("<h6>Trainingseinheit %0 / %1 am %2</h6>")
+			.arg(i + 1).arg(plan.trainingseinheiten_.size()).arg(m->datum_);
 		QLabel* m_title = new QLabel(m_title_txt, m_title_widget);
 
 		QPushButton* m_next = new QPushButton("next", m_title_widget);
@@ -154,6 +154,8 @@ void TrainingsplanUI::Create() {
 	qDebug() << "new plan id" << new_plan->GetID();
 
 	TrainingseinheitEingeben* meingabe = new TrainingseinheitEingeben(plan_widget_, new_plan->GetID());
+	this->findChild<QDateEdit*>("date_edit")->setDate(start_date->date());
+	
 
 	QPushButton* done = new QPushButton("Fertig", this);
 	connect(done, SIGNAL(clicked()), this, SLOT(Done()));
@@ -168,6 +170,7 @@ void TrainingsplanUI::Update()
 
 void TrainingsplanUI::Delete()
 {
+	if (plane_.empty()) return;
 	Trainingsplan::DeleteTrainingsplan(plane_[index]->GetID());
 	for (auto m : plane_[index]->trainingseinheiten_) {
 		Trainingseinheit::DeleteTrainingseinheit(m->id_);

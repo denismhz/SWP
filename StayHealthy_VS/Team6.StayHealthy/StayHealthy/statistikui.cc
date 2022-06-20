@@ -24,6 +24,21 @@ StatistikUI::StatistikUI(QWidget* parent)
 	main_layout->addWidget(days_slider_);
 	main_layout->addWidget(label_);
 
+	QString prep = "Select COUNT(*) FROM dbo.Ernaehrungsplan";
+	QSqlQuery query;
+	query.prepare(prep);
+	query.exec();
+	query.first();
+	ep_insgesamt = query.value(0).toInt();
+	query.finish();
+
+	prep = "Select COUNT(*) FROM dbo.Trainingsplan";
+	query.prepare(prep);
+	query.exec();
+	query.first();
+	tp_insgesamt = query.value(0).toInt();
+	query.finish();
+
 	connect(days_slider_, SIGNAL(valueChanged(int)), this, SLOT(DoSomething()));
 }
 
@@ -58,23 +73,7 @@ void StatistikUI::DoSomething() {
 	//effizienter ist
 	//und pop nicht vergessen wenn tage verringert werden
 
-	QString prep = "Select COUNT(*) FROM dbo.Ernaehrungsplan";
-	QSqlQuery query;
-	query.prepare(prep);
-	query.exec();
-	query.first();
-	int mahlzeiten_insgesamt = query.value(0).toInt();
-	query.finish();
-
-	prep = "Select COUNT(*) FROM dbo.Trainingsplan";
-	query.prepare(prep);
-	query.exec();
-	query.first();
-	int tp_insgesamt = query.value(0).toInt();
-	query.finish();
-
 	m = Mahlzeit::GetMahlzeit(curr_user->GetId(), start_datum.toString(Qt::ISODate));
-	//ep = Ernaehrungsplan::GetErnaehrungsplan(curr_user->GetId(), start_datum.toString(Qt::ISODate));
 	te = Trainingseinheit::GetTrainingseinheit(curr_user->GetId(), start_datum.toString(Qt::ISODate));
 
 	//hier muss man noch beachten ob mahlzeiten auch wirklich genommen wurden und ob te durchgefuehrt wurden
@@ -85,7 +84,6 @@ void StatistikUI::DoSomething() {
 	int durch = 0;
 	for (auto m : m) {
 		m_kalorien += m->GetKaloriengehalt();
-		qDebug() << "kalor" << m_kalorien << "  " << m->speisepositionen.size();
 	}
 	int te_kalorien = 0;
 	for (auto te : te) {
@@ -98,7 +96,7 @@ void StatistikUI::DoSomething() {
 	QLabel* ernaehrungsplaene = new QLabel(wid);
 	QLabel* trainingsplaene = new QLabel(wid);
 
-	ernaehrungsplaene->setText(QString("Durchgefuehrte Ernaehrungsplaene insgesamt: %0").arg(mahlzeiten_insgesamt));
+	ernaehrungsplaene->setText(QString("Durchgefuehrte Ernaehrungsplaene insgesamt: %0").arg(ep_insgesamt));
 	trainingsplaene->setText(QString("Durchgefuehrte Trainingsplaene insgesamt: %0").arg(tp_insgesamt));
 
 	wid->layout()->addWidget(ernaehrungsplaene);

@@ -170,6 +170,7 @@ void ErnaehrungsplanUI::Update()
 
 void ErnaehrungsplanUI::Delete()
 {
+	if (plane_.empty()) return;
 	Ernaehrungsplan::DeleteErnaehrungsplan(plane_[index]->GetID());
 	for (auto m : plane_[index]->mahlzeiten) {
 		Mahlzeit::DeleteMahlzeit(m->id_);

@@ -277,19 +277,6 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButtonUpgradeProfile">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>360</y>
-     <width>101</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Profil upgraden</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButtonDeleteProfile">
    <property name="geometry">
     <rect>

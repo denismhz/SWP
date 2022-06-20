@@ -31,12 +31,10 @@ TrainingseinheitUI::TrainingseinheitUI(QWidget *parent)
     QPushButton* start = new QPushButton("Start", this);
     QPushButton* stop = new QPushButton("Stop", this);
     QPushButton* fertig = new QPushButton("Fertig", this);
-    QPushButton* abbrechen = new QPushButton("Abbrechen", this);
 
     button_layout->addWidget(start);
     button_layout->addWidget(stop);
     button_layout->addWidget(fertig);
-    button_layout->addWidget(abbrechen);
     button_layout->addWidget(prevTe);
     button_layout->addWidget(nextTe);
 
@@ -108,11 +106,11 @@ void TrainingseinheitUI::UpdateLabel()
     QString time = QDateTime::fromSecsSinceEpoch(sec).toUTC().toString("hh:mm:ss");
     time = "Stoppuhr " + time;
     stack->currentWidget()->findChild<QLabel*>("timer_label")->setText(time);
-    //qDebug()  << curr_te->start_zeit_.mid(0, 8);
 }
 
 void TrainingseinheitUI::Start()
 {
+    if (!curr_te) return;
     timerr->start(1000);
 }
 
@@ -123,11 +121,13 @@ void TrainingseinheitUI::Cancel()
 
 void TrainingseinheitUI::Stop()
 {
+    if (!curr_te) return;
     timerr->stop();
 }
 
 void TrainingseinheitUI::Finish()
 {
+    if (!curr_te) return;
     Stop();
     QList<QLineEdit*> line_edits = stack->currentWidget()->findChildren<QLineEdit*>();
 
@@ -144,6 +144,7 @@ void TrainingseinheitUI::Finish()
     DBHandler::GetInstance()->CustomQuery(prep1);
     QString prep = QString("Update dbo.Trainingseinheit Set Durchgefuehrt = 1 WHERE TrainingseinheitID = %1").arg(curr_te->id_);
     DBHandler::GetInstance()->CustomQuery(prep);
+    curr_te = nullptr;
     SetUp();
 }
 

@@ -95,7 +95,7 @@ int Ernaehrungsplan::AddErnaehrungsplan(Ernaehrungsplan& plan)
 bool Ernaehrungsplan::DeleteErnaehrungsplan(int id)
 {
     QString prep =
-        "DELETE FROM dbo.Trainingsplan WHERE TrainingsplanID = :id;";
+        "DELETE FROM dbo.Ernaehrungsplan WHERE ErnaehrungsplanID = :id;";
     QSqlQuery query;
     query.prepare(prep);
     query.bindValue(":id", id);
