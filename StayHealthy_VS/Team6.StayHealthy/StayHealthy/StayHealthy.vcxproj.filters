@@ -70,9 +70,6 @@
     <ClCompile Include="speiseposition.cc">
       <Filter>Source Files\Ernaerung</Filter>
     </ClCompile>
-    <ClCompile Include="statistik.cc">
-      <Filter>Source Files\Benutzer</Filter>
-    </ClCompile>
     <ClCompile Include="trainingseinheit.cc">
       <Filter>Source Files\Training</Filter>
     </ClCompile>
@@ -142,9 +139,6 @@
       <Filter>Header Files\Training</Filter>
     </ClInclude>
     <ClInclude Include="registrierung.h">
-      <Filter>Header Files\Benutzer</Filter>
-    </ClInclude>
-    <ClInclude Include="statistik.h">
       <Filter>Header Files\Benutzer</Filter>
     </ClInclude>
     <ClInclude Include="user.h">

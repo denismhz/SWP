@@ -117,7 +117,6 @@
     <ClCompile Include="login.cc" />
     <ClCompile Include="speiseposition.cc" />
     <ClCompile Include="profil.cc" />
-    <ClCompile Include="statistik.cc" />
     <ClCompile Include="statistikui.cc" />
     <ClCompile Include="trainingseinheit.cc" />
     <ClCompile Include="trainingseinheitui.cc" />
@@ -146,7 +145,6 @@
     <ClInclude Include="registrierung.h" />
     <ClInclude Include="speiseposition.h" />
     <ClInclude Include="profil.h" />
-    <ClInclude Include="statistik.h" />
     <QtMoc Include="statistikui.h" />
     <ClInclude Include="trainingseinheit.h" />
     <QtMoc Include="trainingseinheitui.h" />
