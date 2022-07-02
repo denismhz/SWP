@@ -1,0 +1,19 @@
+{
+  "name": "swp-website",
+  "version": "0.0.0",
+  "description": "Website containing a Descritption and a Downloadable version of our Project created during SWP at OTH-Regensburg, Medizinische Informatik.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SWP",
+    "Website",
+    "StayHealthy"
+  ],
+  "author": "Denis Manherz",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
