@@ -8,6 +8,11 @@ app.get('/', (req, res) => {
 	res.sendFile(__dirname + '/template/index.html');
 });
 
+app.get('/download', (req, res) => {
+    const file = __dirname + '/StayHealthy.zip';
+    res.download(file);
+});
+
 app.listen(port, () => {
 	console.log('Listening on port ${port}');
 });
