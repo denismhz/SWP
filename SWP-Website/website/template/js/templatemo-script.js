@@ -9,7 +9,7 @@ https://templatemo.com/tm-560-astro-motion
 var gallery = undefined;
 
 function closeMenu() {
-  $(".navbar-collapse").removeClass("show"); 
+  $(".navbar-collapse").removeClass("show");
 }
 
 function highlightMenu(no) {
@@ -61,7 +61,7 @@ function openPage(no) {
     } else {
       $('.gallery-slider').slick('unslick');
       setupGallery();
-    }    
+    }
   }
 
   $('.cd-hero-slider li').hide();
@@ -86,7 +86,7 @@ jQuery(function() {
 
       openPage(pageNo);
       highlightMenu(pageNo);
-      closeMenu();     
+      closeMenu();
     });
 
     $("html").click(function(e) {
