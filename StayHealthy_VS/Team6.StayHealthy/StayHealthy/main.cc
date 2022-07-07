@@ -4,8 +4,9 @@
 
 int main(int argc, char* argv[])
 {
-    DBHandler::GetInstance();
+    
     QApplication a(argc, argv);
+    DBHandler::GetInstance();
     StayHealthy w;
     w.show();
     return a.exec();

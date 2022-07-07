@@ -4,15 +4,20 @@
 #include "ernaerungsplan.h"
 
 DBHandler::DBHandler() {
-  db_ = QSqlDatabase::addDatabase("QODBC");
-  db_.setDatabaseName(
-      "DRIVER={SQL "
-      "Server};Server=194.95.108.25;Database=StayHealthyDB;Uid=sa;Port=1433;"
-      "Pwd=asdasd1!2;WSID=.");
-  if (db_.open()) {
-    qDebug() << "Database Connected!";
-  } else
-    qDebug() << "No Database Connected";
+    db_ = QSqlDatabase::addDatabase("QODBC");
+    db_.setDatabaseName(
+        "DRIVER={SQL "
+        "Server};Server=194.95.108.25;Database=StayHealthyDB;Uid=sa;Port=1433;"
+        "Pwd=asdasd1!2;WSID=.");
+    if (db_.open()) {
+        qDebug() << "Database Connected!";
+    }
+    else {
+        qDebug() << "No Database Connected";
+        qDebug() << db_.lastError();
+    }
+        
+  
 }
 
 DBHandler::~DBHandler() {
