@@ -19,16 +19,18 @@ function highlightMenu(no) {
 
 function setupGallery() {
   gallery = $('.gallery-slider').slick({
-    slidesToShow: 5,
-    slidesToScroll: 3,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+      centerMode: true,
+      variableWidth: true,
     dots: true,
     arrows: false,
     responsive: [
       {
         breakpoint: 992,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 2,
+          slidesToScroll: 2,
           infinite: true,
           dots: true
         }
@@ -36,8 +38,8 @@ function setupGallery() {
       {
         breakpoint: 767,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3
+          slidesToShow: 2,
+          slidesToScroll: 2
         }
       },
       {
